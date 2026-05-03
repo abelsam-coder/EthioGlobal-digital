@@ -1,5 +1,7 @@
 import { useState } from 'react';
-
+import samri from "../assets/samri collection.png";
+import erp from "../assets/erp system.png";
+import ecommerce from "../assets/e-commerce.png";
 
 const projects = [
   {
@@ -9,9 +11,9 @@ const projects = [
     service: 'Full Package Development',
     description: 'Website, ERP system, e-commerce platform and digital marketing package',
     images: [
-      { src: '../../src/assets/samri collection.png', label: 'Website' },
-      { src: '../../src/assets/erp system.png', label: 'ERP System' },
-      { src: '../../src/assets/e-commerce.png', label: 'E-Commerce' },
+      { src: samri, label: "Website" },
+  { src: erp, label: "ERP System" },
+  { src: ecommerce, label: "E-Commerce" }
     ],
     stats: { label: 'Online Sales', value: '+340%' },
     iconBg: 'bg-pink-500/10',
