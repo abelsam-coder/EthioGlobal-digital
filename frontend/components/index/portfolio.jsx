@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import samri from "../assets/samri collection.png";
-import erp from "../assets/erp system.png";
-import ecommerce from "../assets/e-commerce.png";
+import samri from "../../src/assets/samri collection.png";
+import erp from "../../src/assets/erp system.png";
+import ecommerce from "../../src/assets/e-commerce.png";
 
 const projects = [
   {
