@@ -2,6 +2,8 @@ import { useState } from 'react';
 import samri from "../../src/assets/samri collection.png";
 import erp from "../../src/assets/erp system.png";
 import ecommerce from "../../src/assets/e-commerce.png";
+import nani from "../../src/assets/nani.png";
+import onlineExam from "../../src/assets/online exam.png";
 
 const projects = [
   {
@@ -29,7 +31,7 @@ const projects = [
     category: 'Food & Hospitality',
     service: 'Full Package Development',
     description: 'Website, branding and digital marketing package',
-    image: '../../src/assets/nani cafe.png',
+    image: nani,
     stats: { label: 'Reservations', value: '+215%' },
     iconBg: 'bg-amber-500/10',
     iconColor: 'text-amber-400',
@@ -44,7 +46,7 @@ const projects = [
     category: 'Education Technology',
     service: 'Full Package Development',
     description: 'Custom web app, UI/UX design and deployment',
-    image: '../../src/assets/online exam.png',
+    image: onlineExam,
     stats: { label: 'Student Usage', value: '+520%' },
     iconBg: 'bg-emerald-500/10',
     iconColor: 'text-emerald-400',
