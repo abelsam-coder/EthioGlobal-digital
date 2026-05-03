@@ -2,7 +2,7 @@ import { useState } from 'react';
 import samri from "../../src/assets/samri collection.png";
 import erp from "../../src/assets/erp system.png";
 import ecommerce from "../../src/assets/e-commerce.png";
-import nani from "../../src/assets/nani.png";
+import nani from "../../src/assets/nani Cafe.png";
 import onlineExam from "../../src/assets/online exam.png";
 
 const projects = [
