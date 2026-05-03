@@ -156,4 +156,5 @@ ALLOWED_HOSTS = [
     "ethio-global-digital.vercel.app",
     "localhost",
     "127.0.0.1",
+    "ethioglobal-digital-backend.onrender.com"
 ]
