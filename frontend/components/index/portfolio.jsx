@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+
 const projects = [
   {
     id: 'samri',
@@ -8,9 +9,9 @@ const projects = [
     service: 'Full Package Development',
     description: 'Website, ERP system, e-commerce platform and digital marketing package',
     images: [
-      { src: '../src/assets/samri collection.png', label: 'Website' },
-      { src: '../src/assets/erp system.png', label: 'ERP System' },
-      { src: '../src/assets/e-commerce.png', label: 'E-Commerce' },
+      { src: '../../src/assets/samri collection.png', label: 'Website' },
+      { src: '../../src/assets/erp system.png', label: 'ERP System' },
+      { src: '../../src/assets/e-commerce.png', label: 'E-Commerce' },
     ],
     stats: { label: 'Online Sales', value: '+340%' },
     iconBg: 'bg-pink-500/10',
@@ -26,7 +27,7 @@ const projects = [
     category: 'Food & Hospitality',
     service: 'Full Package Development',
     description: 'Website, branding and digital marketing package',
-    image: '../src/assets/nani cafe.png',
+    image: '../../src/assets/nani cafe.png',
     stats: { label: 'Reservations', value: '+215%' },
     iconBg: 'bg-amber-500/10',
     iconColor: 'text-amber-400',
@@ -41,7 +42,7 @@ const projects = [
     category: 'Education Technology',
     service: 'Full Package Development',
     description: 'Custom web app, UI/UX design and deployment',
-    image: '../src/assets/online exam.png',
+    image: '../../src/assets/online exam.png',
     stats: { label: 'Student Usage', value: '+520%' },
     iconBg: 'bg-emerald-500/10',
     iconColor: 'text-emerald-400',
