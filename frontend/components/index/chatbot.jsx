@@ -44,10 +44,32 @@ function EthioXChat() {
   const [isTyping, setIsTyping] = useState(false);
   const [size, setSize] = useState(SIZE_PRESETS.medium);
   const [isResizing, setIsResizing] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  
   const resizeStartRef = useRef({ x: 0, y: 0, w: 0, h: 0, axis: 'both' });
-
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+
+  // ── Detect Hover Capability (Desktop vs Mobile) ──
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+    setIsDesktop(mediaQuery.matches);
+    const handler = (e) => setIsDesktop(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
+
+  // ── Body Scroll Lock for Mobile ──
+  useEffect(() => {
+    if (isOpen && !isDesktop) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, isDesktop]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -59,9 +81,9 @@ function EthioXChat() {
 
   useEffect(() => {
     if (isOpen && inputRef.current) {
-      setTimeout(() => inputRef.current?.focus(), 400);
+      setTimeout(() => inputRef.current?.focus(), isDesktop ? 400 : 100);
     }
-  }, [isOpen]);
+  }, [isOpen, isDesktop]);
 
   const formatTime = (date) => {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -103,7 +125,7 @@ function EthioXChat() {
     }
   };
 
-  // ── Resize logic ──
+  // ── Desktop Resize Logic ──
   const handleResizeStart = (e, axis = 'both') => {
     e.preventDefault();
     e.stopPropagation();
@@ -133,6 +155,7 @@ function EthioXChat() {
   }, []);
 
   useEffect(() => {
+    if (!isDesktop) return; // Skip mouse listeners on touch devices
     if (isResizing) {
       document.addEventListener('mousemove', handleResizeMove);
       document.addEventListener('mouseup', handleResizeEnd);
@@ -145,9 +168,8 @@ function EthioXChat() {
       document.body.style.userSelect = '';
       document.body.style.cursor = '';
     };
-  }, [isResizing, handleResizeMove, handleResizeEnd]);
+  }, [isResizing, handleResizeMove, handleResizeEnd, isDesktop]);
 
-  // ── Size preset toggle ──
   const getCurrentPreset = () => {
     if (Math.abs(size.w - SIZE_PRESETS.small.w) < 25 && Math.abs(size.h - SIZE_PRESETS.small.h) < 25) return 'small';
     if (Math.abs(size.w - SIZE_PRESETS.large.w) < 25 && Math.abs(size.h - SIZE_PRESETS.large.h) < 25) return 'large';
@@ -162,81 +184,101 @@ function EthioXChat() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-3">
+
+      {/* ═══ Mobile Backdrop ═══ */}
+      {isOpen && !isDesktop && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm -z-10" 
+          onClick={() => setIsOpen(false)} 
+        />
+      )}
 
       {/* ═══════════════════════════════════════════
           CHAT PANEL
           ═══════════════════════════════════════════ */}
       <div
-        className={`transition-[opacity,transform] duration-500 ease-out origin-bottom-right ${
+        className={`transition-[opacity,transform] duration-500 ease-out ${
           isOpen
             ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto'
             : 'opacity-0 scale-90 translate-y-4 pointer-events-none'
+        } ${
+          isDesktop
+            ? 'origin-bottom-right' // Desktop: uses style={} for exact w/h
+            : 'fixed inset-x-2 sm:inset-x-4 bottom-20 top-2 sm:top-4 w-auto h-auto' // Mobile: full screen minus safe areas
         }`}
       >
         <div
-          className="relative bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/[0.08] rounded-2xl shadow-2xl shadow-black/60 flex flex-col overflow-hidden"
-          style={{ width: size.w, height: size.h }}
+          className="relative bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/[0.08] rounded-2xl shadow-2xl shadow-black/60 flex flex-col overflow-hidden h-full"
+          style={isDesktop ? { width: size.w, height: Math.min(size.h, window.innerHeight - 48) } : undefined}
         >
 
           {/* ── Header ── */}
-          <div className="relative flex items-center gap-3 px-5 py-4 border-b border-white/[0.06] bg-[#0d0d12]/80 flex-shrink-0">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+          <div className="relative flex items-center gap-3 px-4 sm:px-5 py-3.5 sm:py-4 border-b border-white/[0.06] bg-[#0d0d12]/80 flex-shrink-0">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 sm:w-40 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+            
+            {/* Mobile Drag Handle */}
+            {!isDesktop && (
+              <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full bg-white/20" />
+            )}
 
             <div className="relative flex-shrink-0">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
-                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 rounded-full border-2 border-[#0d0d12]" />
+              <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-emerald-500 rounded-full border-2 border-[#0d0d12]" />
             </div>
 
             <div className="flex-1 min-w-0">
-              <h4 className="text-sm font-semibold text-white">EthioX</h4>
-              <p className="text-[11px] text-emerald-400 flex items-center gap-1">
-                <span className="w-1 h-1 rounded-full bg-emerald-400" />
-                Online — typically replies instantly
+              <h4 className="text-sm font-semibold text-white truncate">EthioX</h4>
+              <p className="text-[10px] sm:text-[11px] text-emerald-400 flex items-center gap-1">
+                <span className="w-1 h-1 rounded-full bg-emerald-400 flex-shrink-0" />
+                <span className="truncate">Online — typically replies instantly</span>
               </p>
             </div>
 
-            {/* Size Toggle Button */}
-            <button
-              onClick={cyclePreset}
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-neutral-500 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
-              title={`Size: ${getCurrentPreset().toUpperCase()} — click to change`}
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
-              </svg>
-            </button>
+            {/* Size Toggle (Desktop Only) */}
+            {isDesktop && (
+              <button
+                onClick={cyclePreset}
+                className="w-8 h-8 rounded-lg flex items-center justify-center text-neutral-500 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
+                title={`Size: ${getCurrentPreset().toUpperCase()} — click to change`}
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+                </svg>
+              </button>
+            )}
 
             {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-neutral-500 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
+              className="w-9 h-9 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center text-neutral-500 hover:text-white hover:bg-white/[0.06] active:bg-white/10 transition-all duration-200"
+              aria-label="Close chat"
             >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              <svg className="w-5 h-5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
 
           {/* ── Messages Area ── */}
-          <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 scrollbar-thin min-h-0">
+          <div className="flex-1 overflow-y-auto px-3 sm:px-4 py-4 space-y-3 sm:space-y-4 scrollbar-thin overscroll-contain min-h-0">
             {messages.map((msg) => (
               <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`flex items-end gap-2 max-w-[85%] ${msg.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
+                <div className={`flex items-end gap-1.5 sm:gap-2 max-w-[85%] ${msg.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
                   {msg.sender === 'bot' && (
-                    <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center flex-shrink-0 mb-5">
-                      <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-md sm:rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center flex-shrink-0 mb-4 sm:mb-5">
+                      <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                     </div>
                   )}
-                  <div className="flex flex-col">
+                  <div className="flex flex-col min-w-0">
                     <div
-                      className={`px-4 py-2.5 rounded-2xl text-[13px] leading-relaxed ${
+                      className={`px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl text-xs sm:text-[13px] leading-relaxed break-words ${
                         msg.sender === 'user'
                           ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-br-md'
                           : 'bg-white/[0.06] text-neutral-300 border border-white/[0.06] rounded-bl-md'
@@ -244,7 +286,7 @@ function EthioXChat() {
                     >
                       {msg.text}
                     </div>
-                    <p className={`text-[10px] text-neutral-700 mt-1 ${msg.sender === 'user' ? 'text-right' : 'text-left'}`}>
+                    <p className={`text-[9px] sm:text-[10px] text-neutral-700 mt-1 px-1 ${msg.sender === 'user' ? 'text-right' : 'text-left'}`}>
                       {formatTime(msg.time)}
                     </p>
                   </div>
@@ -254,13 +296,13 @@ function EthioXChat() {
 
             {isTyping && (
               <div className="flex justify-start">
-                <div className="flex items-end gap-2">
-                  <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center flex-shrink-0 mb-5">
-                    <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <div className="flex items-end gap-1.5 sm:gap-2">
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-md sm:rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center flex-shrink-0 mb-4 sm:mb-5">
+                    <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
-                  <div className="px-4 py-3 rounded-2xl rounded-bl-md bg-white/[0.06] border border-white/[0.06]">
+                  <div className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-2xl rounded-bl-md bg-white/[0.06] border border-white/[0.06]">
                     <div className="flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-neutral-500 animate-bounce" style={{ animationDelay: '0ms' }} />
                       <span className="w-1.5 h-1.5 rounded-full bg-neutral-500 animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -276,12 +318,12 @@ function EthioXChat() {
 
           {/* ── Quick Replies ── */}
           {messages.length <= 2 && (
-            <div className="px-4 pb-2 flex flex-wrap gap-1.5 flex-shrink-0">
+            <div className="px-3 sm:px-4 pb-2 flex flex-wrap gap-1.5 sm:gap-1.5 flex-shrink-0">
               {quickReplies.map((reply) => (
                 <button
                   key={reply}
                   onClick={() => handleQuickReply(reply)}
-                  className="px-3 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] text-[11px] font-medium text-neutral-400 hover:text-white hover:border-blue-500/30 hover:bg-blue-500/[0.06] transition-all duration-200"
+                  className="px-3 sm:px-3 py-2 sm:py-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] text-[11px] sm:text-[11px] font-medium text-neutral-400 hover:text-white hover:border-blue-500/30 hover:bg-blue-500/[0.06] active:scale-95 transition-all duration-200"
                 >
                   {reply}
                 </button>
@@ -290,7 +332,7 @@ function EthioXChat() {
           )}
 
           {/* ── Input Area ── */}
-          <div className="px-4 py-3 border-t border-white/[0.06] bg-[#0d0d12]/60 flex-shrink-0">
+          <div className="px-3 sm:px-4 py-2.5 sm:py-3 border-t border-white/[0.06] bg-[#0d0d12]/60 flex-shrink-0">
             <div className="flex items-center gap-2">
               <div className="flex-1 relative rounded-xl border border-white/[0.08] bg-white/[0.03] focus-within:border-blue-500/30 focus-within:bg-blue-500/[0.02] transition-all duration-300">
                 <input
@@ -300,55 +342,60 @@ function EthioXChat() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Type a message..."
-                  className="w-full bg-transparent text-sm text-white placeholder-neutral-600 py-2.5 px-4 outline-none rounded-xl"
+                  enterKeyHint="send"
+                  className="w-full bg-transparent text-sm text-white placeholder-neutral-600 py-2.5 sm:py-2.5 px-3.5 sm:px-4 outline-none rounded-xl"
                 />
               </div>
               <button
                 onClick={handleSend}
                 disabled={!input.trim() || isTyping}
-                className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 disabled:opacity-30 disabled:shadow-none transition-all duration-300 hover:scale-105 active:scale-95 flex-shrink-0"
+                aria-label="Send message"
+                className="w-11 h-11 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 disabled:opacity-30 disabled:shadow-none transition-all duration-300 hover:scale-105 active:scale-95 flex-shrink-0"
               >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className="w-4 h-4 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
                 </svg>
               </button>
             </div>
-            <p className="text-[10px] text-neutral-700 text-center mt-2">
+            <p className="text-[9px] sm:text-[10px] text-neutral-700 text-center mt-1.5 sm:mt-2">
               EthioX AI · Powered by Agency
             </p>
           </div>
 
           {/* ══════════════════════════════════════
-              RESIZE HANDLES
+              RESIZE HANDLES (Desktop Only)
               ══════════════════════════════════════ */}
+          {isDesktop && (
+            <>
+              {/* Corner handle — bottom-left */}
+              <div
+                onMouseDown={(e) => handleResizeStart(e, 'both')}
+                className={`absolute bottom-0 left-0 w-6 h-6 cursor-nwse-resize z-20 flex items-start justify-end pt-1 pr-1 transition-opacity duration-200 ${
+                  isResizing ? 'opacity-100' : 'opacity-20 hover:opacity-60'
+                }`}
+              >
+                <svg className="w-3.5 h-3.5 text-neutral-400 rotate-180" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" d="M2 14L14 2M8 14L14 8" />
+                </svg>
+              </div>
 
-          {/* Corner handle — bottom-left (drags both axes) */}
-          <div
-            onMouseDown={(e) => handleResizeStart(e, 'both')}
-            className={`absolute bottom-0 left-0 w-6 h-6 cursor-nwse-resize z-20 flex items-start justify-end pt-1 pr-1 transition-opacity duration-200 ${
-              isResizing ? 'opacity-100' : 'opacity-20 hover:opacity-60'
-            }`}
-          >
-            <svg className="w-3.5 h-3.5 text-neutral-400 rotate-180" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" d="M2 14L14 2M8 14L14 8" />
-            </svg>
-          </div>
+              {/* Right edge handle */}
+              <div
+                onMouseDown={(e) => handleResizeStart(e, 'x')}
+                className={`absolute top-14 right-0 bottom-14 w-1.5 cursor-ew-resize z-20 transition-all duration-200 ${
+                  isResizing ? 'opacity-100 bg-blue-500/40' : 'opacity-0 hover:opacity-100 hover:bg-blue-500/20'
+                } rounded-l`}
+              />
 
-          {/* Right edge handle — width only */}
-          <div
-            onMouseDown={(e) => handleResizeStart(e, 'x')}
-            className={`absolute top-14 right-0 bottom-14 w-1.5 cursor-ew-resize z-20 transition-all duration-200 ${
-              isResizing ? 'opacity-100 bg-blue-500/40' : 'opacity-0 hover:opacity-100 hover:bg-blue-500/20'
-            } rounded-l`}
-          />
-
-          {/* Bottom edge handle — height only */}
-          <div
-            onMouseDown={(e) => handleResizeStart(e, 'y')}
-            className={`absolute bottom-0 left-8 right-0 h-1.5 cursor-ns-resize z-20 transition-all duration-200 ${
-              isResizing ? 'opacity-100 bg-blue-500/40' : 'opacity-0 hover:opacity-100 hover:bg-blue-500/20'
-            } rounded-t`}
-          />
+              {/* Bottom edge handle */}
+              <div
+                onMouseDown={(e) => handleResizeStart(e, 'y')}
+                className={`absolute bottom-0 left-8 right-0 h-1.5 cursor-ns-resize z-20 transition-all duration-200 ${
+                  isResizing ? 'opacity-100 bg-blue-500/40' : 'opacity-0 hover:opacity-100 hover:bg-blue-500/20'
+                } rounded-t`}
+              />
+            </>
+          )}
         </div>
       </div>
 
@@ -357,10 +404,11 @@ function EthioXChat() {
           ═══════════════════════════════════════════ */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`group relative w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-xl ${
+        aria-label={isOpen ? "Close chat" : "Open chat"}
+        className={`group relative w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-xl z-10 ${
           isOpen
             ? 'bg-[#0a0a0a] border border-white/[0.08] shadow-black/40 rotate-0'
-            : 'bg-gradient-to-r from-blue-600 to-purple-600 shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-110'
+            : 'bg-gradient-to-r from-blue-600 to-purple-600 shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-110 active:scale-95'
         }`}
       >
         {!isOpen && (
@@ -398,7 +446,8 @@ function EthioXChat() {
         )}
       </button>
 
-      {!isOpen && (
+      {/* ═══ Tooltip (Desktop Only) ═══ */}
+      {!isOpen && isDesktop && (
         <div className="absolute bottom-[70px] right-0 px-3 py-1.5 rounded-lg bg-[#0a0a0a]/90 backdrop-blur-md border border-white/[0.08] shadow-lg whitespace-nowrap pointer-events-none animate-[fadeSlideIn_0.3s_ease-out]">
           <p className="text-xs font-medium text-neutral-300">Chat with EthioX</p>
           <div className="absolute bottom-0 right-5 translate-y-1/2 rotate-45 w-2 h-2 bg-[#0a0a0a]/90 border-r border-b border-white/[0.08]" />
