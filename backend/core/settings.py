@@ -152,3 +152,8 @@ CSRF_TRUSTED_ORIGINS = [
     "https://ethio-global-digital.vercel.app"]
 
 
+ALLOWED_HOSTS = [
+    "ethio-global-digital.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
