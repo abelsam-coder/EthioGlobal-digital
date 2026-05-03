@@ -153,7 +153,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 
 ALLOWED_HOSTS = [
-    "ethio-global-digital.vercel.com",
+    "ethio-global-digital.vercel.app",
     "localhost",
     "127.0.0.1",
 ]
