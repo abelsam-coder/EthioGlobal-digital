@@ -22,4 +22,5 @@ urlpatterns = [
     path('',include('feedback.urls')),
     path('',include('chatbot.urls')),
     path('',include('testimony.urls')),
+    path('',include('admin_panel.urls')),
 ]
