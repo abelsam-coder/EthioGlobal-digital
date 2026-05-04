@@ -358,7 +358,7 @@ function EthioXChat() {
               </button>
             </div>
             <p className="text-[9px] sm:text-[10px] text-neutral-700 text-center mt-1.5 sm:mt-2">
-              EthioX AI · Powered by Agency
+              EthioX AI · Powered by EthioDigital Global
             </p>
           </div>
 

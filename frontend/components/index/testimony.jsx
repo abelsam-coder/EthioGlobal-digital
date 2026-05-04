@@ -573,10 +573,10 @@ function Testimonials() {
 
         {/* ── Stats Bar ── */}
         {!loading && (
-          <div className="mt-12 sm:mt-14 lg:mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+          <div className="mt-12 sm:mt-14 lg:mt-16 grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-3">
             {[
               {
-                value: '50+',
+                value: '15+',
                 label: 'Happy Clients',
                 icon: 'solar:users-group-rounded-bold-duotone',
                 color: 'text-blue-400',
@@ -590,19 +590,13 @@ function Testimonials() {
                 bg: 'bg-amber-500/10',
               },
               {
-                value: '120+',
+                value: '30+',
                 label: 'Projects Done',
                 icon: 'solar:folder-bold-duotone',
                 color: 'text-purple-400',
                 bg: 'bg-purple-500/10',
               },
-              {
-                value: '98%',
-                label: 'Satisfaction',
-                icon: 'solar:heart-bold-duotone',
-                color: 'text-pink-400',
-                bg: 'bg-pink-500/10',
-              },
+              
             ].map((stat, i) => (
               <div
                 key={i}

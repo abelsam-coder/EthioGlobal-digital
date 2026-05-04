@@ -129,7 +129,7 @@ const privacyContent = [
   {
     title: '7. Contact Us',
     items: [
-      'If you have questions about this Privacy Policy, please contact us at info@ethioglobal.com or call +251 912 345 678.',
+      'If you have questions about this Privacy Policy, please contact us at abelsamuel841@gmail.com or call +251 957576652.',
     ],
   },
 ];
@@ -212,7 +212,7 @@ const termsContent = [
     title: '10. Governing Law',
     items: [
       'These Terms of Service are governed by the laws of Ethiopia.',
-      'Any disputes shall be resolved through amicable negotiation, and if unsuccessful, through the courts of Addis Ababa, Ethiopia.',
+      'Any disputes shall be resolved through amicable negotiation, and if unsuccessful, through the courts of Hawassa, Ethiopia.',
     ],
   },
 ];
@@ -490,8 +490,7 @@ function Footer() {
           {/* ── Bottom Bar ── */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 pt-6 sm:pt-8">
             <p className="text-[10px] sm:text-xs text-neutral-600 text-center sm:text-left">
-              © {currentYear} EthioGlobal Digital. All rights reserved. Made with{' '}
-              <span className="text-red-400/60">♥</span> in Addis Ababa.
+              © {currentYear} EthioGlobal Digital. All rights reserved.
             </p>
 
             <div className="flex items-center gap-1.5">
