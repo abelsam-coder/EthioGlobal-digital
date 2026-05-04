@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import logo from '../../src/assets/logo.png';
 
 const footerLinks = {
   services: [
@@ -128,7 +129,7 @@ const privacyContent = [
   {
     title: '7. Contact Us',
     items: [
-      'If you have questions about this Privacy Policy, please contact us at info@agency.com or call +251 912 345 678.',
+      'If you have questions about this Privacy Policy, please contact us at info@ethioglobal.com or call +251 912 345 678.',
     ],
   },
 ];
@@ -334,14 +335,24 @@ function Footer() {
 
               {/* Brand Column */}
               <div className="flex flex-col gap-4 sm:gap-5 max-w-md">
-                <div className="flex items-center gap-2.5 sm:gap-3">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
+                {/* Logo & Brand Name */}
+                <a href="#home" className="group flex items-center gap-2.5 sm:gap-3 w-fit">
+                  <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:border-white/15 group-hover:bg-white/[0.06]">
+                    <img
+                      src={logo}
+                      alt="EthioGlobal Digital Logo"
+                      className="w-full h-full object-contain p-1"
+                    />
                   </div>
-                  <span className="text-base sm:text-lg font-bold text-white tracking-tight">Agency</span>
-                </div>
+                  <div className="flex flex-col">
+                    <span className="text-base sm:text-lg font-bold text-white tracking-tight leading-tight">
+                      EthioGlobal Digital
+                    </span>
+                    <span className="text-[9px] sm:text-[10px] font-medium text-neutral-500 uppercase tracking-[0.15em] sm:tracking-[0.2em]">
+                      Digital Agency
+                    </span>
+                  </div>
+                </a>
 
                 <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed">
                   Ethiopia&apos;s premier digital agency. We build websites, ERP systems, e-commerce platforms, and run digital marketing that drives real growth.
@@ -373,13 +384,13 @@ function Footer() {
                     +251 912 345 678
                   </a>
                   <a
-                    href="mailto:info@agency.com"
+                    href="mailto:info@ethioglobal.com"
                     className="flex items-center gap-2.5 text-xs sm:text-sm text-neutral-500 hover:text-blue-400 transition-colors duration-300 w-fit py-1 -ml-1 pl-1"
                   >
                     <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                     </svg>
-                    info@agency.com
+                    info@ethioglobal.com
                   </a>
                 </div>
               </div>
@@ -479,14 +490,14 @@ function Footer() {
           {/* ── Bottom Bar ── */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 pt-6 sm:pt-8">
             <p className="text-[10px] sm:text-xs text-neutral-600 text-center sm:text-left">
-              © {currentYear} Agency. All rights reserved. Made with{' '}
+              © {currentYear} EthioGlobal Digital. All rights reserved. Made with{' '}
               <span className="text-red-400/60">♥</span> in Addis Ababa.
             </p>
 
             <div className="flex items-center gap-1.5">
               <span className="text-[9px] sm:text-[10px] text-neutral-700 uppercase tracking-wider">Powered by</span>
               <span className="text-[11px] sm:text-xs font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Agency Tech
+                EthioGlobal Tech
               </span>
             </div>
 

@@ -30,7 +30,6 @@ function Header({ logoSrc }) {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // ── Find which section is currently in view ──
       let current = 'Home';
 
       for (const link of navLinks) {
@@ -39,8 +38,6 @@ function Header({ logoSrc }) {
 
         const rect = el.getBoundingClientRect();
 
-        // If the top of this section has scrolled past 100px from viewport top
-        // (accounts for fixed nav height ~64-80px + small buffer)
         if (rect.top <= 100) {
           current = link.name;
         }
@@ -49,7 +46,6 @@ function Header({ logoSrc }) {
       setActiveLink(current);
     };
 
-    // Run once on mount to set initial state
     handleScroll();
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -88,12 +84,12 @@ function Header({ logoSrc }) {
         >
           <img
             src={logoSrc}
-            alt="EthioDigital Global Logo"
+            alt="EthioGlobal Digital Logo"
             className="h-8 w-auto object-contain rounded-md sm:rounded-lg transition-transform duration-300 group-hover:scale-105"
           />
-          <div className="hidden xs:flex flex-col">
+          <div className="hidden sm:flex flex-col">
             <span className="text-white font-semibold text-sm sm:text-base lg:text-lg leading-tight tracking-tight whitespace-nowrap">
-              EthioDigital Global
+              EthioGlobal Digital
             </span>
             <span className="text-[9px] sm:text-[10px] font-medium text-neutral-500 uppercase tracking-[0.15em] sm:tracking-[0.2em]">
               Digital Agency
