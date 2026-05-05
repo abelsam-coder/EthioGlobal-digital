@@ -152,7 +152,7 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "https://ethio-global-digital.vercel.app",
-    "https://ethio-global-admin.vercel.app"]
+    "https://ethio-global-admin.vercel.app",]
 
 
 ALLOWED_HOSTS = [
