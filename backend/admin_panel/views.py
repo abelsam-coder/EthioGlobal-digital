@@ -50,7 +50,7 @@ class AuthOtp(APIView):
             send_email(
                 to_email=email,
                 subject="Your Login Verification Code",
-                html_content=render(request, 'otp_code.html', {'otp': otp}).content.decode('utf-8')
+                html_content=render(request, 'otp_code.html', {'otp': otp, 'name': user.first_name}).content.decode('utf-8')
             )
             
             Otp.objects.create(email=email, otp_code=otp)  # Replace with actual OTP generation logic
