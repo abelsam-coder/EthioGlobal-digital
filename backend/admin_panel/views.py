@@ -84,3 +84,16 @@ class VerifyOtp(APIView):
         else:
             return Response({'error': 'Invalid OTP'})        
         
+class AdminInfo(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        if user.is_staff:
+            return Response({
+                'email': user.email,
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+            })
+        else:
+            return Response({'error': 'Unauthorized'}, status=403)
