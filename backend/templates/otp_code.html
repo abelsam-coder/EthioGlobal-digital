@@ -6,76 +6,225 @@
 <title>OTP Verification</title>
 </head>
 
-<body style="margin:0; padding:0; background:#0f172a; font-family:Arial, sans-serif;">
+<body style="margin:0; padding:0; background:#06070b; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; -webkit-font-smoothing:antialiased;">
 
-  <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 0;">
+  <!-- Background Glow Layer -->
+  <table width="100%" cellpadding="0" cellspacing="0" style="padding:50px 0;">
     <tr>
-      <td align="center">
+      <td align="center" style="position:relative;">
 
-        <!-- Card -->
-        <table width="400" cellpadding="0" cellspacing="0" 
-          style="background:rgba(255,255,255,0.05); border-radius:16px; padding:30px; border:1px solid rgba(255,255,255,0.1); color:#ffffff;">
+        <!-- Top Glow -->
+        <div style="
+          position:absolute;
+          top:-120px;
+          left:50%;
+          transform:translateX(-50%);
+          width:300px;
+          height:300px;
+          background:radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+          pointer-events:none;
+        "></div>
 
-          <!-- Title -->
+        <!-- Bottom Glow -->
+        <div style="
+          position:absolute;
+          bottom:-80px;
+          left:50%;
+          transform:translateX(-50%);
+          width:250px;
+          height:250px;
+          background:radial-gradient(circle, rgba(34,211,238,0.08) 0%, transparent 70%);
+          pointer-events:none;
+        "></div>
+
+        <!-- Main Card -->
+        <table width="440" cellpadding="0" cellspacing="0" 
+          style="
+            background:rgba(255,255,255,0.03);
+            border-radius:20px;
+            padding:40px 36px;
+            border:1px solid rgba(255,255,255,0.06);
+            color:#ffffff;
+            position:relative;
+            box-shadow:
+              0 0 0 1px rgba(255,255,255,0.03),
+              0 20px 60px -15px rgba(0,0,0,0.5),
+              inset 0 1px 0 rgba(255,255,255,0.05);
+          ">
+
+          <!-- Brand Row -->
           <tr>
-            <td align="center" style="font-size:22px; font-weight:bold;">
-              Ethio Global Digital
+            <td align="center" style="padding-bottom:32px;">
+              <table cellpadding="0" cellspacing="0">
+                <tr>
+                  <!-- Logo Icon -->
+                  <td valign="middle" style="padding-right:10px;">
+                    <div style="
+                      width:36px;
+                      height:36px;
+                      border-radius:10px;
+                      background:linear-gradient(135deg, #6366f1 0%, #22d3ee 100%);
+                      display:inline-block;
+                      text-align:center;
+                      line-height:36px;
+                      font-size:16px;
+                      font-weight:700;
+                      color:#fff;
+                    ">E</div>
+                  </td>
+                  <!-- Brand Name -->
+                  <td valign="middle" style="font-size:16px; font-weight:600; color:#f1f5f9; letter-spacing:-0.02em;">
+                    Ethio Global Digital
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
 
-          <!-- Greeting -->
+          <!-- Divider -->
           <tr>
-            <td align="center" style="padding-top:10px; font-size:14px; color:#cbd5f5;">
-              Hello {{ name }},
+            <td style="padding-bottom:28px;">
+              <div style="height:1px; background:linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);"></div>
             </td>
           </tr>
 
-          <!-- Subtitle -->
+          <!-- Lock Icon -->
           <tr>
-            <td align="center" style="padding-top:5px; font-size:13px; color:#94a3b8;">
-              Secure OTP Verification
-            </td>
-          </tr>
-
-          <!-- OTP -->
-          <tr>
-            <td align="center" style="padding:25px 0;">
+            <td align="center" style="padding-bottom:20px;">
               <div style="
-                font-size:30px;
-                letter-spacing:8px;
-                font-weight:bold;
-                padding:15px;
-                border-radius:12px;
-                border:1px solid rgba(255,255,255,0.2);
-                color:#4f46e5;
+                width:52px;
+                height:52px;
+                border-radius:50%;
+                background:rgba(99,102,241,0.1);
+                border:1px solid rgba(99,102,241,0.15);
+                display:inline-block;
+                text-align:center;
+                line-height:52px;
+                font-size:22px;
+              ">🔒</div>
+            </td>
+          </tr>
+
+          <!-- Heading -->
+          <tr>
+            <td align="center" style="font-size:20px; font-weight:600; color:#f1f5f9; letter-spacing:-0.02em; padding-bottom:8px;">
+              Verification Required
+            </td>
+          </tr>
+
+          <!-- Description -->
+          <tr>
+            <td align="center" style="font-size:14px; color:#64748b; line-height:1.6; padding-bottom:30px;">
+              Hello <span style="color:#94a3b8; font-weight:500;">{{ name }}</span>, use the code below to<br>verify your identity and continue.
+            </td>
+          </tr>
+
+          <!-- OTP Box -->
+          <tr>
+            <td align="center" style="padding-bottom:8px;">
+              <div style="
+                display:inline-block;
+                padding:18px 40px;
+                border-radius:14px;
+                background:rgba(255,255,255,0.04);
+                border:1px solid rgba(255,255,255,0.08);
+                position:relative;
+                box-shadow:
+                  0 0 0 1px rgba(255,255,255,0.02),
+                  inset 0 1px 0 rgba(255,255,255,0.04),
+                  0 8px 30px -8px rgba(99,102,241,0.15);
               ">
-                {{ otp }}
+                <!-- Shimmer overlay -->
+                <div style="
+                  position:absolute;
+                  top:0; left:-100%;
+                  width:100%; height:100%;
+                  background:linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+                  pointer-events:none;
+                "></div>
+                <span style="
+                  font-size:32px;
+                  letter-spacing:10px;
+                  font-weight:700;
+                  background:linear-gradient(135deg, #818cf8 0%, #22d3ee 100%);
+                  -webkit-background-clip:text;
+                  -webkit-text-fill-color:transparent;
+                  background-clip:text;
+                  font-family:'SF Mono','Fira Code',Consolas,monospace;
+                ">{{ otp }}</span>
               </div>
             </td>
           </tr>
 
-          <!-- Expiry -->
+          <!-- Expiry Notice -->
           <tr>
-            <td align="center" style="color:#f87171; font-size:13px;">
-              ⏳ Expires in 5 minutes
+            <td align="center" style="padding-bottom:28px;">
+              <table cellpadding="0" cellspacing="0">
+                <tr>
+                  <td valign="middle" style="padding-right:6px; font-size:13px; color:#f59e0b;">
+                    ⏱
+                  </td>
+                  <td valign="middle" style="font-size:12px; color:#64748b; letter-spacing:0.02em;">
+                    This code expires in <span style="color:#f59e0b; font-weight:600;">5 minutes</span>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
 
-          <!-- Button -->
+          <!-- Copy Hint -->
           <tr>
-            <td align="center" style="padding-top:25px;">
-              
+            <td align="center" style="padding-bottom:28px;">
+              <div style="
+                display:inline-block;
+                padding:8px 16px;
+                border-radius:8px;
+                background:rgba(255,255,255,0.03);
+                border:1px dashed rgba(255,255,255,0.08);
+                font-size:11px;
+                color:#475569;
+                letter-spacing:0.03em;
+              ">
+                TIP — Copy &amp; paste for faster entry
+              </div>
+            </td>
+          </tr>
+
+          <!-- Divider -->
+          <tr>
+            <td style="padding-bottom:22px;">
+              <div style="height:1px; background:linear-gradient(to right, transparent, rgba(255,255,255,0.06), transparent);"></div>
+            </td>
+          </tr>
+
+          <!-- Security Notice -->
+          <tr>
+            <td align="center" style="padding-bottom:6px;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center" style="font-size:12px; color:#475569; line-height:1.7;">
+                    <span style="color:#64748b;">🛡</span>&ensp;If you didn't request this code, please ignore<br>this email — your account remains secure.
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
 
           <!-- Footer -->
           <tr>
-            <td align="center" style="padding-top:20px; font-size:12px; color:#94a3b8;">
-              If you didn’t request this, ignore this email.
+            <td align="center" style="padding-top:18px;">
+              <table cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="font-size:11px; color:#334155; letter-spacing:0.02em;">
+                    © 2025 Ethio Global Digital &nbsp;·&nbsp; Addis Ababa, Ethiopia
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
 
         </table>
+        <!-- /Main Card -->
 
       </td>
     </tr>
