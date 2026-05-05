@@ -145,7 +145,8 @@ REST_FRAMEWORK = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5174",
-    "https://ethio-global-digital.vercel.app"]
+    "https://ethio-global-digital.vercel.app",
+    "https://ethio-global-admin.vercel.app"]
 
 CORS_ALLOW_CREDENTIALS = True
 
