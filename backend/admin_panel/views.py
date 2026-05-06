@@ -403,7 +403,7 @@ class Projects(APIView):
                 subject="Welcome to EthioGlobal Digital",
                 html_content=render(
                     request,
-                    'welcome_email.html',
+                    'project.html',
                     {'name': user.first_name}
                 ).content.decode('utf-8')
             )

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>New Project Created - EthioGlobal Digital</title>
+    
+    <!--[if mso]>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <![endif]-->
+    
+    <style>
+        /* Reset & Base */
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+        
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Container */
+        .email-container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Main Card */
+        .main-card {
+            background: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 
+                0 25px 60px -12px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Header */
+        .header-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding: 48px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 2px, transparent 2px);
+            background-size: 30px 30px;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+        
+        .success-icon-wrapper {
+            width: 88px;
+            height: 88px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 
+                0 12px 35px rgba(0, 0, 0, 0.15),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        .success-icon-wrapper::after {
+            content: '✓';
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background: #10b981;
+            border-radius: 50%;
+            bottom: -8px;
+            right: -8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            border: 3px solid #fff;
+        }
+        
+        .success-icon {
+            width: 44px;
+            height: 44px;
+            fill: white;
+        }
+        
+        .header-title {
+            color: #ffffff;
+            font-size: 32px;
+            font-weight: 800;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.5px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 17px;
+            margin: 0;
+            font-weight: 400;
+        }
+        
+        /* Content Section */
+        .content-section {
+            padding: 44px 40px;
+            background: #ffffff;
+        }
+        
+        .greeting-text {
+            color: #1e293b;
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+            line-height: 1.3;
+        }
+        
+        .client-name {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .intro-text {
+            color: #475569;
+            font-size: 16px;
+            line-height: 1.7;
+            margin: 0 0 28px 0;
+        }
+        
+        /* Project Info Card */
+        .project-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 28px;
+            margin: 28px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #667eea, #764ba2, #f093fb);
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .project-label {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #94a3b8;
+            margin: 0 0 14px 0;
+        }
+        
+        .project-name {
+            color: #0f172a;
+            font-size: 26px;
+            font-weight: 800;
+            margin: 0 0 16px 0;
+            line-height: 1.2;
+        }
+        
+        .project-details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .detail-item {
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .detail-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 0 4px 0;
+        }
+        
+        .detail-value {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0;
+        }
+        
+        .detail-value.highlight {
+            color: #667eea;
+        }
+        
+        .detail-value.success {
+            color: #10b981;
+        }
+        
+        .detail-value.warning {
+            color: #f59e0b;
+        }
+        
+        /* Status Badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .status-badge.pending {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        
+        .status-badge.active {
+            background: #d1fae5;
+            color: #059669;
+        }
+        
+        /* Welcome Section */
+        .welcome-section {
+            background: linear-gradient(135deg, #ede9fe 0%, #fce7f3 100%);
+            border-radius: 18px;
+            padding: 28px;
+            margin: 28px 0;
+            text-align: center;
+            border: 1px solid #e9d5ff;
+        }
+        
+        .welcome-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+        
+        .welcome-title {
+            color: #6d28d9;
+            font-size: 20px;
+            font-weight: 800;
+            margin: 0 0 8px 0;
+        }
+        
+        .welcome-text {
+            color: #7c3aed;
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            margin: 32px 0;
+        }
+        
+        .timeline-title {
+            color: #1e293b;
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-marker {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 800;
+            color: white;
+        }
+        
+        .timeline-marker.step-1 { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .timeline-marker.step-2 { background: linear-gradient(135deg, #10b981, #059669); }
+        .timeline-marker.step-3 { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .timeline-marker.step-4 { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        
+        .timeline-content {
+            flex: 1;
+            background: #f8fafc;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .timeline-step-title {
+            color: #1e293b;
+            font-size: 14px;
+            font-weight: 700;
+            margin: 0 0 4px 0;
+        }
+        
+        .timeline-step-desc {
+            color: #64748b;
+            font-size: 13px;
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff !important;
+            text-decoration: none;
+            padding: 18px 42px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+            margin: 32px auto;
+            box-shadow: 
+                0 4px 20px rgba(102, 126, 234, 0.4),
+                0 0 0 0 rgba(102, 126, 234, 0);
+            transition: all 0.3s ease;
+            display: block;
+            max-width: 280px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 12px 35px rgba(102, 126, 234, 0.5),
+                0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+        
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            padding: 36px 40px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 900;
+            margin: 0 0 8px 0;
+            background: linear-gradient(135deg, #667eea 0%, #a78bfa 50%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .footer-tagline {
+            color: #94a3b8;
+            font-size: 13px;
+            margin: 0 0 24px 0;
+        }
+        
+        .social-row {
+            margin: 24px 0;
+        }
+        
+        .social-icon {
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            margin: 0 6px;
+            text-align: center;
+            line-height: 38px;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .footer-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #a78bfa, #f472b6);
+            border-radius: 2px;
+            margin: 0 auto 24px;
+        }
+        
+        .footer-legal {
+            color: #64748b;
+            font-size: 12px;
+            line-height: 1.7;
+            margin: 0;
+        }
+        
+        .footer-link {
+            color: #a78bfa;
+            text-decoration: none;
+        }
+        
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-container { padding: 10px; }
+            .header-section { padding: 36px 24px; }
+            .header-title { font-size: 26px; }
+            .content-section { padding: 32px 24px; }
+            .project-details-grid { grid-template-columns: 1fr; }
+            .project-name { font-size: 22px; }
+            .cta-button { width: 100% !important; max-width: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preview Text -->
+    <div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+        New project "{{ project_name }}" has been created! Let's begin this exciting journey together.
+    </div>
+
+    <!-- Email Container -->
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+        <tr>
+            <td style="padding: 20px 0; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+                
+                <table class="email-container" role="presentation" cellspacing="0" cellpadding="0" border="0" width="640" align="center">
+                    
+                    <!-- Main Card -->
+                    <tr>
+                        <td class="main-card">
+                            
+                            <!-- Header Section -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <tr>
+                                    <td class="header-section">
+                                        
+                                        <!-- Success Icon -->
+                                        <div class="success-icon-wrapper">
+                                            <svg class="success-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9 12L11 14L16 9M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                        
+                                        <h1 class="header-title">Project Created!</h1>
+                                        <p class="header-subtitle">Your new project is ready to launch 🚀</p>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Content Section -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <tr>
+                                    <td class="content-section">
+                                        
+                                        <!-- Greeting -->
+                                        <h2 class="greeting-text">
+                                            Hello, <span class="client-name">{{ client_name }}</span>! 👋
+                                        </h2>
+                                        
+                                        <p class="intro-text">
+                                            Great news! A new project has just been uploaded and assigned to you. 
+                                            We're excited to partner with you on this journey with 
+                                            <strong style="color: #667eea;">EthioGlobal Digital</strong>.
+                                        </p>
+                                        
+                                        <!-- Project Info Card -->
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td class="project-card">
+                                                    
+                                                    <p class="project-label">📋 Project Details</p>
+                                                    <h3 class="project-name">{{ project_name }}</h3>
+                                                    
+                                                    <table class="project-details-grid" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                        <tr>
+                                                            <td class="detail-item">
+                                                                <p class="detail-label">Package Type</p>
+                                                                <p class="detail-value highlight">{{ package_type }}</p>
+                                                            </td>
+                                                            <td class="detail-item">
+                                                                <p class="detail-label">Status</p>
+                                                                <p class="detail-value">
+                                                                    <span class="status-badge {{ status_class }}">{{ status }}</span>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="detail-item">
+                                                                <p class="detail-label">Budget Amount</p>
+                                                                <p class="detail-value success">${{ amount }}</p>
+                                                            </td>
+                                                            <td class="detail-item">
+                                                                <p class="detail-label">Delivery Date</p>
+                                                                <p class="detail-value warning">{{ delivery_date }}</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="detail-item" colspan="2">
+                                                                <p class="detail-label">Payment Method</p>
+                                                                <p class="detail-value">{{ payment_method | title }}</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <!-- Welcome Message Section -->
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td class="welcome-section">
+                                                    <div class="welcome-icon">🎉</div>
+                                                    <h3 class="welcome-title">Let's Begin This Project!</h3>
+                                                    <p class="welcome-text">
+                                                        Welcome our valued client! Your project is now in our system and our team is ready to start working. 
+                                                        Together, we'll create something amazing! ✨
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <!-- Timeline / Next Steps -->
+                                        <div class="timeline-section">
+                                            <h3 class="timeline-title">
+                                                ⏳ What Happens Next?
+                                            </h3>
+                                            
+                                            <div class="timeline-item">
+                                                <div class="timeline-marker step-1">1</div>
+                                                <div class="timeline-content">
+                                                    <p class="timeline-step-title">Project Review</p>
+                                                    <p class="timeline-step-desc">Our team will review your requirements within 24 hours.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="timeline-item">
+                                                <div class="timeline-marker step-2">2</div>
+                                                <div class="timeline-content">
+                                                    <p class="timeline-step-title">Strategy Call</p>
+                                                    <p class="timeline-step-desc">We'll schedule a kickoff meeting to discuss details.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="timeline-item">
+                                                <div class="timeline-marker step-3">3</div>
+                                                <div class="timeline-content">
+                                                    <p class="timeline-step-title">Development Begins</p>
+                                                    <p class="timeline-step-desc">Our experts start building your vision into reality.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="timeline-item">
+                                                <div class="timeline-marker step-4">4</div>
+                                                <div class="timeline-content">
+                                                    <p class="timeline-step-title">Delivery & Launch</p>
+                                                    <p class="timeline-step-desc">Final delivery on {{ delivery_date }} with full support!</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- CTA Button -->
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td align="center">
+                                                    <a href="{{ dashboard_url | default('#') }}" class="cta-button">
+                                                        🚀 View Project Dashboard →
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <!-- Support Text -->
+                                        <p style="
+                                            text-align: center; 
+                                            margin-top: 28px; 
+                                            font-size: 13px; 
+                                            color: #94a3b8;
+                                            line-height: 1.6;
+                                        ">
+                                            Need help? Contact us at 
+                                            <a href="mailto:support@ethioglobal.com" style="color: #667eea; text-decoration: none; font-weight: 600;">
+                                                support@ethioglobal.com
+                                            </a><br/>
+                                            Our team is available Monday-Friday, 9AM-6PM EAT
+                                        </p>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Footer -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <tr>
+                                    <td class="footer">
+                                        
+                                        <div class="footer-divider"></div>
+                                        
+                                        <h3 class="footer-logo">EthioGlobal Digital</h3>
+                                        <p class="footer-tagline">Transforming Ideas Into Digital Reality</p>
+                                        
+                                        <!-- Social Icons -->
+                                        <div class="social-row">
+                                            <a href="#" class="social-icon">in</a>
+                                            <a href="#" class="social-icon">tw</a>
+                                            <a href="#" class="social-icon">ig</a>
+                                            <a href="#" class="social-icon">fb</a>
+                                            <a href="#" class="social-icon">wb</a>
+                                        </div>
+                                        
+                                        <!-- Legal -->
+                                        <p class="footer-legal">
+                                            This email was sent to <strong>{{ client_email }}</strong> regarding your new project.<br/><br/>
+                                            
+                                            © {{ year }} EthioGlobal Digital. All rights reserved.<br/>
+                                            Bole Road, Addis Ababa, Ethiopia<br/><br/>
+                                            
+                                            <a href="{{ unsubscribe_url | default('#') }}" class="footer-link">
+                                                Unsubscribe from project notifications
+                                            </a> • 
+                                            <a href="{{ privacy_url | default('#') }}" class="footer-link">
+                                                Privacy Policy
+                                            </a>
+                                        </p>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </td>
+                    </tr>
+                    
+                </table>
+                
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
