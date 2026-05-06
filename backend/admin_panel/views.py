@@ -404,7 +404,7 @@ class Projects(APIView):
                 html_content=render(
                     request,
                     'project.html',
-                    {'name': user.first_name}
+                    {'client_name': user.first_name,'project_name':request.data['project_name'],'package_type':request.data['package'],'amount':request.data['money'],'delivery_data':request.data['delivery_date'],'payment_method':request.data['payment_type'],'client_email':user.email,'status':'New'}
                 ).content.decode('utf-8')
             )
             return Response(serializer.data, status=201)
