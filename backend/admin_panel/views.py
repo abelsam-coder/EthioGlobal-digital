@@ -50,7 +50,7 @@ class AuthOtp(APIView):
         
 
         email = request.data.get('email')
-        user = User.objects.filter(email=email).first()
+        user = User.objects.filter(email=email,is_staff=True).first()
         check_otp = Otp.objects.filter(email=email).first()
         if check_otp:
             check_otp.delete()  
@@ -413,3 +413,23 @@ class Projects(APIView):
         get = Project.objects.filter(pk=id).first()
         get.delete()
         return Response({'status':'deleted'})
+    
+class UserData(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user_type = request.GET.get('user', None)
+
+        if user_type == 'Admin':
+            queryset = User.objects.filter(is_staff=True)
+        elif user_type == 'Client':
+            queryset = User.objects.filter(is_staff=False)
+        else:
+            queryset = User.objects.all()
+
+        paginator = PageNumberPagination()
+        paginator.page_size = 10  # optional, set default page size
+        result_page = paginator.paginate_queryset(queryset, request)
+
+        serializer = ClientSerializer(result_page, many=True)
+        return paginator.get_paginated_response(serializer.data)

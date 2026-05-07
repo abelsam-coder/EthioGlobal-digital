@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'testimony.apps.TestimonyConfig',
     'rest_framework',
      "corsheaders",
-     'admin_panel.apps.AdminPanelConfig',    
+     'admin_panel.apps.AdminPanelConfig',   
+     'chat.apps.ChatConfig' 
      
 ]
 
@@ -139,9 +140,11 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
-    'PAGE_SIZE': 6,
+    'PAGE_SIZE': 10,
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     }
+
+SIMPLE_JWT = []
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5174",
