@@ -35,7 +35,7 @@ class FeedbackView(APIView):
         send_email(
             to_email=email,
             subject= "New Message Received - EthioGlobal Digital",
-            html_content=render(requests,'tnx.html',{'name':name})
+            html_content=render(requests,'tnx.html',{'name':name}).content.decode('utf-8')
         )
 
         feedback = Feedback.objects.create(name=name, email=email, message=message)
