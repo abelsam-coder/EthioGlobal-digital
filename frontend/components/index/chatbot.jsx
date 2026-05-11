@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { useTheme } from '../../src/context/ThemeContext';
 import api from '../../api/api';
 
 const fallbackResponses = {
@@ -36,6 +37,7 @@ function getFallbackResponse(text) {
 }
 
 function EthioXChat() {
+  const { isDark } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     { id: 1, sender: 'bot', text: "Hi there! 👋 I'm EthioX, your digital assistant. How can I help you today?", time: new Date() },
@@ -45,7 +47,7 @@ function EthioXChat() {
   const [size, setSize] = useState(SIZE_PRESETS.medium);
   const [isResizing, setIsResizing] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
-  
+
   const resizeStartRef = useRef({ x: 0, y: 0, w: 0, h: 0, axis: 'both' });
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
@@ -155,7 +157,7 @@ function EthioXChat() {
   }, []);
 
   useEffect(() => {
-    if (!isDesktop) return; // Skip mouse listeners on touch devices
+    if (!isDesktop) return;
     if (isResizing) {
       document.addEventListener('mousemove', handleResizeMove);
       document.addEventListener('mouseup', handleResizeEnd);
@@ -188,9 +190,9 @@ function EthioXChat() {
 
       {/* ═══ Mobile Backdrop ═══ */}
       {isOpen && !isDesktop && (
-        <div 
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm -z-10" 
-          onClick={() => setIsOpen(false)} 
+        <div
+          className={`fixed inset-0 backdrop-blur-sm -z-10 ${isDark ? 'bg-black/60' : 'bg-black/30'}`}
+          onClick={() => setIsOpen(false)}
         />
       )}
 
@@ -204,22 +206,30 @@ function EthioXChat() {
             : 'opacity-0 scale-90 translate-y-4 pointer-events-none'
         } ${
           isDesktop
-            ? 'origin-bottom-right' // Desktop: uses style={} for exact w/h
-            : 'fixed inset-x-2 sm:inset-x-4 bottom-20 top-2 sm:top-4 w-auto h-auto' // Mobile: full screen minus safe areas
+            ? 'origin-bottom-right'
+            : 'fixed inset-x-2 sm:inset-x-4 bottom-20 top-2 sm:top-4 w-auto h-auto'
         }`}
       >
         <div
-          className="relative bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/[0.08] rounded-2xl shadow-2xl shadow-black/60 flex flex-col overflow-hidden h-full"
+          className={`relative backdrop-blur-xl border rounded-2xl shadow-2xl flex flex-col overflow-hidden h-full ${
+            isDark
+              ? 'bg-[#0a0a0a]/95 border-white/[0.08] shadow-black/60'
+              : 'bg-white border-gray-200 shadow-black/10'
+          }`}
           style={isDesktop ? { width: size.w, height: Math.min(size.h, window.innerHeight - 48) } : undefined}
         >
 
           {/* ── Header ── */}
-          <div className="relative flex items-center gap-3 px-4 sm:px-5 py-3.5 sm:py-4 border-b border-white/[0.06] bg-[#0d0d12]/80 flex-shrink-0">
+          <div
+            className={`relative flex items-center gap-3 px-4 sm:px-5 py-3.5 sm:py-4 border-b flex-shrink-0 ${
+              isDark ? 'border-white/[0.06] bg-[#0d0d12]/80' : 'border-gray-100 bg-gray-50/90'
+            }`}
+          >
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 sm:w-40 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
-            
+
             {/* Mobile Drag Handle */}
             {!isDesktop && (
-              <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full bg-white/20" />
+              <div className={`absolute -top-1 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full ${isDark ? 'bg-white/20' : 'bg-gray-300'}`} />
             )}
 
             <div className="relative flex-shrink-0">
@@ -228,12 +238,14 @@ function EthioXChat() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-emerald-500 rounded-full border-2 border-[#0d0d12]" />
+              <span className={`absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-emerald-500 rounded-full border-2 ${
+                isDark ? 'border-[#0d0d12]' : 'border-white'
+              }`} />
             </div>
 
             <div className="flex-1 min-w-0">
-              <h4 className="text-sm font-semibold text-white truncate">EthioX</h4>
-              <p className="text-[10px] sm:text-[11px] text-emerald-400 flex items-center gap-1">
+              <h4 className={`text-sm font-semibold truncate ${isDark ? 'text-white' : 'text-gray-900'}`}>EthioX</h4>
+              <p className={`text-[10px] sm:text-[11px] flex items-center gap-1 ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>
                 <span className="w-1 h-1 rounded-full bg-emerald-400 flex-shrink-0" />
                 <span className="truncate">Online — typically replies instantly</span>
               </p>
@@ -243,7 +255,11 @@ function EthioXChat() {
             {isDesktop && (
               <button
                 onClick={cyclePreset}
-                className="w-8 h-8 rounded-lg flex items-center justify-center text-neutral-500 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
+                className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 ${
+                  isDark
+                    ? 'text-neutral-500 hover:text-white hover:bg-white/[0.06]'
+                    : 'text-gray-400 hover:text-gray-700 hover:bg-gray-100'
+                }`}
                 title={`Size: ${getCurrentPreset().toUpperCase()} — click to change`}
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -255,7 +271,11 @@ function EthioXChat() {
             {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
-              className="w-9 h-9 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center text-neutral-500 hover:text-white hover:bg-white/[0.06] active:bg-white/10 transition-all duration-200"
+              className={`w-9 h-9 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center transition-all duration-200 ${
+                isDark
+                  ? 'text-neutral-500 hover:text-white hover:bg-white/[0.06] active:bg-white/10'
+                  : 'text-gray-400 hover:text-gray-700 hover:bg-gray-100 active:bg-gray-200'
+              }`}
               aria-label="Close chat"
             >
               <svg className="w-5 h-5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -281,12 +301,16 @@ function EthioXChat() {
                       className={`px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl text-xs sm:text-[13px] leading-relaxed break-words ${
                         msg.sender === 'user'
                           ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-br-md'
-                          : 'bg-white/[0.06] text-neutral-300 border border-white/[0.06] rounded-bl-md'
+                          : isDark
+                            ? 'bg-white/[0.06] text-neutral-300 border border-white/[0.06] rounded-bl-md'
+                            : 'bg-gray-100 text-gray-700 border border-gray-200 rounded-bl-md'
                       }`}
                     >
                       {msg.text}
                     </div>
-                    <p className={`text-[9px] sm:text-[10px] text-neutral-700 mt-1 px-1 ${msg.sender === 'user' ? 'text-right' : 'text-left'}`}>
+                    <p className={`text-[9px] sm:text-[10px] mt-1 px-1 ${
+                      isDark ? 'text-neutral-700' : 'text-gray-400'
+                    } ${msg.sender === 'user' ? 'text-right' : 'text-left'}`}>
                       {formatTime(msg.time)}
                     </p>
                   </div>
@@ -302,11 +326,17 @@ function EthioXChat() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
-                  <div className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-2xl rounded-bl-md bg-white/[0.06] border border-white/[0.06]">
+                  <div
+                    className={`px-3 sm:px-4 py-2.5 sm:py-3 rounded-2xl rounded-bl-md ${
+                      isDark
+                        ? 'bg-white/[0.06] border border-white/[0.06]'
+                        : 'bg-gray-100 border border-gray-200'
+                    }`}
+                  >
                     <div className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-neutral-500 animate-bounce" style={{ animationDelay: '0ms' }} />
-                      <span className="w-1.5 h-1.5 rounded-full bg-neutral-500 animate-bounce" style={{ animationDelay: '150ms' }} />
-                      <span className="w-1.5 h-1.5 rounded-full bg-neutral-500 animate-bounce" style={{ animationDelay: '300ms' }} />
+                      <span className={`w-1.5 h-1.5 rounded-full animate-bounce ${isDark ? 'bg-neutral-500' : 'bg-gray-400'}`} style={{ animationDelay: '0ms' }} />
+                      <span className={`w-1.5 h-1.5 rounded-full animate-bounce ${isDark ? 'bg-neutral-500' : 'bg-gray-400'}`} style={{ animationDelay: '150ms' }} />
+                      <span className={`w-1.5 h-1.5 rounded-full animate-bounce ${isDark ? 'bg-neutral-500' : 'bg-gray-400'}`} style={{ animationDelay: '300ms' }} />
                     </div>
                   </div>
                 </div>
@@ -323,7 +353,11 @@ function EthioXChat() {
                 <button
                   key={reply}
                   onClick={() => handleQuickReply(reply)}
-                  className="px-3 sm:px-3 py-2 sm:py-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] text-[11px] sm:text-[11px] font-medium text-neutral-400 hover:text-white hover:border-blue-500/30 hover:bg-blue-500/[0.06] active:scale-95 transition-all duration-200"
+                  className={`px-3 sm:px-3 py-2 sm:py-1.5 rounded-full border font-medium active:scale-95 transition-all duration-200 ${
+                    isDark
+                      ? 'border-white/[0.08] bg-white/[0.03] text-[11px] text-neutral-400 hover:text-white hover:border-blue-500/30 hover:bg-blue-500/[0.06]'
+                      : 'border-gray-200 bg-gray-50 text-[11px] text-gray-500 hover:text-gray-900 hover:border-blue-300 hover:bg-blue-50'
+                  }`}
                 >
                   {reply}
                 </button>
@@ -332,9 +366,19 @@ function EthioXChat() {
           )}
 
           {/* ── Input Area ── */}
-          <div className="px-3 sm:px-4 py-2.5 sm:py-3 border-t border-white/[0.06] bg-[#0d0d12]/60 flex-shrink-0">
+          <div
+            className={`px-3 sm:px-4 py-2.5 sm:py-3 border-t flex-shrink-0 ${
+              isDark ? 'border-white/[0.06] bg-[#0d0d12]/60' : 'border-gray-100 bg-gray-50/80'
+            }`}
+          >
             <div className="flex items-center gap-2">
-              <div className="flex-1 relative rounded-xl border border-white/[0.08] bg-white/[0.03] focus-within:border-blue-500/30 focus-within:bg-blue-500/[0.02] transition-all duration-300">
+              <div
+                className={`flex-1 relative rounded-xl border transition-all duration-300 ${
+                  isDark
+                    ? 'border-white/[0.08] bg-white/[0.03] focus-within:border-blue-500/30 focus-within:bg-blue-500/[0.02]'
+                    : 'border-gray-200 bg-white focus-within:border-blue-400 focus-within:bg-blue-50/50'
+                }`}
+              >
                 <input
                   ref={inputRef}
                   type="text"
@@ -343,7 +387,9 @@ function EthioXChat() {
                   onKeyDown={handleKeyDown}
                   placeholder="Type a message..."
                   enterKeyHint="send"
-                  className="w-full bg-transparent text-sm text-white placeholder-neutral-600 py-2.5 sm:py-2.5 px-3.5 sm:px-4 outline-none rounded-xl"
+                  className={`w-full bg-transparent text-sm py-2.5 sm:py-2.5 px-3.5 sm:px-4 outline-none rounded-xl placeholder-${
+                    isDark ? 'neutral-600 text-white' : 'gray-400 text-gray-900'
+                  }`}
                 />
               </div>
               <button
@@ -357,7 +403,7 @@ function EthioXChat() {
                 </svg>
               </button>
             </div>
-            <p className="text-[9px] sm:text-[10px] text-neutral-700 text-center mt-1.5 sm:mt-2">
+            <p className={`text-[9px] sm:text-[10px] text-center mt-1.5 sm:mt-2 ${isDark ? 'text-neutral-700' : 'text-gray-400'}`}>
               EthioX AI · Powered by EthioDigital Global
             </p>
           </div>
@@ -374,7 +420,7 @@ function EthioXChat() {
                   isResizing ? 'opacity-100' : 'opacity-20 hover:opacity-60'
                 }`}
               >
-                <svg className="w-3.5 h-3.5 text-neutral-400 rotate-180" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth={2}>
+                <svg className={`w-3.5 h-3.5 rotate-180 ${isDark ? 'text-neutral-400' : 'text-gray-400'}`} fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" d="M2 14L14 2M8 14L14 8" />
                 </svg>
               </div>
@@ -382,17 +428,21 @@ function EthioXChat() {
               {/* Right edge handle */}
               <div
                 onMouseDown={(e) => handleResizeStart(e, 'x')}
-                className={`absolute top-14 right-0 bottom-14 w-1.5 cursor-ew-resize z-20 transition-all duration-200 ${
-                  isResizing ? 'opacity-100 bg-blue-500/40' : 'opacity-0 hover:opacity-100 hover:bg-blue-500/20'
-                } rounded-l`}
+                className={`absolute top-14 right-0 bottom-14 w-1.5 cursor-ew-resize z-20 transition-all duration-200 rounded-l ${
+                  isResizing
+                    ? 'opacity-100 bg-blue-500/40'
+                    : 'opacity-0 hover:opacity-100 hover:bg-blue-500/20'
+                }`}
               />
 
               {/* Bottom edge handle */}
               <div
                 onMouseDown={(e) => handleResizeStart(e, 'y')}
-                className={`absolute bottom-0 left-8 right-0 h-1.5 cursor-ns-resize z-20 transition-all duration-200 ${
-                  isResizing ? 'opacity-100 bg-blue-500/40' : 'opacity-0 hover:opacity-100 hover:bg-blue-500/20'
-                } rounded-t`}
+                className={`absolute bottom-0 left-8 right-0 h-1.5 cursor-ns-resize z-20 transition-all duration-200 rounded-t ${
+                  isResizing
+                    ? 'opacity-100 bg-blue-500/40'
+                    : 'opacity-0 hover:opacity-100 hover:bg-blue-500/20'
+                }`}
               />
             </>
           )}
@@ -407,7 +457,11 @@ function EthioXChat() {
         aria-label={isOpen ? "Close chat" : "Open chat"}
         className={`group relative w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-xl z-10 ${
           isOpen
-            ? 'bg-[#0a0a0a] border border-white/[0.08] shadow-black/40 rotate-0'
+            ? `${
+                isDark
+                  ? 'bg-[#0a0a0a] border border-white/[0.08] shadow-black/40'
+                  : 'bg-white border border-gray-200 shadow-gray-300/40'
+              } rotate-0`
             : 'bg-gradient-to-r from-blue-600 to-purple-600 shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-110 active:scale-95'
         }`}
       >
@@ -440,7 +494,9 @@ function EthioXChat() {
         </svg>
 
         {!isOpen && (
-          <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-[#050505] flex items-center justify-center">
+          <span className={`absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 flex items-center justify-center ${
+            isDark ? 'border-[#050505]' : 'border-white'
+          }`}>
             <span className="text-[8px] font-bold text-white">1</span>
           </span>
         )}
@@ -448,9 +504,21 @@ function EthioXChat() {
 
       {/* ═══ Tooltip (Desktop Only) ═══ */}
       {!isOpen && isDesktop && (
-        <div className="absolute bottom-[70px] right-0 px-3 py-1.5 rounded-lg bg-[#0a0a0a]/90 backdrop-blur-md border border-white/[0.08] shadow-lg whitespace-nowrap pointer-events-none animate-[fadeSlideIn_0.3s_ease-out]">
-          <p className="text-xs font-medium text-neutral-300">Chat with EthioX</p>
-          <div className="absolute bottom-0 right-5 translate-y-1/2 rotate-45 w-2 h-2 bg-[#0a0a0a]/90 border-r border-b border-white/[0.08]" />
+        <div
+          className={`absolute bottom-[70px] right-0 px-3 py-1.5 rounded-lg backdrop-blur-md border shadow-lg whitespace-nowrap pointer-events-none animate-[fadeSlideIn_0.3s_ease-out] ${
+            isDark
+              ? 'bg-[#0a0a0a]/90 border-white/[0.08]'
+              : 'bg-white border-gray-200 shadow-gray-300/30'
+          }`}
+        >
+          <p className={`text-xs font-medium ${isDark ? 'text-neutral-300' : 'text-gray-700'}`}>Chat with EthioX</p>
+          <div
+            className={`absolute bottom-0 right-5 translate-y-1/2 rotate-45 w-2 h-2 border-r border-b ${
+              isDark
+                ? 'bg-[#0a0a0a]/90 border-white/[0.08]'
+                : 'bg-white border-gray-200'
+            }`}
+          />
         </div>
       )}
     </div>

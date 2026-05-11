@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTheme } from '../../src/context/ThemeContext';
 import logo from '../../src/assets/logo.png';
 
 const footerLinks = {
@@ -218,8 +219,7 @@ const termsContent = [
 ];
 
 // ─── Legal Modal Component ───
-function LegalModal({ isOpen, onClose, title, content }) {
-  // Body scroll lock
+function LegalModal({ isOpen, onClose, title, content, isDark }) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -231,7 +231,6 @@ function LegalModal({ isOpen, onClose, title, content }) {
     };
   }, [isOpen]);
 
-  // Close on Escape
   useEffect(() => {
     if (!isOpen) return;
     const handleKeyDown = (e) => {
@@ -247,27 +246,39 @@ function LegalModal({ isOpen, onClose, title, content }) {
     <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+        className={`absolute inset-0 backdrop-blur-sm ${isDark ? 'bg-black/70' : 'bg-black/40'}`}
         onClick={onClose}
       />
 
       {/* Modal */}
       <div
-        className="relative w-full sm:max-w-2xl max-h-[90dvh] sm:max-h-[80vh] bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/[0.08] sm:rounded-2xl rounded-t-2xl shadow-2xl shadow-black/60 flex flex-col overflow-hidden animate-[fadeSlideIn_0.3s_ease-out]"
+        className={`relative w-full sm:max-w-2xl max-h-[90dvh] sm:max-h-[80vh] backdrop-blur-xl border sm:rounded-2xl rounded-t-2xl shadow-2xl flex flex-col overflow-hidden animate-[fadeSlideIn_0.3s_ease-out] ${
+          isDark
+            ? 'bg-[#0a0a0a]/95 border-white/[0.08] shadow-black/60'
+            : 'bg-white border-gray-200 shadow-black/20'
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="relative flex items-center justify-between px-4 sm:px-6 py-4 sm:py-5 border-b border-white/[0.06] bg-[#0d0d12]/80 flex-shrink-0">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 sm:w-32 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+        <div
+          className={`relative flex items-center justify-between px-4 sm:px-6 py-4 sm:py-5 border-b flex-shrink-0 ${
+            isDark ? 'border-white/[0.06] bg-[#0d0d12]/80' : 'border-gray-100 bg-gray-50/90'
+          }`}
+        >
+          <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-24 sm:w-32 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent`} />
           {/* Drag handle (mobile) */}
-          <div className="sm:hidden absolute -top-1 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full bg-white/20" />
+          <div className={`sm:hidden absolute -top-1 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full ${isDark ? 'bg-white/20' : 'bg-gray-300'}`} />
           <div className="pr-8 sm:pr-0">
-            <h3 className="text-base sm:text-lg font-semibold text-white">{title}</h3>
-            <p className="text-[10px] sm:text-xs text-neutral-500 mt-0.5">Last updated: January 2025</p>
+            <h3 className={`text-base sm:text-lg font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>{title}</h3>
+            <p className={`text-[10px] sm:text-xs mt-0.5 ${isDark ? 'text-neutral-500' : 'text-gray-400'}`}>Last updated: January 2025</p>
           </div>
           <button
             onClick={onClose}
-            className="absolute right-3 sm:relative w-9 h-9 rounded-lg flex items-center justify-center text-neutral-500 hover:text-white hover:bg-white/[0.06] active:bg-white/10 transition-all duration-200 flex-shrink-0"
+            className={`absolute right-3 sm:relative w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 flex-shrink-0 ${
+              isDark
+                ? 'text-neutral-500 hover:text-white hover:bg-white/[0.06] active:bg-white/10'
+                : 'text-gray-400 hover:text-gray-700 hover:bg-gray-100 active:bg-gray-200'
+            }`}
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -279,12 +290,12 @@ function LegalModal({ isOpen, onClose, title, content }) {
         <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-4 sm:py-6 space-y-5 sm:space-y-6 scrollbar-thin overscroll-contain">
           {content.map((section, index) => (
             <div key={index}>
-              <h4 className="text-xs sm:text-sm font-semibold text-white mb-2 sm:mb-3">{section.title}</h4>
+              <h4 className={`text-xs sm:text-sm font-semibold mb-2 sm:mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>{section.title}</h4>
               <ul className="space-y-2 sm:space-y-2.5">
                 {section.items.map((item, i) => (
                   <li key={i} className="flex gap-2.5 sm:gap-3">
-                    <span className="w-1 h-1 rounded-full bg-blue-500/40 flex-shrink-0 mt-1.5 sm:mt-2" />
-                    <span className="text-xs sm:text-sm text-neutral-400 leading-relaxed">{item}</span>
+                    <span className={`w-1 h-1 rounded-full flex-shrink-0 mt-1.5 sm:mt-2 ${isDark ? 'bg-blue-500/40' : 'bg-blue-400'}`} />
+                    <span className={`text-xs sm:text-sm leading-relaxed ${isDark ? 'text-neutral-400' : 'text-gray-600'}`}>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -293,11 +304,18 @@ function LegalModal({ isOpen, onClose, title, content }) {
         </div>
 
         {/* Footer */}
-        <div className="px-4 sm:px-6 py-3 sm:py-4 border-t border-white/[0.06] bg-[#0d0d12]/60 flex-shrink-0">
-          {/* Safe area padding for iOS */}
+        <div
+          className={`px-4 sm:px-6 py-3 sm:py-4 border-t flex-shrink-0 ${
+            isDark ? 'border-white/[0.06] bg-[#0d0d12]/60' : 'border-gray-100 bg-gray-50/80'
+          }`}
+        >
           <button
             onClick={onClose}
-            className="w-full py-3 sm:py-2.5 text-sm font-medium text-neutral-400 hover:text-white rounded-xl border border-white/[0.08] hover:border-white/15 hover:bg-white/[0.03] active:scale-[0.98] transition-all duration-300"
+            className={`w-full py-3 sm:py-2.5 text-sm font-medium rounded-xl border transition-all duration-300 active:scale-[0.98] ${
+              isDark
+                ? 'text-neutral-400 hover:text-white border-white/[0.08] hover:border-white/15 hover:bg-white/[0.03]'
+                : 'text-gray-600 hover:text-gray-900 border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+            }`}
           >
             Close
           </button>
@@ -308,20 +326,32 @@ function LegalModal({ isOpen, onClose, title, content }) {
 }
 
 function Footer() {
+  const { isDark } = useTheme();
   const [openModal, setOpenModal] = useState(null);
   const currentYear = new Date().getFullYear();
 
   return (
     <>
-      <footer className="relative bg-[#030304] border-t border-white/[0.04]">
-
+      <footer
+        className={`relative border-t transition-colors duration-500 ${
+          isDark ? 'bg-[#030304] border-white/[0.04]' : 'bg-gray-50 border-gray-200'
+        }`}
+      >
         {/* ─── Top Divider Glow ─── */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] sm:w-[600px] h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
 
         {/* ─── Background Subtle Effects ─── */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute bottom-0 left-1/4 w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] bg-blue-600/[0.02] sm:bg-blue-600/[0.03] rounded-full blur-[80px] sm:blur-[150px]" />
-          <div className="absolute bottom-0 right-1/4 w-[150px] h-[150px] sm:w-[300px] sm:h-[300px] bg-purple-600/[0.02] sm:bg-purple-600/[0.03] rounded-full blur-[60px] sm:blur-[120px]" />
+          <div
+            className={`absolute bottom-0 left-1/4 w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] rounded-full blur-[80px] sm:blur-[150px] transition-colors duration-500 ${
+              isDark ? 'bg-blue-600/[0.02] sm:bg-blue-600/[0.03]' : 'bg-blue-200/20'
+            }`}
+          />
+          <div
+            className={`absolute bottom-0 right-1/4 w-[150px] h-[150px] sm:w-[300px] sm:h-[300px] rounded-full blur-[60px] sm:blur-[120px] transition-colors duration-500 ${
+              isDark ? 'bg-purple-600/[0.02] sm:bg-purple-600/[0.03]' : 'bg-purple-200/20'
+            }`}
+          />
         </div>
 
         {/* ═══════════════════════════════════════════
@@ -330,34 +360,43 @@ function Footer() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-12 md:pt-16 pb-6 sm:pb-8">
 
           {/* ── Top Section: Brand + Services ── */}
-          <div className="pb-8 sm:pb-10 md:pb-12 border-b border-white/[0.06]">
+          <div
+            className={`pb-8 sm:pb-10 md:pb-12 border-b ${
+              isDark ? 'border-white/[0.06]' : 'border-gray-200'
+            }`}
+          >
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 sm:gap-10">
 
               {/* Brand Column */}
               <div className="flex flex-col gap-4 sm:gap-5 max-w-md">
                 {/* Logo & Brand Name */}
                 <a href="#home" className="group flex items-center gap-2.5 sm:gap-3 w-fit">
-                  <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:border-white/15 group-hover:bg-white/[0.06]">
-                    <img
-                      src={logo}
-                      alt="EthioGlobal Digital Logo"
-                      className="w-full h-full object-contain p-1"
-                    />
+                  <div
+                    className={`relative w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl border flex items-center justify-center overflow-hidden transition-all duration-300 ${
+                      isDark
+                        ? 'bg-white/[0.04] border-white/[0.08] group-hover:border-white/15 group-hover:bg-white/[0.06]'
+                        : 'bg-white border-gray-200 group-hover:border-blue-300 group-hover:bg-blue-50/50 shadow-sm'
+                    }`}
+                  >
+                    <img src={logo} alt="EthioGlobal Digital Logo" className="w-full h-full object-contain p-1" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-base sm:text-lg font-bold text-white tracking-tight leading-tight">
+                    <span className={`text-base sm:text-lg font-bold tracking-tight leading-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
                       EthioGlobal Digital
                     </span>
-                    <span className="text-[9px] sm:text-[10px] font-medium text-neutral-500 uppercase tracking-[0.15em] sm:tracking-[0.2em]">
+                    <span className={`text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.15em] sm:tracking-[0.2em] ${
+                      isDark ? 'text-neutral-500' : 'text-gray-400'
+                    }`}>
                       Digital Agency
                     </span>
                   </div>
                 </a>
 
-                <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed">
+                <p className={`text-xs sm:text-sm leading-relaxed ${isDark ? 'text-neutral-500' : 'text-gray-600'}`}>
                   Ethiopia&apos;s premier digital agency. We build websites, ERP systems, e-commerce platforms, and run digital marketing that drives real growth.
                 </p>
 
+                {/* Social Icons */}
                 <div className="flex items-center gap-2 sm:gap-2.5">
                   {socials.map((social) => (
                     <a
@@ -366,17 +405,24 @@ function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-neutral-500 hover:text-white hover:border-white/15 hover:bg-white/[0.08] active:scale-90 transition-all duration-300"
+                      className={`w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl border flex items-center justify-center active:scale-90 transition-all duration-300 ${
+                        isDark
+                          ? 'bg-white/[0.04] border-white/[0.06] text-neutral-500 hover:text-white hover:border-white/15 hover:bg-white/[0.08]'
+                          : 'bg-white border-gray-200 text-gray-500 hover:text-gray-900 hover:border-gray-300 hover:bg-gray-50 shadow-sm'
+                      }`}
                     >
                       {social.icon}
                     </a>
                   ))}
                 </div>
 
+                {/* Contact Info */}
                 <div className="flex flex-col gap-2 pt-1">
                   <a
                     href="tel:+251912345678"
-                    className="flex items-center gap-2.5 text-xs sm:text-sm text-neutral-500 hover:text-blue-400 transition-colors duration-300 w-fit py-1 -ml-1 pl-1"
+                    className={`flex items-center gap-2.5 text-xs sm:text-sm transition-colors duration-300 w-fit py-1 -ml-1 pl-1 ${
+                      isDark ? 'text-neutral-500 hover:text-blue-400' : 'text-gray-500 hover:text-blue-600'
+                    }`}
                   >
                     <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
@@ -385,7 +431,9 @@ function Footer() {
                   </a>
                   <a
                     href="mailto:info@ethioglobal.com"
-                    className="flex items-center gap-2.5 text-xs sm:text-sm text-neutral-500 hover:text-blue-400 transition-colors duration-300 w-fit py-1 -ml-1 pl-1"
+                    className={`flex items-center gap-2.5 text-xs sm:text-sm transition-colors duration-300 w-fit py-1 -ml-1 pl-1 ${
+                      isDark ? 'text-neutral-500 hover:text-blue-400' : 'text-gray-500 hover:text-blue-600'
+                    }`}
                   >
                     <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
@@ -397,15 +445,15 @@ function Footer() {
 
               {/* Services List */}
               <div>
-                <h5 className="text-[10px] sm:text-xs font-semibold text-white uppercase tracking-[0.15em] sm:tracking-wider mb-4 sm:mb-5 flex items-center gap-2">
-                  <span className="w-4 sm:w-5 h-px bg-blue-500/50" />
+                <h5 className={`text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-wider mb-4 sm:mb-5 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                  <span className={`w-4 sm:w-5 h-px ${isDark ? 'bg-blue-500/50' : 'bg-blue-400'}`} />
                   Services
                 </h5>
                 <div className="grid grid-cols-2 gap-x-6 sm:gap-x-8 gap-y-2.5 sm:gap-y-3">
                   {footerLinks.services.map((service) => (
                     <div key={service} className="flex items-center gap-2 sm:gap-2.5">
-                      <span className="w-1 h-1 rounded-full bg-blue-500/40 flex-shrink-0" />
-                      <span className="text-xs sm:text-sm text-neutral-500">{service}</span>
+                      <span className={`w-1 h-1 rounded-full flex-shrink-0 ${isDark ? 'bg-blue-500/40' : 'bg-blue-400'}`} />
+                      <span className={`text-xs sm:text-sm ${isDark ? 'text-neutral-500' : 'text-gray-600'}`}>{service}</span>
                     </div>
                   ))}
                 </div>
@@ -414,12 +462,15 @@ function Footer() {
           </div>
 
           {/* ── Middle Section: Company + Legal + Hours ── */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-6 sm:gap-8 py-8 sm:py-10 md:py-12 border-b border-white/[0.06]">
-
+          <div
+            className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-6 sm:gap-8 py-8 sm:py-10 md:py-12 border-b ${
+              isDark ? 'border-white/[0.06]' : 'border-gray-200'
+            }`}
+          >
             {/* Company */}
             <div className="col-span-1">
-              <h5 className="text-[10px] sm:text-xs font-semibold text-white uppercase tracking-[0.15em] sm:tracking-wider mb-4 sm:mb-5 flex items-center gap-2">
-                <span className="w-4 sm:w-5 h-px bg-purple-500/50" />
+              <h5 className={`text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-wider mb-4 sm:mb-5 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                <span className={`w-4 sm:w-5 h-px ${isDark ? 'bg-purple-500/50' : 'bg-purple-400'}`} />
                 Company
               </h5>
               <ul className="flex flex-col gap-2.5 sm:gap-3">
@@ -427,7 +478,9 @@ function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-xs sm:text-sm text-neutral-500 hover:text-white transition-colors duration-300 w-fit py-0.5"
+                      className={`text-xs sm:text-sm transition-colors duration-300 w-fit py-0.5 ${
+                        isDark ? 'text-neutral-500 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+                      }`}
                     >
                       {link.label}
                     </a>
@@ -438,8 +491,8 @@ function Footer() {
 
             {/* Legal — opens modals */}
             <div className="col-span-1">
-              <h5 className="text-[10px] sm:text-xs font-semibold text-white uppercase tracking-[0.15em] sm:tracking-wider mb-4 sm:mb-5 flex items-center gap-2">
-                <span className="w-4 sm:w-5 h-px bg-emerald-500/50" />
+              <h5 className={`text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-wider mb-4 sm:mb-5 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                <span className={`w-4 sm:w-5 h-px ${isDark ? 'bg-emerald-500/50' : 'bg-emerald-400'}`} />
                 Legal
               </h5>
               <ul className="flex flex-col gap-2.5 sm:gap-3">
@@ -447,7 +500,9 @@ function Footer() {
                   <li key={link.label}>
                     <button
                       onClick={() => setOpenModal(link.action)}
-                      className="text-xs sm:text-sm text-neutral-500 hover:text-white transition-colors duration-300 w-fit py-0.5 active:text-white"
+                      className={`text-xs sm:text-sm transition-colors duration-300 w-fit py-0.5 active:${
+                        isDark ? 'text-neutral-500 hover:text-white active:text-white' : 'text-gray-600 hover:text-gray-900 active:text-gray-900'
+                      }`}
                     >
                       {link.label}
                     </button>
@@ -458,8 +513,8 @@ function Footer() {
 
             {/* Working Hours */}
             <div className="col-span-2 sm:col-span-1">
-              <h5 className="text-[10px] sm:text-xs font-semibold text-white uppercase tracking-[0.15em] sm:tracking-wider mb-4 sm:mb-5 flex items-center gap-2">
-                <span className="w-4 sm:w-5 h-px bg-amber-500/50" />
+              <h5 className={`text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-wider mb-4 sm:mb-5 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                <span className={`w-4 sm:w-5 h-px ${isDark ? 'bg-amber-500/50' : 'bg-amber-400'}`} />
                 Working Hours
               </h5>
               <ul className="flex flex-col gap-2.5 sm:gap-3">
@@ -469,43 +524,63 @@ function Footer() {
                   { day: 'Sunday', time: 'Closed' },
                 ].map((item) => (
                   <li key={item.day} className="flex items-center justify-between gap-4">
-                    <span className="text-xs sm:text-sm text-neutral-500">{item.day}</span>
-                    <span className={`text-xs sm:text-sm font-medium ${item.time === 'Closed' ? 'text-red-400/60' : 'text-neutral-300'}`}>
+                    <span className={`text-xs sm:text-sm ${isDark ? 'text-neutral-500' : 'text-gray-600'}`}>{item.day}</span>
+                    <span className={`text-xs sm:text-sm font-medium ${
+                      item.time === 'Closed'
+                        ? isDark ? 'text-red-400/60' : 'text-red-500'
+                        : isDark ? 'text-neutral-300' : 'text-gray-800'
+                    }`}>
                       {item.time}
                     </span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-4 sm:mt-5 flex items-center gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-white/[0.02] border border-white/[0.04] w-fit">
+              <div
+                className={`mt-4 sm:mt-5 flex items-center gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg border w-fit ${
+                  isDark
+                    ? 'bg-white/[0.02] border-white/[0.04]'
+                    : 'bg-emerald-50 border-emerald-200'
+                }`}
+              >
                 <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-full w-full bg-emerald-500" />
                 </span>
-                <span className="text-[10px] sm:text-[11px] font-medium text-emerald-400">Online Support 24/7</span>
+                <span className={`text-[10px] sm:text-[11px] font-medium ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>Online Support 24/7</span>
               </div>
             </div>
           </div>
 
           {/* ── Bottom Bar ── */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 pt-6 sm:pt-8">
-            <p className="text-[10px] sm:text-xs text-neutral-600 text-center sm:text-left">
+            <p className={`text-[10px] sm:text-xs text-center sm:text-left ${isDark ? 'text-neutral-600' : 'text-gray-400'}`}>
               © {currentYear} EthioGlobal Digital. All rights reserved.
             </p>
 
             <div className="flex items-center gap-1.5">
-              <span className="text-[9px] sm:text-[10px] text-neutral-700 uppercase tracking-wider">Powered by</span>
-              <span className="text-[11px] sm:text-xs font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className={`text-[9px] sm:text-[10px] uppercase tracking-wider ${isDark ? 'text-neutral-700' : 'text-gray-400'}`}>Powered by</span>
+              <span className={`text-[11px] sm:text-xs font-semibold bg-gradient-to-r bg-clip-text text-transparent ${
+                isDark ? 'from-blue-400 to-purple-400' : 'from-blue-500 to-purple-500'
+              }`}>
                 EthioGlobal Tech
               </span>
             </div>
 
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="group flex items-center gap-2 text-[10px] sm:text-xs text-neutral-600 hover:text-white transition-colors duration-300 py-1"
+              className={`group flex items-center gap-2 text-[10px] sm:text-xs py-1 transition-colors duration-300 ${
+                isDark ? 'text-neutral-600 hover:text-white' : 'text-gray-400 hover:text-gray-900'
+              }`}
             >
               Back to top
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg border border-white/[0.06] flex items-center justify-center group-hover:border-white/15 group-hover:bg-white/[0.04] active:scale-90 transition-all duration-300">
+              <div
+                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg border flex items-center justify-center active:scale-90 transition-all duration-300 ${
+                  isDark
+                    ? 'border-white/[0.06] group-hover:border-white/15 group-hover:bg-white/[0.04]'
+                    : 'border-gray-200 group-hover:border-gray-300 group-hover:bg-gray-50'
+                }`}
+              >
                 <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
                 </svg>
@@ -523,12 +598,14 @@ function Footer() {
         onClose={() => setOpenModal(null)}
         title="Privacy Policy"
         content={privacyContent}
+        isDark={isDark}
       />
       <LegalModal
         isOpen={openModal === 'terms'}
         onClose={() => setOpenModal(null)}
         title="Terms of Service"
         content={termsContent}
+        isDark={isDark}
       />
     </>
   );
