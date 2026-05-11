@@ -1,70 +1,70 @@
 website_data = [
     {
         "title": "About",
-        "content": "EthioGlobal Digital is Ethiopia's premier digital agency focused on building modern digital solutions and scaling businesses through technology and marketing."
+        "content": "EthioGlobal Digital is a Ethiopia-focused digital marketing agency specializing in Facebook page management and social media growth for local businesses."
     },
     {
         "title": "Mission",
-        "content": "We help Ethiopian businesses grow using data-driven digital marketing, modern web development, and scalable software solutions."
+        "content": "We help Ethiopian businesses grow using professional Facebook management, paid ads optimization, content strategy, and data-driven digital marketing."
     },
     {
         "title": "Services",
-        "content": "We provide web development, mobile app development, ERP systems, e-commerce platforms, UI/UX design, SEO optimization, and digital marketing."
+        "content": "We provide Facebook page management, Facebook ads optimization, content creation, social media growth strategy, audience engagement, and conversion-focused marketing."
     },
     {
-        "title": "Digital Marketing",
-        "content": "Our digital marketing includes SEO, Google Ads, Meta Ads, social media management, email campaigns, and conversion optimization."
+        "title": "Digital Marketing Focus",
+        "content": "We specialize in Facebook marketing, Meta ads, audience targeting, engagement growth, and conversion optimization for Ethiopian businesses."
     },
     {
-        "title": "Founder",
-        "content": "Natinael Birhanu is the founder and CEO of EthioGlobal Digital. Abel Samuel is the co-founder and CTO leading the technical vision."
+        "title": "Founder & Leadership",
+        "content": "Natinael Birhanu is the founder and CEO of EthioGlobal Digital. Abel Samuel who is responsible for technical systems and digital operations."
     },
     {
         "title": "Team",
-        "content": "Our team consists of experienced developers, designers, and digital marketers delivering high-quality solutions."
+        "content": "Our team includes social media managers, Facebook ad specialists, designers, and marketing strategists focused on business growth."
     },
     {
         "title": "Portfolio",
-        "content": "We have worked with clients across industries including fashion, restaurants, and education, delivering websites, ERP systems, and digital marketing solutions."
+        "content": "We have helped Ethiopian businesses grow their Facebook presence, increase engagement, and generate consistent customer leads through digital marketing."
     },
     {
-        "title": "Case Study - Samri Collection",
-        "content": "We built a full e-commerce platform and ERP system for Samri Collection, increasing sales by 340% within 6 months."
+        "title": "Case Study - Café Growth",
+        "content": "A café in Addis Ababa increased engagement by 5x in the first month through our Facebook management strategy."
     },
     {
-        "title": "Case Study - Nani Cafe",
-        "content": "We created a website and digital marketing system for Nani Cafe, increasing reservations by 215%."
+        "title": "Case Study - Fitness Center",
+        "content": "A gym in Bahir Dar became its main customer source through Facebook ads and content marketing within 6 months."
     },
     {
-        "title": "Case Study - Online Exam System",
-        "content": "We developed an online exam management system used by thousands of students with 520% growth in usage."
+        "title": "Client Results",
+        "content": "We have served 15+ local businesses across Ethiopia with measurable growth in engagement, leads, and sales."
     },
     {
-        "title": "Pricing - Social Media Package",
-        "content": "Price: 50,000 ETB. Includes 3 social media platforms setup, 12 monthly posts, basic graphics, reels, community management, and analytics reports."
+        "title": "What You Provide",
+        "content": "Clients provide Facebook page access, logo and branding, 8-10 monthly photos, and ad budget paid directly to Facebook."
     },
     {
-        "title": "Pricing - Growth Package",
-        "content": "Price: 250,000 ETB. Includes everything in social media package plus advanced SEO, ads management, email marketing, landing page design, and conversion optimization."
+        "title": "Pricing (Ethiopian Birr)",
+        "content": "Month 1: FREE management fee, ad spend 9,000 or 18,000 ETB. Month 2+: 14,400 ETB management fee + ad spend. Total 23,400 or 32,400 ETB monthly. After May 31, 2026, standard price is 25,000 ETB/month with no trial."
     },
     {
-        "title": "Pricing - Full Digital Suite",
-        "content": "Price: 550,000 ETB. Includes everything in growth package plus custom website development, mobile app development, API integrations, and 6 months support."
+        "title": "Guarantee",
+        "content": "We offer a 30-day risk-free trial. If you are not satisfied, you can cancel anytime with no obligation."
+    },
+    {
+        "title": "Availability",
+        "content": "June 2026: 2 spots remaining. July 2026: 3 spots remaining. August 2026: Waitlist only."
+    },
+    {
+        "title": "Get Started",
+        "content": "Step 1: Contact us to reserve your spot. Step 2: 15-minute strategy call. Step 3: Campaign setup and launch."
     },
     {
         "title": "Contact",
-        "content": "Phone: +251 912 345 678. Email: info@agency.com. Telegram: @agency_support. Instagram: @agency.eth"
-    },
-    {
-        "title": "Stats",
-        "content": "We have served 50+ clients, completed 120+ projects, achieved 98% satisfaction rate, and maintain an average rating of 4.9/5."
+        "content": "Contact Abel Samuel at abelsamuel841@gmail.com or call 0957576652. Contact Natinael Birhanu at nati@gmail.com or call 0956564545."
     },
     {
         "title": "Working Hours",
-        "content": "Monday to Friday 9:00-18:00, Saturday 10:00-15:00, Sunday closed. Online support is available 24/7."
-    },
-    {
-    "title": "Talk to Human",
-    "content": "You can talk to a human for direct support. Contact Abel Samuel at abelsamuel841@gmail.com or call 0957576652. You can also contact Natinael Birhanu at nati@gmail.com or call 0956564545."
-}
+        "content": "Monday to Friday 9:00-18:00, Saturday 10:00-15:00, Sunday closed. 24/7 online support available."
+    }
 ]
