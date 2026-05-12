@@ -1,22 +1,42 @@
+
 import { useState, useEffect } from 'react';
 import { useTheme } from '../../src/context/ThemeContext';
 import logo from '../../src/assets/logo.png';
+import {
+  FaPhone,
+  FaEnvelope,
+  FaTelegram,
+  FaInstagram,
+  FaLinkedin,
+  FaTiktok,
+  FaGithub,
+  FaArrowRight,
+  FaClock,
+  FaFire,
+  FaShieldAlt,
+  FaHeadset,
+  FaCheckCircle,
+  FaUsers,
+  FaStar,
+  FaRocket,
+  FaHeart,
+  FaThumbsUp,
+  FaChartLine,
+  FaChevronUp,
+} from 'react-icons/fa';
 
 const footerLinks = {
   services: [
-    'Web Development',
-    'E-Commerce',
-    'ERP Systems',
-    'UI/UX Design',
-    'SEO Optimization',
-    'Digital Marketing',
+    'Facebook Page Management',
+    'Meta Ads & Campaigns',
+    'Content Creation',
+    'Social Media Strategy',
+    'Community Management',
+    'Analytics & Reporting',
   ],
   company: [
-    { label: 'About Us', href: '#founders' },
-    { label: 'Our Work', href: '#portfolio' },
+    { label: 'About Us', href: '#home' },
     { label: 'Testimonials', href: '#testimonials' },
-    { label: 'Careers', href: '#' },
-    { label: 'Blog', href: '#' },
     { label: 'Contact', href: '#contact' },
   ],
   legal: [
@@ -29,53 +49,30 @@ const socials = [
   {
     label: 'Telegram',
     href: 'https://t.me/agency_support',
-    icon: (
-      <svg className="w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-      </svg>
-    ),
+    icon: <FaTelegram className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />,
   },
   {
     label: 'Instagram',
     href: 'https://instagram.com/agency.eth',
-    icon: (
-      <svg className="w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-      </svg>
-    ),
+    icon: <FaInstagram className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />,
   },
   {
     label: 'LinkedIn',
     href: '#',
-    icon: (
-      <svg className="w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-      </svg>
-    ),
+    icon: <FaLinkedin className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />,
   },
   {
     label: 'TikTok',
     href: '#',
-    icon: (
-      <svg className="w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
-      </svg>
-    ),
+    icon: <FaTiktok className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />,
   },
   {
     label: 'GitHub',
     href: '#',
-    icon: (
-      <svg className="w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-      </svg>
-    ),
+    icon: <FaGithub className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />,
   },
 ];
 
-// ─── Privacy Policy Content ───
 const privacyContent = [
   {
     title: '1. Information We Collect',
@@ -100,14 +97,14 @@ const privacyContent = [
     title: '3. Data Sharing & Third Parties',
     items: [
       'We do not sell, trade, or rent your personal information to third parties.',
-      'We may share your data with trusted service providers who assist us in operating our website and delivering services (e.g., hosting providers, payment processors).',
+      'We may share your data with trusted service providers who assist us in operating our website and delivering services.',
       'We may disclose your information if required by law or to protect our legal rights.',
     ],
   },
   {
     title: '4. Data Security',
     items: [
-      'We implement industry-standard security measures to protect your personal information from unauthorized access, alteration, or disclosure.',
+      'We implement industry-standard security measures to protect your personal information from unauthorized access.',
       'However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.',
     ],
   },
@@ -115,7 +112,7 @@ const privacyContent = [
     title: '5. Cookies',
     items: [
       'We use essential cookies to ensure the basic functionality of our website.',
-      'We use analytics cookies to understand how visitors interact with our website and improve our services.',
+      'We use analytics cookies to understand how visitors interact with our website.',
       'You can control cookie preferences through your browser settings at any time.',
     ],
   },
@@ -123,7 +120,7 @@ const privacyContent = [
     title: '6. Your Rights',
     items: [
       'You have the right to access, correct, or delete your personal data at any time by contacting us.',
-      'You can unsubscribe from marketing communications at any time using the unsubscribe link in our emails.',
+      'You can unsubscribe from marketing communications at any time.',
       'You have the right to request a copy of the data we hold about you.',
     ],
   },
@@ -135,7 +132,6 @@ const privacyContent = [
   },
 ];
 
-// ─── Terms of Service Content ───
 const termsContent = [
   {
     title: '1. Acceptance of Terms',
@@ -149,23 +145,20 @@ const termsContent = [
     items: [
       'EthioGlobal Digital provides web development, e-commerce solutions, ERP systems, UI/UX design, SEO optimization, and digital marketing services.',
       'The specific scope, deliverables, timeline, and pricing for each project will be outlined in a separate project proposal or contract.',
-      'We reserve the right to modify or discontinue any service with reasonable notice to affected clients.',
     ],
   },
   {
     title: '3. Project Process & Payments',
     items: [
       'Projects typically follow our standard process: Discovery, Design, Development, Testing, and Deployment.',
-      'Payment terms are outlined in each project agreement. Standard terms are 50% upfront and 50% upon completion unless otherwise agreed.',
-      'Late payments may result in project delays. We will communicate any impact on timelines due to payment issues.',
+      'Payment terms are outlined in each project agreement. Standard terms are 50% upfront and 50% upon completion.',
     ],
   },
   {
     title: '4. Client Responsibilities',
     items: [
       'Clients are responsible for providing accurate information, content, and feedback in a timely manner.',
-      'Delays in providing required materials or feedback may affect the project timeline.',
-      'Clients must ensure they have the rights to any content (images, text, logos) they provide for their project.',
+      'Clients must ensure they have the rights to any content they provide for their project.',
     ],
   },
   {
@@ -173,8 +166,6 @@ const termsContent = [
     items: [
       'Upon full payment, clients receive full ownership of their custom website, application, and associated source code.',
       'We retain the right to use general knowledge, skills, and experience gained during the project.',
-      'Third-party tools, libraries, and frameworks used in the project remain subject to their respective licenses.',
-      'We may display completed projects in our portfolio unless a non-disclosure agreement is in place.',
     ],
   },
   {
@@ -182,60 +173,48 @@ const termsContent = [
     items: [
       'The number of revisions included in a project is specified in the project proposal.',
       'Additional revisions or scope changes beyond the agreed proposal may incur additional costs.',
-      'Any change requests must be communicated in writing and will be assessed before implementation.',
     ],
   },
   {
     title: '7. Warranty & Support',
     items: [
       'We provide 30 days of free bug fixing and technical support after project delivery.',
-      'This warranty covers issues arising from the original scope of work, not from third-party modifications or server issues.',
       'Extended support and maintenance plans are available upon request.',
     ],
   },
   {
     title: '8. Limitation of Liability',
     items: [
-      'Our total liability for any claims arising from our services shall not exceed the total amount paid by the client for the specific project.',
-      'We are not liable for indirect, incidental, or consequential damages including loss of profits, data, or business opportunities.',
-      'We are not responsible for issues caused by third-party services, hosting providers, or force majeure events.',
+      'Our total liability for any claims arising from our services shall not exceed the total amount paid by the client.',
+      'We are not liable for indirect, incidental, or consequential damages.',
     ],
   },
   {
     title: '9. Termination',
     items: [
       'Either party may terminate a project agreement with 7 days written notice.',
-      'In case of termination, the client is responsible for payment of work completed up to the termination date.',
-      'We will provide all completed work and source code upon termination and receipt of outstanding payments.',
+      'We will provide all completed work upon termination and receipt of outstanding payments.',
     ],
   },
   {
     title: '10. Governing Law',
     items: [
       'These Terms of Service are governed by the laws of Ethiopia.',
-      'Any disputes shall be resolved through amicable negotiation, and if unsuccessful, through the courts of Hawassa, Ethiopia.',
+      'Any disputes shall be resolved through amicable negotiation.',
     ],
   },
 ];
 
-// ─── Legal Modal Component ───
 function LegalModal({ isOpen, onClose, title, content, isDark }) {
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
+    if (isOpen) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = '';
+    return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) return;
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') onClose();
-    };
+    const handleKeyDown = (e) => { if (e.key === 'Escape') onClose(); };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
@@ -244,49 +223,27 @@ function LegalModal({ isOpen, onClose, title, content, isDark }) {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center">
-      {/* Backdrop */}
-      <div
-        className={`absolute inset-0 backdrop-blur-sm ${isDark ? 'bg-black/70' : 'bg-black/40'}`}
-        onClick={onClose}
-      />
-
-      {/* Modal */}
-      <div
-        className={`relative w-full sm:max-w-2xl max-h-[90dvh] sm:max-h-[80vh] backdrop-blur-xl border sm:rounded-2xl rounded-t-2xl shadow-2xl flex flex-col overflow-hidden animate-[fadeSlideIn_0.3s_ease-out] ${
-          isDark
-            ? 'bg-[#0a0a0a]/95 border-white/[0.08] shadow-black/60'
-            : 'bg-white border-gray-200 shadow-black/20'
-        }`}
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Header */}
-        <div
-          className={`relative flex items-center justify-between px-4 sm:px-6 py-4 sm:py-5 border-b flex-shrink-0 ${
-            isDark ? 'border-white/[0.06] bg-[#0d0d12]/80' : 'border-gray-100 bg-gray-50/90'
-          }`}
-        >
-          <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-24 sm:w-32 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent`} />
-          {/* Drag handle (mobile) */}
+      <div className={`absolute inset-0 backdrop-blur-sm ${isDark ? 'bg-black/70' : 'bg-black/40'}`} onClick={onClose} />
+      <div className={`relative w-full sm:max-w-2xl max-h-[90dvh] sm:max-h-[80vh] backdrop-blur-xl border sm:rounded-2xl rounded-t-2xl shadow-2xl flex flex-col overflow-hidden ${
+        isDark ? 'bg-[#0a0a0a]/95 border-white/[0.08] shadow-black/60' : 'bg-white border-gray-200 shadow-black/20'
+      }`} onClick={(e) => e.stopPropagation()}>
+        
+        <div className={`relative flex items-center justify-between px-4 sm:px-6 py-4 sm:py-5 border-b flex-shrink-0 ${isDark ? 'border-white/[0.06] bg-[#0d0d12]/80' : 'border-gray-100 bg-gray-50/90'}`}>
+          <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-24 sm:w-32 h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent`} />
           <div className={`sm:hidden absolute -top-1 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full ${isDark ? 'bg-white/20' : 'bg-gray-300'}`} />
           <div className="pr-8 sm:pr-0">
             <h3 className={`text-base sm:text-lg font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>{title}</h3>
             <p className={`text-[10px] sm:text-xs mt-0.5 ${isDark ? 'text-neutral-500' : 'text-gray-400'}`}>Last updated: January 2025</p>
           </div>
-          <button
-            onClick={onClose}
-            className={`absolute right-3 sm:relative w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 flex-shrink-0 ${
-              isDark
-                ? 'text-neutral-500 hover:text-white hover:bg-white/[0.06] active:bg-white/10'
-                : 'text-gray-400 hover:text-gray-700 hover:bg-gray-100 active:bg-gray-200'
-            }`}
-          >
+          <button onClick={onClose} className={`absolute right-3 sm:relative w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 flex-shrink-0 ${
+            isDark ? 'text-neutral-500 hover:text-white hover:bg-white/[0.06]' : 'text-gray-400 hover:text-gray-700 hover:bg-gray-100'
+          }`}>
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
 
-        {/* Content */}
         <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-4 sm:py-6 space-y-5 sm:space-y-6 scrollbar-thin overscroll-contain">
           {content.map((section, index) => (
             <div key={index}>
@@ -294,7 +251,7 @@ function LegalModal({ isOpen, onClose, title, content, isDark }) {
               <ul className="space-y-2 sm:space-y-2.5">
                 {section.items.map((item, i) => (
                   <li key={i} className="flex gap-2.5 sm:gap-3">
-                    <span className={`w-1 h-1 rounded-full flex-shrink-0 mt-1.5 sm:mt-2 ${isDark ? 'bg-blue-500/40' : 'bg-blue-400'}`} />
+                    <span className={`w-1 h-1 rounded-full flex-shrink-0 mt-1.5 sm:mt-2 ${isDark ? 'bg-emerald-500/40' : 'bg-emerald-400'}`} />
                     <span className={`text-xs sm:text-sm leading-relaxed ${isDark ? 'text-neutral-400' : 'text-gray-600'}`}>{item}</span>
                   </li>
                 ))}
@@ -303,20 +260,10 @@ function LegalModal({ isOpen, onClose, title, content, isDark }) {
           ))}
         </div>
 
-        {/* Footer */}
-        <div
-          className={`px-4 sm:px-6 py-3 sm:py-4 border-t flex-shrink-0 ${
-            isDark ? 'border-white/[0.06] bg-[#0d0d12]/60' : 'border-gray-100 bg-gray-50/80'
-          }`}
-        >
-          <button
-            onClick={onClose}
-            className={`w-full py-3 sm:py-2.5 text-sm font-medium rounded-xl border transition-all duration-300 active:scale-[0.98] ${
-              isDark
-                ? 'text-neutral-400 hover:text-white border-white/[0.08] hover:border-white/15 hover:bg-white/[0.03]'
-                : 'text-gray-600 hover:text-gray-900 border-gray-200 hover:border-gray-300 hover:bg-gray-50'
-            }`}
-          >
+        <div className={`px-4 sm:px-6 py-3 sm:py-4 border-t flex-shrink-0 ${isDark ? 'border-white/[0.06] bg-[#0d0d12]/60' : 'border-gray-100 bg-gray-50/80'}`}>
+          <button onClick={onClose} className={`w-full py-3 sm:py-2.5 text-sm font-medium rounded-xl border transition-all duration-300 active:scale-[0.98] ${
+            isDark ? 'text-neutral-400 hover:text-white border-white/[0.08] hover:border-white/15 hover:bg-white/[0.03]' : 'text-gray-600 hover:text-gray-900 border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+          }`}>
             Close
           </button>
         </div>
@@ -328,160 +275,369 @@ function LegalModal({ isOpen, onClose, title, content, isDark }) {
 function Footer() {
   const { isDark } = useTheme();
   const [openModal, setOpenModal] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
   const currentYear = new Date().getFullYear();
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
-      <footer
-        className={`relative border-t transition-colors duration-500 ${
-          isDark ? 'bg-[#030304] border-white/[0.04]' : 'bg-gray-50 border-gray-200'
-        }`}
-      >
-        {/* ─── Top Divider Glow ─── */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] sm:w-[600px] h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
-
-        {/* ─── Background Subtle Effects ─── */}
+      <footer id="footer" className={`relative overflow-hidden transition-colors duration-500 ${
+        isDark ? 'bg-[#030712]' : 'bg-gradient-to-br from-gray-50 via-white to-emerald-50/30'
+      }`}>
+        
+        {/* ══════════ BACKGROUND EFFECTS ══════════ */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div
-            className={`absolute bottom-0 left-1/4 w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] rounded-full blur-[80px] sm:blur-[150px] transition-colors duration-500 ${
-              isDark ? 'bg-blue-600/[0.02] sm:bg-blue-600/[0.03]' : 'bg-blue-200/20'
-            }`}
-          />
-          <div
-            className={`absolute bottom-0 right-1/4 w-[150px] h-[150px] sm:w-[300px] sm:h-[300px] rounded-full blur-[60px] sm:blur-[120px] transition-colors duration-500 ${
-              isDark ? 'bg-purple-600/[0.02] sm:bg-purple-600/[0.03]' : 'bg-purple-200/20'
-            }`}
-          />
+          
+          {/* Gradient Orbs */}
+          <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 blur-3xl animate-blob" />
+          <div className="absolute -bottom-40 -right-40 w-[700px] h-[700px] rounded-full bg-gradient-to-tl from-blue-500/10 to-purple-500/10 blur-3xl animate-blob-delayed" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-r from-orange-500/5 to-pink-500/5 blur-3xl" />
+
+          {/* Subtle Grid Pattern */}
+          <div className={`absolute inset-0 ${
+            isDark 
+              ? 'opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,0.1)_1px_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px_1px,transparent_1px)] bg-[size:50px_50px]' 
+              : 'opacity-[0.04] bg-[linear-gradient(rgba(16,185,129,0.15)_1px_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.15)_1px_1px,transparent_1px)] bg-[size:50px_50px]'
+          }`} />
+
+          {/* Floating Particles */}
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className="absolute w-2 h-2 rounded-full opacity-20 animate-float-slow"
+              style={{
+                left: `${10 + i * 15}%`,
+                top: `${15 + (i % 3) * 25}%`,
+                background: isDark ? 'rgba(16, 185, 129, 0.6)' : 'rgba(16, 185, 129, 0.8)',
+                animationDelay: `${i * 0.8}s`,
+              }}
+            />
+          ))}
         </div>
 
-        {/* ═══════════════════════════════════════════
-            MAIN FOOTER CONTENT
-            ═══════════════════════════════════════════ */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-12 md:pt-16 pb-6 sm:pb-8">
+        {/* ══════════ MAIN CONTENT ══════════ */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 lg:pt-24 pb-8 sm:pb-12">
+          
+          {/* ── Top Badge Bar ── */}
+          <div className={`flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-14 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}>
+            
+            {/* Main Badge */}
+            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm shadow-sm transition-all hover:scale-105 ${
+              isDark 
+                ? 'border-emerald-500/20 bg-emerald-500/[0.08] shadow-emerald-500/5' 
+                : 'border-emerald-200 bg-white shadow-md shadow-emerald-100/50'
+            }`}>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-full w-full bg-emerald-500" />
+              </span>
+              <FaHeadset className="w-4 h-4 text-blue-500" />
+              <span className={`text-xs font-semibold tracking-wide ${isDark ? 'text-emerald-300' : 'text-emerald-700'}`}>
+                Available 24/7
+              </span>
+            </div>
 
-          {/* ── Top Section: Brand + Services ── */}
-          <div
-            className={`pb-8 sm:pb-10 md:pb-12 border-b ${
-              isDark ? 'border-white/[0.06]' : 'border-gray-200'
-            }`}
-          >
-            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 sm:gap-10">
+            {/* Fast Response Badge */}
+            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm animate-pulse-slow ${
+              isDark 
+                ? 'border-red-500/20 bg-red-500/[0.08] shadow-red-500/5' 
+                : 'border-orange-200 bg-orange-50 shadow-md shadow-orange-100/50'
+            }`}>
+              <FaFire className="w-3.5 h-3.5 text-orange-500" />
+              <span className={`text-xs font-bold ${isDark ? 'text-red-300' : 'text-orange-600'}`}>
+                2hr Response Time
+              </span>
+            </div>
 
-              {/* Brand Column */}
-              <div className="flex flex-col gap-4 sm:gap-5 max-w-md">
-                {/* Logo & Brand Name */}
-                <a href="#home" className="group flex items-center gap-2.5 sm:gap-3 w-fit">
-                  <div
-                    className={`relative w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl border flex items-center justify-center overflow-hidden transition-all duration-300 ${
-                      isDark
-                        ? 'bg-white/[0.04] border-white/[0.08] group-hover:border-white/15 group-hover:bg-white/[0.06]'
-                        : 'bg-white border-gray-200 group-hover:border-blue-300 group-hover:bg-blue-50/50 shadow-sm'
-                    }`}
-                  >
-                    <img src={logo} alt="EthioGlobal Digital Logo" className="w-full h-full object-contain p-1" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className={`text-base sm:text-lg font-bold tracking-tight leading-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                      EthioGlobal Digital
-                    </span>
-                    <span className={`text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.15em] sm:tracking-[0.2em] ${
-                      isDark ? 'text-neutral-500' : 'text-gray-400'
-                    }`}>
-                      Digital Agency
-                    </span>
-                  </div>
+            {/* Trusted Badge */}
+            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border transition-all hover:scale-105 ${
+              isDark ? 'border-white/10 bg-white/[0.03]' : 'border-gray-200 bg-white shadow-sm'
+            }`}>
+              <FaShieldAlt className="w-3.5 h-3.5 text-blue-500" />
+              <span className={`text-xs font-medium ${isDark ? 'text-neutral-400' : 'text-gray-600'}`}>
+                Trusted by 15+ Businesses
+              </span>
+            </div>
+          </div>
+
+          {/* ── Two Column Layout ── */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 mb-16 sm:mb-20">
+            
+            {/* ═══ LEFT COLUMN: Brand & Links ═══ */}
+            <div className={`flex flex-col items-center lg:items-start text-center lg:text-left transition-all duration-700 delay-100 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`} style={{ transitionDelay: '100ms' }}>
+              
+              {/* Eyebrow Text */}
+              <p className={`text-sm font-bold uppercase tracking-[0.25em] mb-4 ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>
+                Ethiopia's Premier Agency
+              </p>
+
+              {/* Logo & Brand Name */}
+              <a href="#home" className="group flex items-center gap-3 sm:gap-4 w-fit mb-6">
+                <div className={`relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl border flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:scale-110 ${
+                  isDark
+                    ? 'bg-white/[0.04] border-white/[0.08] group-hover:border-emerald-500/30 group-hover:bg-emerald-500/[0.05]'
+                    : 'bg-white border-gray-200 group-hover:border-emerald-300 group-hover:bg-emerald-50 shadow-lg'
+                }`}>
+                  <img src={logo} alt="EthioGlobal Digital Logo" className="w-full h-full object-contain p-2" />
+                </div>
+                <div className="flex flex-col">
+                  <span className={`text-xl sm:text-2xl font-black tracking-tight leading-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    EthioGlobal Digital
+                  </span>
+                  <span className={`text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>
+                    Digital Agency
+                  </span>
+                </div>
+              </a>
+
+              {/* Description */}
+              <p className={`text-sm sm:text-base leading-relaxed max-w-md mb-8 ${isDark ? 'text-neutral-400' : 'text-gray-600'}`}>
+                We build websites, ERP systems, e-commerce platforms, and run digital marketing that drives{' '}
+                <span className={`font-bold ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>real growth</span> for Ethiopian businesses.
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row items-center gap-4 mb-10">
+                <a href="#contact"
+                  className="group relative w-full sm:w-auto px-8 py-4 text-base font-bold text-white rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 active:scale-[0.98]"
+                  style={{ background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)' }}
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
+                  
+                  <span className="relative z-10 flex items-center justify-center gap-2.5">
+                    <FaRocket className="w-5 h-5 group-hover:animate-bounce" />
+                    Start Your Project
+                    <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
                 </a>
 
-                <p className={`text-xs sm:text-sm leading-relaxed ${isDark ? 'text-neutral-500' : 'text-gray-600'}`}>
-                  Ethiopia&apos;s premier digital agency. We build websites, ERP systems, e-commerce platforms, and run digital marketing that drives real growth.
-                </p>
-
-                {/* Social Icons */}
-                <div className="flex items-center gap-2 sm:gap-2.5">
-                  {socials.map((social) => (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={social.label}
-                      className={`w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl border flex items-center justify-center active:scale-90 transition-all duration-300 ${
-                        isDark
-                          ? 'bg-white/[0.04] border-white/[0.06] text-neutral-500 hover:text-white hover:border-white/15 hover:bg-white/[0.08]'
-                          : 'bg-white border-gray-200 text-gray-500 hover:text-gray-900 hover:border-gray-300 hover:bg-gray-50 shadow-sm'
-                      }`}
-                    >
-                      {social.icon}
-                    </a>
-                  ))}
-                </div>
-
-                {/* Contact Info */}
-                <div className="flex flex-col gap-2 pt-1">
-                  <a
-                    href="tel:+251912345678"
-                    className={`flex items-center gap-2.5 text-xs sm:text-sm transition-colors duration-300 w-fit py-1 -ml-1 pl-1 ${
-                      isDark ? 'text-neutral-500 hover:text-blue-400' : 'text-gray-500 hover:text-blue-600'
-                    }`}
-                  >
-                    <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                    </svg>
-                    +251 912 345 678
-                  </a>
-                  <a
-                    href="mailto:info@ethioglobal.com"
-                    className={`flex items-center gap-2.5 text-xs sm:text-sm transition-colors duration-300 w-fit py-1 -ml-1 pl-1 ${
-                      isDark ? 'text-neutral-500 hover:text-blue-400' : 'text-gray-500 hover:text-blue-600'
-                    }`}
-                  >
-                    <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                    </svg>
-                    info@ethioglobal.com
-                  </a>
-                </div>
+                <a href="tel:+251912345678"
+                  className={`group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 text-base font-semibold rounded-2xl border-2 transition-all duration-300 hover:-translate-y-1 active:scale-[0.98] ${
+                    isDark 
+                      ? 'text-white border-white/20 hover:border-white/40 hover:bg-white/[0.04] shadow-lg shadow-black/20' 
+                      : 'text-gray-700 border-gray-200 hover:border-gray-300 hover:bg-gray-50 shadow-md'
+                  }`}
+                >
+                  <FaPhone className="w-4 h-4" />
+                  Call Now
+                </a>
               </div>
 
-              {/* Services List */}
-              <div>
-                <h5 className={`text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-wider mb-4 sm:mb-5 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                  <span className={`w-4 sm:w-5 h-px ${isDark ? 'bg-blue-500/50' : 'bg-blue-400'}`} />
-                  Services
-                </h5>
-                <div className="grid grid-cols-2 gap-x-6 sm:gap-x-8 gap-y-2.5 sm:gap-y-3">
-                  {footerLinks.services.map((service) => (
-                    <div key={service} className="flex items-center gap-2 sm:gap-2.5">
-                      <span className={`w-1 h-1 rounded-full flex-shrink-0 ${isDark ? 'bg-blue-500/40' : 'bg-blue-400'}`} />
-                      <span className={`text-xs sm:text-sm ${isDark ? 'text-neutral-500' : 'text-gray-600'}`}>{service}</span>
+              {/* Trust Indicators */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6">
+                <div className="flex items-center gap-2">
+                  <div className={`p-1.5 rounded-lg ${isDark ? 'bg-emerald-500/10' : 'bg-emerald-50'}`}>
+                    <FaShieldAlt className={`w-4 h-4 ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`} />
+                  </div>
+                  <span className={`text-sm font-medium ${isDark ? 'text-neutral-300' : 'text-gray-600'}`}>Secure</span>
+                </div>
+                
+                <div className={`w-1 h-1 rounded-full ${isDark ? 'bg-neutral-700' : 'bg-gray-300'}`} />
+                
+                <div className="flex items-center gap-2">
+                  <div className={`p-1.5 rounded-lg ${isDark ? 'bg-yellow-500/10' : 'bg-yellow-50'}`}>
+                    <FaStar className={`w-4 h-4 ${isDark ? 'text-yellow-400' : 'text-yellow-600'}`} />
+                  </div>
+                  <span className={`text-sm font-medium ${isDark ? 'text-neutral-300' : 'text-gray-600'}`}>4.9 Rating</span>
+                </div>
+                
+                <div className={`w-1 h-1 rounded-full ${isDark ? 'bg-neutral-700' : 'bg-gray-300'}`} />
+                
+                <div className="flex items-center gap-2">
+                  <div className={`p-1.5 rounded-lg ${isDark ? 'bg-blue-500/10' : 'bg-blue-50'}`}>
+                    <FaHeadset className={`w-4 h-4 ${isDark ? 'text-blue-400' : 'text-blue-600'}`} />
+                  </div>
+                  <span className={`text-sm font-medium ${isDark ? 'text-neutral-300' : 'text-gray-600'}`}>24/7 Support</span>
+                </div>
+              </div>
+            </div>
+
+            {/* ═══ RIGHT COLUMN: Contact Card ═══ */}
+            <div className={`transition-all duration-1000 delay-300 ${
+              isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+            }`} style={{ transitionDelay: '300ms' }}>
+              <div className="relative max-w-lg mx-auto">
+                
+                {/* Background Glow */}
+                <div className={`absolute -inset-4 rounded-3xl blur-2xl transition-colors duration-500 ${
+                  isDark 
+                    ? 'bg-gradient-to-r from-emerald-500/20 via-cyan-500/20 to-blue-500/20 opacity-60' 
+                    : 'bg-gradient-to-r from-emerald-300/40 via-cyan-300/40 to-blue-300/40 opacity-80'
+                }`} />
+
+                {/* Main Card */}
+                <div className={`relative rounded-3xl overflow-hidden border-2 shadow-2xl transition-all duration-500 hover:shadow-3xl hover:scale-[1.02] ${
+                  isDark 
+                    ? 'bg-gradient-to-b from-[#0f172a] to-[#020617] border-white/10 shadow-black/30' 
+                    : 'bg-white border-gray-100 shadow-gray-200/50'
+                }`}>
+                  
+                  {/* Card Header - Gradient Bar */}
+                  <div className="h-2 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400" />
+
+                  <div className="p-6 sm:p-8">
+                    
+                    {/* Offer Badge Row */}
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-orange-500 to-red-500 shadow-lg shadow-orange-500/25">
+                        <FaFire className="w-3.5 h-3.5 text-white animate-pulse" />
+                        <span className="text-xs font-bold text-white tracking-wide">GET IN TOUCH</span>
+                      </div>
+                      
+                      <div className="flex items-center gap-0.5">
+                        {[...Array(5)].map((_, i) => (
+                          <FaStar key={i} className="w-4 h-4 text-yellow-400 drop-shadow-sm" />
+                        ))}
+                      </div>
                     </div>
-                  ))}
+
+                    {/* Contact Info List */}
+                    <div className="space-y-4 mb-6">
+                      
+                      {/* Phone */}
+                      <a href="tel:+251912345678" className={`flex items-center gap-4 p-4 rounded-xl transition-all duration-300 group hover:scale-[1.02] ${
+                        isDark ? 'bg-white/[0.02] hover:bg-emerald-500/[0.05]' : 'bg-gray-50 hover:bg-emerald-50'
+                      }`}>
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-all group-hover:scale-110 group-hover:rotate-3 ${
+                          isDark ? 'bg-emerald-500/10' : 'bg-emerald-50'
+                        }`}>
+                          <FaPhone className={`w-5 h-5 ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className={`text-[10px] font-semibold uppercase tracking-wider mb-0.5 ${isDark ? 'text-neutral-600' : 'text-gray-500'}`}>Phone</p>
+                          <p className={`text-sm font-bold truncate ${isDark ? 'text-white group-hover:text-emerald-400' : 'text-gray-900 group-hover:text-emerald-600'}`}>+251 912 345 678</p>
+                        </div>
+                        <svg className={`w-4 h-4 flex-shrink-0 transition-transform group-hover:translate-x-1 ${isDark ? 'text-neutral-700' : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </a>
+
+                      {/* Email */}
+                      <a href="mailto:info@ethioglobal.com" className={`flex items-center gap-4 p-4 rounded-xl transition-all duration-300 group hover:scale-[1.02] ${
+                        isDark ? 'bg-white/[0.02] hover:bg-blue-500/[0.05]' : 'bg-gray-50 hover:bg-blue-50'
+                      }`}>
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-all group-hover:scale-110 group-hover:rotate-3 ${
+                          isDark ? 'bg-blue-500/10' : 'bg-blue-50'
+                        }`}>
+                          <FaEnvelope className={`w-5 h-5 ${isDark ? 'text-blue-400' : 'text-blue-600'}`} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className={`text-[10px] font-semibold uppercase tracking-wider mb-0.5 ${isDark ? 'text-neutral-600' : 'text-gray-500'}`}>Email</p>
+                          <p className={`text-sm font-bold truncate ${isDark ? 'text-white group-hover:text-blue-400' : 'text-gray-900 group-hover:text-blue-600'}`}>info@ethioglobal.com</p>
+                        </div>
+                        <svg className={`w-4 h-4 flex-shrink-0 transition-transform group-hover:translate-x-1 ${isDark ? 'text-neutral-700' : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </a>
+
+                      {/* Working Hours */}
+                      <div className={`flex items-center gap-4 p-4 rounded-xl transition-all duration-300 ${
+                        isDark ? 'bg-white/[0.02]' : 'bg-gray-50'
+                      }`}>
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                          isDark ? 'bg-purple-500/10' : 'bg-purple-50'
+                        }`}>
+                          <FaClock className={`w-5 h-5 ${isDark ? 'text-purple-400' : 'text-purple-600'}`} />
+                        </div>
+                        <div className="flex-1">
+                          <p className={`text-[10px] font-semibold uppercase tracking-wider mb-0.5 ${isDark ? 'text-neutral-600' : 'text-gray-500'}`}>Working Hours</p>
+                          <p className={`text-sm font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>Mon-Fri: 9AM - 6PM</p>
+                        </div>
+                        <div className={`px-2 py-1 rounded-full text-[10px] font-bold ${isDark ? 'bg-emerald-500/10 text-emerald-400' : 'bg-emerald-100 text-emerald-700'}`}>
+                          OPEN
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* CTA in Card */}
+                    <a href="#contact"
+                      className="group relative w-full py-4 text-base font-bold text-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg block text-center"
+                      style={{ background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)' }}
+                    >
+                      <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
+                      
+                      <span className="relative z-10 flex items-center justify-center gap-2">
+                        <FaEnvelope className="w-5 h-5" />
+                        Send Us a Message
+                        <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </a>
+
+                    {/* Urgency Note */}
+                    <p className={`text-center text-xs mt-4 font-medium ${isDark ? 'text-neutral-500' : 'text-gray-400'}`}>
+                      ⚡ Average response time: 2 hours
+                    </p>
+                  </div>
+                </div>
+
+                {/* Floating Stats Cards */}
+                <div className={`absolute -top-3 -right-3 sm:top-2 sm:-right-6 px-4 py-3 rounded-xl shadow-xl backdrop-blur-sm animate-bounce-slow transition-colors ${
+                  isDark 
+                    ? 'bg-[#0f172a]/90 border border-emerald-500/30' 
+                    : 'bg-white/90 border border-emerald-200 shadow-emerald-100/50'
+                }`}>
+                  <div className="text-2xl font-black text-emerald-500">15+</div>
+                  <div className={`text-[10px] font-bold uppercase tracking-wider ${isDark ? 'text-emerald-300' : 'text-emerald-700'}`}>Clients</div>
+                </div>
+
+                <div className={`absolute -bottom-3 -left-3 sm:bottom-2 sm:-left-6 px-4 py-3 rounded-xl shadow-xl backdrop-blur-sm animate-bounce-slow-delayed transition-colors ${
+                  isDark 
+                    ? 'bg-[#0f172a]/90 border border-blue-500/30' 
+                    : 'bg-white/90 border border-blue-200 shadow-blue-100/50'
+                }`}
+                  style={{ animationDelay: '1s' }}
+                >
+                  <div className="text-2xl font-black text-blue-500">24/7</div>
+                  <div className={`text-[10px] font-bold uppercase tracking-wider ${isDark ? 'text-blue-300' : 'text-blue-700'}`}>Support</div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* ── Middle Section: Company + Legal + Hours ── */}
-          <div
-            className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-6 sm:gap-8 py-8 sm:py-10 md:py-12 border-b ${
-              isDark ? 'border-white/[0.06]' : 'border-gray-200'
-            }`}
+          {/* ══════════ LINKS SECTION ══════════ */}
+          <div className={`grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 pb-12 sm:pb-16 border-t-2 transition-all duration-700 delay-500 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+            style={{ 
+              borderColor: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)',
+              transitionDelay: '500ms'
+            }}
           >
+            
+            {/* Services */}
+            <div>
+              <h5 className={`text-xs font-bold uppercase tracking-wider mb-4 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                <span className={`w-5 h-px ${isDark ? 'bg-emerald-500' : 'bg-emerald-400'}`} />
+                Services
+              </h5>
+              <ul className="space-y-2.5">
+                {footerLinks.services.slice(0, 6).map((service) => (
+                  <li key={service} className="flex items-center gap-2">
+                    <span className={`w-1 h-1 rounded-full flex-shrink-0 ${isDark ? 'bg-emerald-500/40' : 'bg-emerald-400'}`} />
+                    <a href="#" className={`text-sm transition-colors duration-300 ${isDark ? 'text-neutral-500 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
+                      {service}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             {/* Company */}
-            <div className="col-span-1">
-              <h5 className={`text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-wider mb-4 sm:mb-5 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                <span className={`w-4 sm:w-5 h-px ${isDark ? 'bg-purple-500/50' : 'bg-purple-400'}`} />
+            <div>
+              <h5 className={`text-xs font-bold uppercase tracking-wider mb-4 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                <span className={`w-5 h-px ${isDark ? 'bg-blue-500' : 'bg-blue-400'}`} />
                 Company
               </h5>
-              <ul className="flex flex-col gap-2.5 sm:gap-3">
+              <ul className="space-y-2.5">
                 {footerLinks.company.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className={`text-xs sm:text-sm transition-colors duration-300 w-fit py-0.5 ${
-                        isDark ? 'text-neutral-500 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-                      }`}
-                    >
+                    <a href={link.href} className={`text-sm transition-colors duration-300 ${isDark ? 'text-neutral-500 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
                       {link.label}
                     </a>
                   </li>
@@ -489,21 +645,16 @@ function Footer() {
               </ul>
             </div>
 
-            {/* Legal — opens modals */}
-            <div className="col-span-1">
-              <h5 className={`text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-wider mb-4 sm:mb-5 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                <span className={`w-4 sm:w-5 h-px ${isDark ? 'bg-emerald-500/50' : 'bg-emerald-400'}`} />
+            {/* Legal */}
+            <div>
+              <h5 className={`text-xs font-bold uppercase tracking-wider mb-4 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                <span className={`w-5 h-px ${isDark ? 'bg-purple-500' : 'bg-purple-400'}`} />
                 Legal
               </h5>
-              <ul className="flex flex-col gap-2.5 sm:gap-3">
+              <ul className="space-y-2.5">
                 {footerLinks.legal.map((link) => (
                   <li key={link.label}>
-                    <button
-                      onClick={() => setOpenModal(link.action)}
-                      className={`text-xs sm:text-sm transition-colors duration-300 w-fit py-0.5 active:${
-                        isDark ? 'text-neutral-500 hover:text-white active:text-white' : 'text-gray-600 hover:text-gray-900 active:text-gray-900'
-                      }`}
-                    >
+                    <button onClick={() => setOpenModal(link.action)} className={`text-sm transition-colors duration-300 ${isDark ? 'text-neutral-500 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
                       {link.label}
                     </button>
                   </li>
@@ -511,88 +662,63 @@ function Footer() {
               </ul>
             </div>
 
-            {/* Working Hours */}
-            <div className="col-span-2 sm:col-span-1">
-              <h5 className={`text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-wider mb-4 sm:mb-5 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                <span className={`w-4 sm:w-5 h-px ${isDark ? 'bg-amber-500/50' : 'bg-amber-400'}`} />
-                Working Hours
-              </h5>
-              <ul className="flex flex-col gap-2.5 sm:gap-3">
-                {[
-                  { day: 'Mon – Fri', time: '9:00 – 18:00' },
-                  { day: 'Saturday', time: '10:00 – 15:00' },
-                  { day: 'Sunday', time: 'Closed' },
-                ].map((item) => (
-                  <li key={item.day} className="flex items-center justify-between gap-4">
-                    <span className={`text-xs sm:text-sm ${isDark ? 'text-neutral-500' : 'text-gray-600'}`}>{item.day}</span>
-                    <span className={`text-xs sm:text-sm font-medium ${
-                      item.time === 'Closed'
-                        ? isDark ? 'text-red-400/60' : 'text-red-500'
-                        : isDark ? 'text-neutral-300' : 'text-gray-800'
-                    }`}>
-                      {item.time}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <div
-                className={`mt-4 sm:mt-5 flex items-center gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg border w-fit ${
-                  isDark
-                    ? 'bg-white/[0.02] border-white/[0.04]'
-                    : 'bg-emerald-50 border-emerald-200'
-                }`}
-              >
-                <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-full w-full bg-emerald-500" />
-                </span>
-                <span className={`text-[10px] sm:text-[11px] font-medium ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>Online Support 24/7</span>
-              </div>
-            </div>
+            
           </div>
 
-          {/* ── Bottom Bar ── */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 pt-6 sm:pt-8">
-            <p className={`text-[10px] sm:text-xs text-center sm:text-left ${isDark ? 'text-neutral-600' : 'text-gray-400'}`}>
+          {/* ══════════ BOTTOM STATS BAR ══════════ */}
+          <div className={`pb-8 border-t-2 transition-all duration-700 delay-500 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+            style={{ 
+              borderColor: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)',
+              transitionDelay: '600ms'
+            }}
+          >
+           
+          </div>
+
+          {/* ══════════ COPYRIGHT BAR ══════════ */}
+          <div className={`flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t transition-colors duration-500 ${
+            isDark ? 'border-white/[0.04]' : 'border-gray-200'
+          }`}>
+            <p className={`text-xs text-center sm:text-left ${isDark ? 'text-neutral-600' : 'text-gray-400'}`}>
               © {currentYear} EthioGlobal Digital. All rights reserved.
             </p>
 
-            <div className="flex items-center gap-1.5">
-              <span className={`text-[9px] sm:text-[10px] uppercase tracking-wider ${isDark ? 'text-neutral-700' : 'text-gray-400'}`}>Powered by</span>
-              <span className={`text-[11px] sm:text-xs font-semibold bg-gradient-to-r bg-clip-text text-transparent ${
-                isDark ? 'from-blue-400 to-purple-400' : 'from-blue-500 to-purple-500'
+            <div className="flex items-center gap-4">
+              <span className={`text-[10px] uppercase tracking-wider ${isDark ? 'text-neutral-700' : 'text-gray-400'}`}>Powered by</span>
+              <span className={`text-xs font-bold bg-gradient-to-r bg-clip-text text-transparent ${
+                isDark ? 'from-emerald-400 to-cyan-400' : 'from-emerald-500 to-cyan-500'
               }`}>
                 EthioGlobal Tech
               </span>
             </div>
 
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className={`group flex items-center gap-2 text-[10px] sm:text-xs py-1 transition-colors duration-300 ${
-                isDark ? 'text-neutral-600 hover:text-white' : 'text-gray-400 hover:text-gray-900'
-              }`}
-            >
-              Back to top
-              <div
-                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg border flex items-center justify-center active:scale-90 transition-all duration-300 ${
-                  isDark
-                    ? 'border-white/[0.06] group-hover:border-white/15 group-hover:bg-white/[0.04]'
-                    : 'border-gray-200 group-hover:border-gray-300 group-hover:bg-gray-50'
+            
+          </div>
+
+          {/* Developer Credit */}
+          <div className={`text-center mt-6 pt-4 border-t transition-colors duration-500 ${
+            isDark ? 'border-white/[0.03]' : 'border-gray-100'
+          }`}>
+            <p className={`text-[10px] sm:text-xs ${isDark ? 'text-neutral-700' : 'text-gray-400'}`}>
+              Developer{' '}
+              <a
+                href="https://abel-samuel.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`font-semibold transition-all duration-300 hover:underline ${
+                  isDark ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'
                 }`}
               >
-                <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
-                </svg>
-              </div>
-            </button>
+                Abel Samuel
+              </a>
+            </p>
           </div>
         </div>
       </footer>
 
-      {/* ═══════════════════════════════════════════
-          LEGAL MODALS
-          ═══════════════════════════════════════════ */}
+      {/* ══════════ LEGAL MODALS ══════════ */}
       <LegalModal
         isOpen={openModal === 'privacy'}
         onClose={() => setOpenModal(null)}
@@ -607,6 +733,42 @@ function Footer() {
         content={termsContent}
         isDark={isDark}
       />
+
+      {/* Custom Animations */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes blob {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        @keyframes blob-delayed {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          33% { transform: translate(-30px, 40px) scale(1.05); }
+          66% { transform: translate(20px, -30px) scale(0.95); }
+        }
+        @keyframes float-slow {
+          0%, 100% { transform: translateY(0) opacity: 0.2; }
+          50% { transform: translateY(-20px) opacity: 0.5; }
+        }
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.85; transform: scale(1.02); }
+        }
+        @keyframes bounce-slow {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-12px); }
+        }
+        @keyframes bounce-slow-delayed {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        .animate-blob { animation: blob 8s ease-in-out infinite; }
+        .animate-blob-delayed { animation: blob-delayed 10s ease-in-out infinite; }
+        .animate-float-slow { animation: float-slow 4s ease-in-out infinite; }
+        .animate-pulse-slow { animation: pulse-slow 3s ease-in-out infinite; }
+        .animate-bounce-slow { animation: bounce-slow 3s ease-in-out infinite; }
+        .animate-bounce-slow-delayed { animation: bounce-slow-delayed 3.5s ease-in-out infinite; }
+      `}} />
     </>
   );
 }

@@ -146,7 +146,7 @@ function Header({ logoSrc }) {
           </button>
 
           {/* CTA Button */}
-          <a href="#services" 
+          <a href="#contact" 
             onClick={(e) => { e.preventDefault(); handleNavClick('Services', 'services'); }}
             className="group relative px-5 py-2.5 text-sm font-semibold text-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
             style={{ background: 'linear-gradient(135deg, #2563eb 0%, #9333ea 100%)' }}

@@ -1,5 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../../src/context/ThemeContext';
+import { 
+  FaInstagram, 
+  FaTelegram, 
+  FaEnvelope, 
+  FaGithub,
+  FaQuoteLeft,
+  FaRocket,
+  FaUsers,
+  FaProjectDiagram,
+  FaClock,
+  FaStar,
+  FaHandshake,
+  FaArrowRight
+} from 'react-icons/fa';
 import nati from "../../src/assets/nati.png";
 import abel from "../../src/assets/abel.jpg";
 
@@ -7,121 +21,220 @@ const socialMap = {
   instagram: {
     label: "Instagram",
     href: "#",
-    hoverColor: "hover:text-pink-400 hover:border-pink-500/30 hover:bg-pink-500/10",
-    icon: (
-      <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-      </svg>
-    ),
+    icon: <FaInstagram className="w-4 h-4" />,
   },
   telegram: {
     label: "Telegram",
     href: "#",
-    hoverColor: "hover:text-sky-400 hover:border-sky-500/30 hover:bg-sky-500/10",
-    icon: (
-      <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-      </svg>
-    ),
+    icon: <FaTelegram className="w-4 h-4" />,
   },
   email: {
     label: "Email",
     href: "mailto:",
-    hoverColor: "hover:text-blue-400 hover:border-blue-500/30 hover:bg-blue-500/10",
-    icon: (
-      <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-      </svg>
-    ),
+    icon: <FaEnvelope className="w-4 h-4" />,
   },
   github: {
     label: "GitHub",
     href: "#",
-    hoverColor: "hover:text-gray-800 dark:hover:text-white hover:border-gray-300 dark:hover:border-white/20 hover:bg-gray-100 dark:hover:bg-white/[0.08]",
-    icon: (
-      <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-      </svg>
-    ),
+    icon: <FaGithub className="w-4 h-4" />,
   },
 };
 
-function FoundersCard({ founder, isDark }) {
+// ══════════════════════════════════════════
+// FOUNDER CARD COMPONENT
+// ══════════════════════════════════════════
+function FoundersCard({ founder, isDark, index = 0 }) {
+  const isEven = index % 2 === 0;
+  
   return (
     <div
-      className={`group relative rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 text-center transition-all duration-500 active:scale-[0.98] ${
-        isDark
-          ? 'bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.04] hover:border-white/10'
-          : 'bg-gray-50 border border-gray-200 hover:bg-gray-100 hover:border-gray-300'
+      className={`group relative transition-all duration-700 ${
+        isEven ? 'lg:-translate-y-8' : 'lg:translate-y-8'
       }`}
     >
-      {/* Hover top gradient line */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-t-xl sm:rounded-t-2xl" />
+      {/* Main Card Container */}
+      <div
+        className={`relative rounded-3xl overflow-hidden transition-all duration-500 ${
+          isDark
+            ? 'bg-gradient-to-br from-white/[0.03] via-white/[0.05] to-transparent border border-white/[0.08] backdrop-blur-xl shadow-2xl shadow-black/20'
+            : 'bg-white border border-gray-200/80 shadow-2xl shadow-gray-200/50'
+        } group-hover:shadow-3xl group-hover:scale-[1.02] active:scale-[0.98]`}
+      >
+        
+        {/* TOP SECTION: Image + Name */}
+        <div className="relative p-6 sm:p-8 pb-0">
+          {/* Background Decoration */}
+          <div
+            className={`absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl transition-all duration-1000 group-hover:scale-150 ${
+              isEven ? 'bg-blue-500/[0.08]' : 'bg-purple-500/[0.08]'
+            }`}
+          />
 
-      {/* Image */}
-      <div className="relative mx-auto w-20 h-20 sm:w-24 sm:h-24 mb-4 sm:mb-5">
+          {/* Profile Image */}
+          <div className="relative mx-auto w-32 h-32 sm:w-40 sm:h-40 mb-6">
+            <div
+              className={`absolute inset-0 rounded-full p-[3px] bg-conic-gradient transition-all duration-1000 ${
+                isDark 
+                  ? isEven ? 'from-blue-500 via-purple-500 to-pink-500' : 'from-purple-500 via-pink-500 to-blue-500'
+                  : isEven ? 'from-blue-400 via-cyan-400 to-blue-600' : 'from-purple-400 via-pink-400 to-purple-600'
+              } animate-spin-slow`}
+              style={{ animationDuration: '8s' }}
+            >
+              <div className={`w-full h-full rounded-full p-[2px] ${isDark ? 'bg-[#0a0a0f]' : 'bg-white'}`}>
+                <img 
+                  src={founder.img} 
+                  alt={founder.name}
+                  className="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            {/* Online Status Dot */}
+            <div
+              className={`absolute bottom-2 right-2 sm:bottom-3 sm:right-3 w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+                isDark ? 'border-[#0a0a0f] bg-emerald-400' : 'border-white bg-emerald-500'
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+            </div>
+          </div>
+
+          {/* Name & Role */}
+          <div className="text-center mb-4">
+            <h3
+              className={`text-xl sm:text-2xl font-bold tracking-tight mb-2 transition-all duration-300 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r ${
+                isDark ? 'from-white via-gray-200 to-neutral-400' : 'from-gray-900 via-gray-700 to-gray-500'
+              }`}
+            >
+              {founder.name}
+            </h3>
+            
+            <div
+              className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest ${
+                isDark 
+                  ? `${isEven ? 'text-blue-400/90 bg-blue-500/10 border border-blue-500/20' : 'text-purple-400/90 bg-purple-500/10 border border-purple-500/20'}`
+                  : `${isEven ? 'text-blue-600 bg-blue-50 border-blue-200' : 'text-purple-600 bg-purple-50 border-purple-200'}`
+              }`}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
+              {founder.role}
+            </div>
+          </div>
+        </div>
+
+        {/* QUOTE SECTION */}
+        <div className="px-6 sm:px-8 pb-6">
+          <div
+            className={`relative rounded-2xl p-5 sm:p-6 border backdrop-blur-sm transition-all duration-300 group-hover:scale-[1.02] overflow-hidden ${
+              isDark ? 'bg-white/[0.02] border-white/[0.04]' : 'bg-gradient-to-br from-gray-50 to-white border-gray-100'
+            }`}
+          >
+            {/* Quote Mark Icon */}
+            <div
+              className={`absolute -top-3 left-6 w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:rotate-12 ${
+                isDark 
+                  ? `bg-gradient-to-br ${isEven ? 'from-blue-500 to-purple-500' : 'from-purple-500 to-pink-500'}`
+                  : `bg-gradient-to-br ${isEven ? 'from-blue-400 to-cyan-400' : 'from-purple-400 to-pink-400'}`
+              } shadow-lg`}
+            >
+              <FaQuoteLeft className="w-4 h-4 text-white" />
+            </div>
+
+            <p
+              className={`text-sm leading-relaxed pl-8 pr-4 italic font-medium transition-colors duration-300 ${
+                isDark ? 'text-neutral-400 group-hover:text-neutral-300' : 'text-gray-500 group-hover:text-gray-600'
+              }`}
+            >
+              "{founder.slogan}"
+            </p>
+
+            {/* Decorative Line */}
+            <div
+              className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r transition-opacity duration-500 opacity-0 group-hover:opacity-100 ${
+                isDark ? 'from-transparent via-blue-500/30 to-transparent' : 'from-transparent via-purple-300/40 to-transparent'
+              }`}
+            />
+          </div>
+        </div>
+
+        {/* SOCIAL ICONS BAR */}
         <div
-          className={`w-full h-full rounded-full p-[1.5px] bg-gradient-to-br transition-all duration-500 group-hover:from-blue-500 group-hover:to-purple-600 ${
-            isDark ? 'from-neutral-700 to-neutral-800' : 'from-gray-300 to-gray-400'
+          className={`px-6 sm:px-8 py-5 flex items-center justify-between border-t backdrop-blur-sm transition-colors duration-300 ${
+            isDark ? 'border-white/[0.04] bg-black/20' : 'border-gray-100 bg-gray-50/50'
           }`}
         >
-          <img src={founder.img} alt={founder.name} className="w-full h-full object-cover rounded-full" loading="lazy" />
+          <div className="flex items-center gap-2">
+            {founder.socials.map((social) => {
+              const data = socialMap[social];
+              return (
+                <a
+                  key={social}
+                  href={data.href}
+                  target={social === "email" ? undefined : "_blank"}
+                  rel={social === "email" ? undefined : "noopener noreferrer"}
+                  aria-label={data.label}
+                  className={`
+                    relative w-10 h-10 rounded-xl border flex items-center justify-center
+                    transition-all duration-300 overflow-hidden group/social
+                    
+                    ${isDark
+                      ? 'bg-white/[0.04] border-white/[0.06] text-neutral-500 hover:text-white hover:border-white/15 hover:bg-white/[0.08]'
+                      : 'bg-white border-gray-200 text-gray-500 hover:text-gray-900 hover:border-gray-300 hover:shadow-md'
+                    }
+                  `}
+                >
+                  {/* Hover Glow */}
+                  <div
+                    className={`absolute inset-0 rounded-xl opacity-0 group-hover/social:opacity-100 blur-lg transition-all duration-300 ${
+                      isEven ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20' : 'bg-gradient-to-br from-purple-500/20 to-pink-500/20'
+                    }`}
+                  />
+
+                  <span className="relative z-10 transition-transform duration-300 group-hover/social:scale-125 group-hover/social:-rotate-12">
+                    {data.icon}
+                  </span>
+                </a>
+              );
+            })}
+          </div>
+
+          {/* Connect Button */}
+          <button
+            className={`hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 ${
+              isDark
+                ? `${isEven ? 'text-blue-400 bg-blue-500/10 border border-blue-500/20 hover:bg-blue-500/20 hover:border-blue-500/40' : 'text-purple-400 bg-purple-500/10 border border-purple-500/20 hover:bg-purple-500/20 hover:border-purple-500/40'}`
+                : `${isEven ? 'text-blue-600 bg-blue-50 border-blue-200 hover:bg-blue-100' : 'text-purple-600 bg-purple-50 border-purple-200 hover:bg-purple-100'}`
+            }`}
+          >
+            Connect
+            <FaArrowRight className="w-3 h-3" />
+          </button>
         </div>
       </div>
 
-      {/* Name & Role */}
-      <h3 className={`text-base sm:text-lg font-semibold tracking-tight mb-0.5 sm:mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-        {founder.name}
-      </h3>
-      <p className={`text-[10px] sm:text-xs font-medium uppercase tracking-wider mb-3 sm:mb-4 ${isDark ? 'text-blue-400/80' : 'text-blue-600'}`}>
-        {founder.role}
-      </p>
-
-      {/* Slogan / Quote */}
+      {/* Floating Decorative Elements */}
       <div
-        className={`relative rounded-lg sm:rounded-xl p-3 sm:p-4 mb-4 sm:mb-5 border ${
-          isDark ? 'bg-white/[0.02] border-white/[0.04]' : 'bg-gray-100 border-gray-200'
+        className={`absolute -z-10 -top-10 -right-10 w-40 h-40 rounded-full blur-2xl transition-all duration-1000 group-hover:scale-200 ${
+          isEven ? 'bg-blue-500/20' : 'bg-purple-500/20'
         }`}
-      >
-        <span
-          className={`absolute top-1.5 sm:top-2 left-2.5 sm:left-3 text-xl sm:text-2xl font-serif leading-none select-none ${
-            isDark ? 'text-white/[0.05]' : 'text-gray-300'
-          }`}
-        >
-          &ldquo;
-        </span>
-        <p className={`text-[11px] sm:text-xs leading-relaxed pl-4 sm:pl-4 italic ${isDark ? 'text-neutral-500' : 'text-gray-500'}`}>
-          {founder.slogan}
-        </p>
-      </div>
+      />
 
-      {/* Social Icons */}
-      <div className="flex items-center justify-center gap-2 sm:gap-2.5">
-        {founder.socials.map((social) => {
-          const data = socialMap[social];
-          return (
-            <a
-              key={social}
-              href={data.href}
-              target={social === "email" ? undefined : "_blank"}
-              rel={social === "email" ? undefined : "noopener noreferrer"}
-              aria-label={data.label}
-              className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg border flex items-center justify-center active:scale-90 transition-all duration-300 ${
-                isDark
-                  ? 'bg-white/[0.04] border-white/[0.06] text-neutral-500'
-                  : 'bg-gray-100 border-gray-200 text-gray-500'
-              } ${data.hoverColor}`}
-            >
-              {data.icon}
-            </a>
-          );
-        })}
-      </div>
+      <div
+        className={`absolute -bottom-2 -right-2 w-20 h-20 rotate-45 transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:translate-y-1 ${
+          isDark 
+            ? `bg-gradient-to-bl ${isEven ? 'from-blue-500/20 to-transparent' : 'from-purple-500/20 to-transparent'}`
+            : `bg-gradient-to-bl ${isEven ? 'from-blue-200/30 to-transparent' : 'from-purple-200/30 to-transparent'}`
+        }`}
+      />
     </div>
   );
 }
 
-function Owners() {
+// ══════════════════════════════════════════
+// MAIN OWNERS COMPONENT
+// ══════════════════════════════════════════
+export default function Owners() {
   const { isDark } = useTheme();
   const [isVisible, setIsVisible] = useState(false);
 
@@ -140,7 +253,7 @@ function Owners() {
     },
     {
       img: abel,
-      name: "Nahom",
+      name: "Nahom Samuel",
       role: "CTO & Co-founder",
       slogan: "Great code is invisible. It creates seamless digital experiences that drive our clients' growth.",
       socials: ["github", "instagram", "telegram", "email"],
@@ -150,73 +263,296 @@ function Owners() {
   return (
     <section
       id="founders"
-      className={`relative py-16 sm:py-20 md:py-24 overflow-hidden transition-colors duration-500 ${
-        isDark ? 'bg-[#050505]' : 'bg-gradient-to-br from-gray-50 via-white to-purple-50/30'
+      className={`relative py-24 sm:py-32 md:py-40 overflow-hidden transition-colors duration-700 ${
+        isDark ? 'bg-[#030308]' : 'bg-gradient-to-b from-white via-purple-50/10 to-blue-50/10'
       }`}
     >
-      {/* Background Effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Gradient Orb */}
+      
+      {/* BACKGROUND EFFECTS */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Gradient Orbs */}
         <div
-          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] sm:w-[380px] sm:h-[380px] md:w-[500px] md:h-[500px] rounded-full blur-[80px] sm:blur-[120px] md:blur-[150px] transition-colors duration-500 ${
-            isDark ? 'bg-purple-600/[0.04]' : 'bg-purple-300/30'
+          className={`absolute top-1/4 left-1/3 w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] md:w-[900px] md:h-[900px] rounded-full blur-[120px] sm:blur-[180px] md:blur-[220px] animate-morph-main transition-colors duration-1000 ${
+            isDark ? 'bg-indigo-600/[0.07]' : 'bg-indigo-300/20'
+          }`}
+        />
+        
+        <div
+          className={`absolute bottom-1/4 right-1/4 w-[450px] h-[450px] sm:w-[650px] sm:h-[650px] md:w-[800px] md:h-[800px] rounded-full blur-[100px] sm:blur-[160px] md:blur-[200px] animate-morph-secondary transition-colors duration-1000 ${
+            isDark ? 'bg-violet-600/[0.05]' : 'bg-violet-300/18'
+          }`}
+        />
+
+        <div
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] sm:w-[550px] sm:h-[550px] rounded-full blur-[90px] sm:blur-[140px] animate-float-orb transition-colors duration-1000 ${
+            isDark ? 'bg-fuchsia-600/[0.04]' : 'bg-fuchsia-200/12'
           }`}
         />
 
         {/* Grid Pattern */}
         <div
-          className={`absolute inset-0 transition-colors duration-500 ${
+          className={`absolute inset-0 transition-opacity duration-500 ${
             isDark
-              ? 'opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,0.1)_1px_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px_1px,transparent_1px)] bg-[size:40px_40px]'
-              : 'opacity-[0.04] bg-[linear-gradient(rgba(147,51,234,0.15)_1px_1px,transparent_1px),linear-gradient(90deg,rgba(147,51,234,0.15)_1px_1px,transparent_1px)] bg-[size:40px_40px]'
+            ? 'opacity-[0.02] bg-[linear-gradient(rgba(99,102,241,0.08)_1px_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.08)_1px_1px,transparent_1px)] bg-[size:60px_60px]'
+            : 'opacity-[0.03] bg-[linear-gradient(rgba(129,140,248,0.12)_1px_1px,transparent_1px),linear-gradient(90deg,rgba(129,140,248,0.12)_1px_1px,transparent_1px)] bg-[size:60px_60px]'
           }`}
         />
+
+        {/* Radial Gradient Overlay */}
+        <div
+          className={`absolute inset-0 bg-gradient-to-t ${
+            isDark ? 'from-transparent via-[#030308]/50 to-[#030308]' : 'from-transparent via-white/40 to-white'
+          }`}
+        />
+
+        {/* Animated Particles */}
+        {[...Array(12)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-drift"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              backgroundColor: isDark 
+                ? `rgba(${139 + Math.random() * 116}, ${92 + Math.random() * 92}, ${246 + Math.random() * 9}, ${0.3 + Math.random() * 0.4})`
+                : `rgba(${59 + Math.random() * 130}, ${130 + Math.random() * 125}, ${246 + Math.random() * 9}, ${0.4 + Math.random() * 0.4})`,
+              animationDelay: `${i * 0.4}s`,
+              animationDuration: `${8 + Math.random() * 6}s`,
+            }}
+          />
+        ))}
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* MAIN CONTENT */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Section Header */}
         <div
-          className={`text-center mb-10 sm:mb-12 md:mb-14 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          className={`text-center mb-16 sm:mb-20 md:mb-28 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <span
-            className={`inline-block text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-2.5 sm:mb-3 ${
-              isDark ? 'text-purple-400' : 'text-purple-600'
+          
+          {/* Badge */}
+          <div
+            className={`inline-flex items-center gap-3 px-5 py-2.5 rounded-full mb-6 backdrop-blur-sm transition-all duration-500 hover:scale-105 ${
+              isDark
+                ? 'bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 border border-indigo-500/20 shadow-lg shadow-indigo-500/20'
+                : 'bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 border border-indigo-200 shadow-lg shadow-indigo-200/30'
             }`}
           >
-            The Leadership
-          </span>
-          <h2 className={`text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight mb-3 sm:mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            Meet the{" "}
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-full w-full bg-indigo-500" />
+            </span>
             <span
-              className={`bg-gradient-to-r bg-clip-text text-transparent ${
-                isDark ? 'from-blue-400 to-purple-400' : 'from-blue-500 to-purple-500'
+              className={`text-xs font-bold tracking-widest uppercase ${
+                isDark ? 'text-indigo-300' : 'text-indigo-600'
               }`}
             >
-              Founders
+              Leadership Team
             </span>
+          </div>
+
+          {/* Title */}
+          <h2
+            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 sm:mb-8 transition-all duration-500 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            }`}
+            style={{ transitionDelay: '150ms' }}
+          >
+            Meet the{' '}
+            <span
+              className={`relative inline-block bg-gradient-to-r bg-clip-text text-transparent ${
+                isDark 
+                  ? 'from-indigo-400 via-purple-400 via-fuchsia-400 to-pink-400' 
+                  : 'from-indigo-600 via-purple-600 via-fuchsia-600 to-pink-600'
+              }`}
+            >
+              Visionaries
+            </span>
+            
+            <span
+              className={`absolute -bottom-2 left-0 right-0 h-2 sm:h-3 rounded-full blur-sm transition-all duration-1000 delay-500 ${
+                isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+              } ${isDark ? 'from-indigo-500/50 via-purple-500/50 to-pink-500/50' : 'from-indigo-400/60 via-purple-400/60 to-pink-400/60'}`}
+              style={{ transformOrigin: 'left' }}
+            />
           </h2>
-          <p className={`text-xs sm:text-sm max-w-md mx-auto leading-relaxed px-2 ${isDark ? 'text-neutral-500' : 'text-gray-600'}`}>
-            Driving Ethio Global Digital&apos;s mission to revolutionize the tech landscape.
+
+          {/* Subtitle */}
+          <p
+            className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed transition-all duration-500 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            } ${isDark ? 'text-neutral-400' : 'text-gray-500'}`}
+            style={{ transitionDelay: '250ms' }}
+          >
+            The brilliant minds behind Ethio Global Digital&apos;s mission to{' '}
+            <span
+              className={`font-semibold transition-colors duration-300 ${
+                isDark ? 'text-indigo-400' : 'text-indigo-600'
+              }`}
+            >
+              revolutionize Ethiopia's digital landscape
+            </span>
+            {' '}through innovation, creativity, and unwavering commitment to excellence.
           </p>
         </div>
 
-        {/* Founders Grid */}
+        {/* Founders Display */}
         <div
-          className={`grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 transition-all duration-700 delay-300 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          className={`grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-20 items-start transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
-          style={{ transitionDelay: "300ms" }}
+          style={{ transitionDelay: '400ms' }}
         >
           {founders.map((founder, index) => (
-            <FoundersCard key={index} founder={founder} isDark={isDark} />
+            <FoundersCard
+              key={index}
+              founder={founder}
+              isDark={isDark}
+              index={index}
+            />
           ))}
         </div>
+
+        {/* Connection Divider */}
+        <div
+          className={`mt-20 sm:mt-24 md:mt-32 flex items-center gap-4 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+          }`}
+          style={{ transitionDelay: '600ms' }}
+        >
+          <div
+            className={`flex-1 h-px rounded-full transition-all duration-500 ${
+              isDark ? 'bg-gradient-to-r from-transparent via-white/10 to-transparent' : 'bg-gradient-to-r from-transparent via-gray-300 to-transparent'
+            }`}
+          />
+          
+        
+          
+          <div
+            className={`flex-1 h-px rounded-full transition-all duration-500 ${
+              isDark ? 'bg-gradient-to-l from-transparent via-white/10 to-transparent' : 'bg-gradient-to-l from-transparent via-gray-300 to-transparent'
+            }`}
+          />
+        </div>
+
+     
+
+        {/* CTA Section */}
+        <div
+          className={`mt-16 sm:mt-20 text-center transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+          style={{ transitionDelay: '800ms' }}
+        >
+          <p
+            className={`text-sm sm:text-base mb-6 transition-colors duration-300 ${
+              isDark ? 'text-neutral-500' : 'text-gray-500'
+            }`}
+          >
+            Interested in collaborating with our visionary team?
+          </p>
+          
+          <a
+            href="#contact"
+            className={`group relative inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-base font-bold overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 ${
+              isDark
+                ? 'text-white shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/50'
+                : 'text-white shadow-lg shadow-indigo-400/30 hover:shadow-xl hover:shadow-indigo-400/50'
+            }`}
+            style={{ background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #A78BFA 100%)' }}
+          >
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
+            
+            <span className="relative z-10 flex items-center gap-2">
+              Start Your Project
+              <FaRocket className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+            </span>
+          </a>
+        </div>
       </div>
+
+      {/* Custom Animations */}
+      <style>{`
+        @keyframes morph-main {
+          0%, 100% { 
+            border-radius: 45% 55% 60% 40% / 55% 45% 40% 60%; 
+            transform: scale(1) rotate(0deg); 
+          }
+          33% { 
+            border-radius: 60% 40% 45% 55% / 40% 60% 55% 45%; 
+            transform: scale(1.08) rotate(5deg); 
+          }
+          66% { 
+            border-radius: 35% 65% 55% 45% / 65% 35% 45% 55%; 
+            transform: scale(0.95) rotate(-3deg); 
+          }
+        }
+
+        @keyframes morph-secondary {
+          0%, 100% { 
+            border-radius: 55% 45% 40% 60% / 45% 55% 60% 40%; 
+            transform: scale(1) rotate(0deg); 
+          }
+          50% { 
+            border-radius: 40% 60% 55% 45% / 55% 40% 45% 60%; 
+            transform: scale(1.06) rotate(-4deg); 
+          }
+        }
+
+        @keyframes float-orb {
+          0%, 100% { 
+            transform: translateY(0) scale(1); 
+            opacity: 0.6; 
+          }
+          50% { 
+            transform: translateY(-30px) scale(1.15); 
+            opacity: 0.9; 
+          }
+        }
+
+        @keyframes drift {
+          0%, 100% { 
+            transform: translateY(0) translateX(0) scale(1); 
+            opacity: 0.3; 
+          }
+          25% { 
+            transform: translateY(-20px) translateX(10px) scale(1.1); 
+            opacity: 0.5; 
+          }
+          50% { 
+            transform: translateY(-10px) translateX(-8px) scale(0.95); 
+            opacity: 0.4; 
+          }
+          75% { 
+            transform: translateY(-25px) translateX(12px) scale(1.05); 
+            opacity: 0.55; 
+          }
+        }
+
+        @keyframes spin-slow {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        .animate-morph-main { 
+          animation: morph-main 12s ease-in-out infinite; 
+        }
+
+        .animate-morph-secondary { 
+          animation: morph-secondary 15s ease-in-out infinite; 
+        }
+
+        .animate-float-orb { 
+          animation: float-orb 10s ease-in-out infinite; 
+        }
+
+        .animate-drift { 
+          animation: drift 10s ease-in-out infinite; 
+        }
+      `}</style>
     </section>
   );
 }
-
-export default Owners;
