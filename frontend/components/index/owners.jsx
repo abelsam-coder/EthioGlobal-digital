@@ -245,14 +245,14 @@ export default function Owners() {
 
   const founders = [
     {
-      img: nati,
+      img: "a",
       name: "Natinael Birhanu",
       role: "CEO & Founder",
       slogan: "Innovation isn't just about technology; it's about solving real problems for Ethiopian businesses.",
       socials: ["instagram", "telegram", "email"],
     },
     {
-      img: abel,
+      img: "b",
       name: "Nahom Samuel",
       role: "CTO & Co-founder",
       slogan: "Great code is invisible. It creates seamless digital experiences that drive our clients' growth.",
