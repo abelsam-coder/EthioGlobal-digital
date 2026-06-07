@@ -151,13 +151,13 @@ export default function Owners() {
       socials: ["instagram", "telegram", "email"],
     },
     {
-<<<<<<< HEAD
+
       img: abel,
       name: "Abel Samuel",
-=======
+
       img: "b",
       name: "Nahom Samuel",
->>>>>>> d6dbb220dacfc64c6f343b3bd22f3a65c24c4f6a
+
       role: "CTO & Co-founder",
       slogan: "Great code is invisible. It creates seamless digital experiences that drive our clients' growth.",
       socials: ["github", "linkedin", "telegram", "email"],
