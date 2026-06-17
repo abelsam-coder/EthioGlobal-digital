@@ -49,7 +49,7 @@ function Hook() {
 
         
         {/* ── Main Headline ── */}
-        <h1 className={`text-5xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight mb-5 transition-all duration-700 delay-200 ${
+        <h1 className={`text-7xl sm:text-8xl md:text-6xl font-bold leading-[1.1] tracking-tight mb-5 transition-all duration-700 delay-200 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         } ${isDark ? 'text-white' : 'text-slate-900'}`}
           style={{ transitionDelay: '200ms' }}
