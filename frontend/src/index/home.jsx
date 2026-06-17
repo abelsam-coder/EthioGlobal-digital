@@ -15,7 +15,7 @@ function Home() {
      <ThemeProvider>
       <Header logoSrc={myLogo} />
       <Hook />
-      <Service />
+     
       <Owners/>
       <Testimonials/>
       <Contact/>
