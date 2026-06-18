@@ -31,6 +31,7 @@ function Home() {
   }, []);
 
   return (
+<<<<<<< HEAD
     <ThemeProvider>
       {/* ══════════ GLOBAL BACKGROUND EFFECTS ══════════ */}
       <div className={`relative min-h-screen transition-colors duration-500 ${
@@ -186,6 +187,17 @@ function Home() {
         .animate-orb-5 { animation: orb-5 15s ease-in-out infinite; }
         .animate-float-random { animation: float-random 7s ease-in-out infinite; }
       `}} />
+=======
+     <ThemeProvider>
+      <Header logoSrc={myLogo} />
+      <Hook />
+     
+      <Owners/>
+      <Testimonials/>
+      <Contact/>
+      <Footer/>
+      <EthioXChat/>
+>>>>>>> f6e3aaddc941bc52fe5ab268ff66848551416a8e
     </ThemeProvider>
   );
 }
