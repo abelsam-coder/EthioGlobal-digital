@@ -91,7 +91,40 @@ class VerifyOtp(APIView):
                 return Response(response)
             
         else:
-            return Response({'error': 'Invalid OTP'})        
+            return Response({'error': 'Invalid OTP'}) 
+
+
+class GoogleAuth(APIView):
+    permission_classes = [AllowAny]
+    def post(self, request):
+        token = request.data.get('token')
+     
+        if not token:
+            return Response({'error': 'Token is required'}, status=400)
+
+        # Verify the token with Google
+        google_response = requests.get(f'https://oauth2.googleapis.com/tokeninfo?id_token={token}')
+        
+        if google_response.status_code != 200:
+            return Response({'error': 'Invalid token'}, status=400)
+
+        google_data = google_response.json()
+        email = google_data.get('email')
+
+        if not email:
+            return Response({'error': 'Email not found in token'}, status=400)
+
+        user = User.objects.filter(email=email, is_staff=True).first()
+        
+        if user:
+            token = RefreshToken.for_user(user)
+            response = {
+                'refresh': str(token),
+                'access': str(token.access_token),
+            }
+            return Response(response)
+        else:
+            return Response({'error': 'Admin does not exist'}, status=400)
         
 class AdminInfo(APIView):
     permission_classes = [IsAuthenticated]
