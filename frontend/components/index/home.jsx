@@ -110,7 +110,7 @@ function HomeV2() {
             
             <Suspense fallback={<LoadingSpinner />}>
               <Service />
-              <Pricing />
+            
               <Owners />
               <Testimonials />
               <Contact />
