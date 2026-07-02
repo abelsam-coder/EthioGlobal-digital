@@ -49,11 +49,11 @@ function Hook() {
           } ${isDark ? 'text-white' : 'text-gray-900'} text-5xl sm:text-7xl lg:text-8xl`}
           style={{ transitionDelay: '200ms' }}
         >
-          Dominate Facebook
+          EthioGlobal Digital
           <br />
           <span className="relative inline-block mt-1 sm:mt-2">
             <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-purple-400 bg-clip-text text-transparent">
-              For Your Business
+                Marketing Agency
             </span>
           </span>
         </h1>
