@@ -14,7 +14,7 @@ function Header({ logoSrc }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState('Home');
-<<<<<<< HEAD
+
   
   // ══════════ PERSISTENT BANNER STATE ══════════
   const [showBanner, setShowBanner] = useState(() => {
@@ -26,8 +26,7 @@ function Header({ logoSrc }) {
     setShowBanner(false);
     localStorage.setItem('bannerDismissed', 'true');
   };
-=======
->>>>>>> f6e3aaddc941bc52fe5ab268ff66848551416a8e
+
 
   const navLinks = [
     { name: 'Home', id: 'home' },
@@ -38,19 +37,19 @@ function Header({ logoSrc }) {
     { name: 'Contact', id: 'contact' },
   ];
 
-<<<<<<< HEAD
+
   // Scroll detection
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setScrolled(currentScrollY > 20);
       
-=======
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
->>>>>>> f6e3aaddc941bc52fe5ab268ff66848551416a8e
+
       let current = 'Home';
       for (const link of navLinks) {
         const el = document.getElementById(link.id);
@@ -64,10 +63,6 @@ function Header({ logoSrc }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-<<<<<<< HEAD
-  // Body scroll lock
-=======
->>>>>>> f6e3aaddc941bc52fe5ab268ff66848551416a8e
   useEffect(() => {
     if (isOpen) document.body.style.overflow = 'hidden';
     else document.body.style.overflow = '';
@@ -86,7 +81,7 @@ function Header({ logoSrc }) {
   };
 
   return (
-<<<<<<< HEAD
+
     <>
       {/* ══════════ TRANSPARENT BANNER ══════════ */}
       {showBanner && (
@@ -230,7 +225,7 @@ function Header({ logoSrc }) {
                   </svg>
                 )}
               </div>
-=======
+
     <nav
       className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ease-out ${
         scrolled
@@ -408,7 +403,7 @@ function Header({ logoSrc }) {
                 </svg>
               )}
               {isDark ? 'Light' : 'Dark'}
->>>>>>> f6e3aaddc941bc52fe5ab268ff66848551416a8e
+
             </button>
 
             {/* CTA Button - Glass/Ghost Style */}
@@ -425,7 +420,7 @@ function Header({ logoSrc }) {
             </a>
           </div>
 
-<<<<<<< HEAD
+
           {/* ── Mobile Hamburger Menu ── */}
           <button 
             onClick={() => setIsOpen(!isOpen)}
@@ -522,7 +517,7 @@ function Header({ logoSrc }) {
                 No commitment required • Response within 24hrs
               </p>
             </div>
-=======
+
           {/* Nav Links */}
           <div className="p-3 space-y-1">
             {navLinks.map((link, index) => (
@@ -582,7 +577,7 @@ function Header({ logoSrc }) {
             }`}>
               No commitment • Response within 24hrs
             </p>
->>>>>>> f6e3aaddc941bc52fe5ab268ff66848551416a8e
+
           </div>
         </div>
       </nav>
