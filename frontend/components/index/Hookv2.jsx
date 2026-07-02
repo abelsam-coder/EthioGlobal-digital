@@ -6,7 +6,8 @@ import {
   FaRocket, 
   FaFacebook,
   FaFire,
-  FaClock
+  FaClock,
+  FaCheck
 } from 'react-icons/fa';
 
 function Hook() {
@@ -24,14 +25,14 @@ function Hook() {
         isDark ? 'bg-[#050508]' : 'bg-[#fafafa]'
       }`}
       style={{ 
-        fontFamily: "'Inter', system-ui, sans-serif",
-        paddingTop: 'clamp(7rem, 12vw, 10rem)' // Fixes top clipping behind navbar/banner
+        fontFamily: "'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
+        paddingTop: 'clamp(7rem, 12vw, 10rem)' 
       }}
     >
       {/* ══════════ CLEAN BACKGROUND EFFECTS ══════════ */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Single focused glow behind the headline */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-r from-violet-600/25 to-fuchsia-500/20 blur-3xl transition-opacity duration-1000" />
+        <div className="absolute -top-20 -right-20 w-[300px] h-[300px] rounded-full bg-purple-500/10 blur-3xl" />
       </div>
 
       {/* ══════════ MAIN CENTERED CONTENT ══════════ */}
@@ -51,7 +52,7 @@ function Hook() {
           <div className="flex items-center gap-1.5">
             <FaFacebook className="w-3.5 h-3.5 text-blue-500" />
             <span className={`text-xs font-semibold tracking-wide ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
-              Facebook Growth
+              Growth Partner
             </span>
           </div>
           
@@ -72,7 +73,7 @@ function Hook() {
 
         {/* ── Clean Eyebrow ── */}
         <p
-          className={`text-xs sm:text-sm font-semibold uppercase tracking-[0.3em] mb-6 sm:mb-8 transition-all duration-700 ${
+          className={`text-xs sm:text-sm font-bold uppercase tracking-[0.3em] mb-6 sm:mb-8 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           } ${isDark ? 'text-violet-400/80' : 'text-violet-600'}`}
           style={{ transitionDelay: '100ms' }}
@@ -80,36 +81,37 @@ function Hook() {
           For Ethiopian Businesses
         </p>
 
-        {/* ── ADJUSTED MAIN HEADLINE ── */}
+        {/* ── STRICT 2-LINE HEADLINE ── */}
         <h1
-          className={`font-extrabold tracking-tight leading-[1] mb-8 sm:mb-10 transition-all duration-1000 text-balance ${
+          className={`font-extrabold tracking-tight leading-[1.05] mb-8 sm:mb-10 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           } ${isDark ? 'text-white' : 'text-gray-900'}`}
           style={{
             transitionDelay: '200ms',
-            fontSize: 'clamp(3.5rem, 8vw, 7.5rem)', // Shorter, highly readable size
+            fontSize: 'clamp(3rem, 7vw, 6.5rem)', // Sized perfectly to prevent 3 lines
           }}
         >
-          Scale Your Brand
+          Dominate Facebook
           <br />
-          <span className="relative inline-block mt-2 sm:mt-3">
+          <span className="relative inline-block mt-1 sm:mt-2">
             <span className="bg-gradient-to-r from-violet-500 via-fuchsia-500 to-purple-500 bg-clip-text text-transparent">
-              On Facebook
+              For Your Business
             </span>
           </span>
         </h1>
 
-        {/* ── Minimal Subheadline ── */}
+        {/* ── Subheadline ── */}
         <p
           className={`max-w-2xl mx-auto leading-relaxed mb-10 sm:mb-12 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           } ${isDark ? 'text-neutral-400' : 'text-gray-500'}`}
           style={{
             transitionDelay: '350ms',
-            fontSize: 'clamp(1rem, 1.5vw, 1.25rem)',
+            fontSize: 'clamp(1.05rem, 1.5vw, 1.25rem)',
           }}
         >
-          Stop guessing with your social media. We deliver predictable growth, real engagement, and tangible ROI with your first month completely free.
+          We handle your content, ads, and community so you can focus on running your business. 
+          <span className={`font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}> First month absolutely free.</span>
         </p>
 
         {/* ── Premium CTA Buttons ── */}
@@ -121,7 +123,7 @@ function Hook() {
         >
           <a
             href="#contact"
-            className="group relative w-full sm:w-auto px-8 py-4 text-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-violet-500/25 hover:-translate-y-0.5 active:scale-[0.98] text-base font-semibold"
+            className="group relative w-full sm:w-auto px-8 py-4 text-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-violet-500/25 hover:-translate-y-0.5 active:scale-[0.98] text-base font-bold"
             style={{ background: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)' }}
           >
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
@@ -134,7 +136,7 @@ function Hook() {
 
           <a
             href="#services"
-            className={`group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-xl border transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98] text-base font-semibold ${
+            className={`group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-xl border transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98] text-base font-bold ${
               isDark
                 ? 'text-white/80 border-white/10 hover:bg-white/5 hover:border-white/20'
                 : 'text-gray-700 border-gray-200 hover:bg-gray-50 hover:border-gray-300'
@@ -145,39 +147,34 @@ function Hook() {
           </a>
         </div>
         
-        {/* ── Subtle Micro-copy ── */}
-        <p
-          className={`mt-8 text-xs tracking-wide transition-all duration-700 ${
+        {/* ── Attractive Trust Proof (Replaced Mouse Icon & Old Text) ── */}
+        <div
+          className={`mt-10 flex items-center justify-center gap-2 transition-all duration-700 ${
             isVisible ? 'opacity-100' : 'opacity-0'
-          } ${isDark ? 'text-neutral-600' : 'text-gray-400'}`}
+          }`}
           style={{ transitionDelay: '600ms' }}
         >
-          No credit card required • Cancel anytime
-        </p>
-
-      </div>
-
-      {/* ══════════ SUBTLE SCROLL INDICATOR ══════════ */}
-      <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 transition-all duration-1000 ${
-        isVisible ? 'opacity-100' : 'opacity-0'
-      }`} style={{ transitionDelay: '1000ms' }}>
-        <div className={`w-6 h-10 rounded-full border-2 flex items-start justify-center p-1.5 ${
-          isDark ? 'border-white/10' : 'border-gray-300'
-        }`}>
-          <div className={`w-1.5 h-3 rounded-full animate-bounce-slow ${
-            isDark ? 'bg-white/30' : 'bg-gray-400'
-          }`} />
+          <div className="flex -space-x-2">
+            {[0, 1, 2].map((i) => (
+              <div key={i} className={`w-6 h-6 rounded-full border-2 flex items-center justify-center text-[8px] font-bold text-white ${
+                isDark ? 'border-[#050508]' : 'border-white'
+              }`} style={{ background: `linear-gradient(135deg, hsl(${260 + i * 30}, 80%, 55%), hsl(${280 + i * 30}, 80%, 65%))` }}>
+                {['N', 'A', 'D'][i]}
+              </div>
+            ))}
+          </div>
+          <p className={`text-sm font-medium ${isDark ? 'text-neutral-500' : 'text-gray-400'}`}>
+            <span className={`font-bold ${isDark ? 'text-white/80' : 'text-gray-700'}`}>15+ Ethiopian brands</span> 
+            <span className="mx-1.5">•</span> 
+            Scaling with us right now
+          </p>
         </div>
+
       </div>
 
-      {/* ══════════ MINIMAL ANIMATIONS ══════════ */}
+      {/* ══════════ PREMIUM FONT IMPORT ══════════ */}
       <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-        @keyframes bounce-slow {
-          0%, 100% { transform: translateY(0); opacity: 0.5; }
-          50% { transform: translateY(6px); opacity: 1; }
-        }
-        .animate-bounce-slow { animation: bounce-slow 2s ease-in-out infinite; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
       `}} />
     </section>
   );
