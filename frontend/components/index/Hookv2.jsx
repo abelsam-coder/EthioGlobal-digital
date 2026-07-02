@@ -23,36 +23,35 @@ function Hook() {
       className={`relative min-h-screen flex items-center justify-center overflow-hidden transition-colors duration-500 ${
         isDark ? 'bg-[#050508]' : 'bg-[#fafafa]'
       }`}
-      style={{ fontFamily: "'Inter', 'Space Grotesk', system-ui, sans-serif" }}
+      style={{ 
+        fontFamily: "'Inter', system-ui, sans-serif",
+        paddingTop: 'clamp(7rem, 12vw, 10rem)' // Fixes top clipping behind navbar/banner
+      }}
     >
-      {/* ══════════ ULTRA-CLEAN BACKGROUND ══════════ */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Primary subtle glow behind text */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-r from-violet-600/20 via-fuchsia-500/15 to-blue-600/20 blur-3xl transition-opacity duration-1000" />
-        
-        {/* Secondary ambient glows */}
-        <div className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full bg-purple-500/10 blur-3xl" />
-        <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-blue-500/10 blur-3xl" />
+      {/* ══════════ CLEAN BACKGROUND EFFECTS ══════════ */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Single focused glow behind the headline */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-r from-violet-600/25 to-fuchsia-500/20 blur-3xl transition-opacity duration-1000" />
       </div>
 
       {/* ══════════ MAIN CENTERED CONTENT ══════════ */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 sm:px-8 text-center">
         
-        {/* ── Single, Sleek Top Badge ── */}
+        {/* ── Sleek Top Badge ── */}
         <div
           className={`inline-flex items-center gap-3 px-5 py-2.5 rounded-full border backdrop-blur-xl mb-10 sm:mb-14 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           } ${
             isDark
-              ? 'bg-white/[0.05] border-white/[0.08] shadow-lg shadow-black/20'
-              : 'bg-white/80 border-gray-200/50 shadow-lg shadow-gray-200/50'
+              ? 'bg-white/[0.05] border-white/[0.08]'
+              : 'bg-white/80 border-gray-200/50 shadow-sm'
           }`}
           style={{ transitionDelay: '0ms' }}
         >
           <div className="flex items-center gap-1.5">
             <FaFacebook className="w-3.5 h-3.5 text-blue-500" />
             <span className={`text-xs font-semibold tracking-wide ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
-              Facebook Management
+              Facebook Growth
             </span>
           </div>
           
@@ -60,14 +59,14 @@ function Hook() {
           
           <div className="flex items-center gap-1.5 text-orange-500">
             <FaFire className="w-3.5 h-3.5" />
-            <span className="text-xs font-bold tracking-wide">Only 5 Spots Left</span>
+            <span className="text-xs font-bold tracking-wide">5 Spots Left</span>
           </div>
           
           <div className={`w-px h-4 ${isDark ? 'bg-white/10' : 'bg-gray-300'}`} />
           
           <div className="flex items-center gap-1.5">
             <FaClock className={`w-3 h-3 ${isDark ? 'text-neutral-500' : 'text-gray-400'}`} />
-            <span className={`text-xs font-medium ${isDark ? 'text-white/50' : 'text-gray-500'}`}>May 31, 2026</span>
+            <span className={`text-xs font-medium ${isDark ? 'text-white/50' : 'text-gray-500'}`}>Ends May 31</span>
           </div>
         </div>
 
@@ -81,19 +80,19 @@ function Hook() {
           For Ethiopian Businesses
         </p>
 
-        {/* ── MASSIVE MAIN HEADLINE ── */}
+        {/* ── ADJUSTED MAIN HEADLINE ── */}
         <h1
-          className={`font-extrabold tracking-tighter leading-[0.9] mb-8 sm:mb-10 transition-all duration-1000 ${
+          className={`font-extrabold tracking-tight leading-[1] mb-8 sm:mb-10 transition-all duration-1000 text-balance ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           } ${isDark ? 'text-white' : 'text-gray-900'}`}
           style={{
             transitionDelay: '200ms',
-            fontSize: 'clamp(4rem, 12vw + 1rem, 10rem)',
+            fontSize: 'clamp(3.5rem, 8vw, 7.5rem)', // Shorter, highly readable size
           }}
         >
-          Grow Your Business
+          Scale Your Brand
           <br />
-          <span className="relative inline-block mt-2 sm:mt-4">
+          <span className="relative inline-block mt-2 sm:mt-3">
             <span className="bg-gradient-to-r from-violet-500 via-fuchsia-500 to-purple-500 bg-clip-text text-transparent">
               On Facebook
             </span>
@@ -102,16 +101,15 @@ function Hook() {
 
         {/* ── Minimal Subheadline ── */}
         <p
-          className={`max-w-xl mx-auto leading-relaxed mb-10 sm:mb-12 transition-all duration-700 ${
+          className={`max-w-2xl mx-auto leading-relaxed mb-10 sm:mb-12 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           } ${isDark ? 'text-neutral-400' : 'text-gray-500'}`}
           style={{
             transitionDelay: '350ms',
-            fontSize: 'clamp(1rem, 1.5vw, 1.2rem)',
+            fontSize: 'clamp(1rem, 1.5vw, 1.25rem)',
           }}
         >
-          Professional social media management tailored for Ethiopian businesses. 
-          <span className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}> Month 1 FREE</span> — you only pay ad spend.
+          Stop guessing with your social media. We deliver predictable growth, real engagement, and tangible ROI with your first month completely free.
         </p>
 
         {/* ── Premium CTA Buttons ── */}
@@ -142,7 +140,7 @@ function Hook() {
                 : 'text-gray-700 border-gray-200 hover:bg-gray-50 hover:border-gray-300'
             }`}
           >
-            View Pricing
+            See How It Works
             <FaArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
