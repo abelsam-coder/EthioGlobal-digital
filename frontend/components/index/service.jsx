@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import {
   FaArrowRight, FaRocket, FaBolt, FaCheckCircle,
@@ -71,7 +72,7 @@ function Service() {
             {/* Badge */}
             <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-md shadow-sm mb-8 ${
               isDark
-                ? 'border-violet-500/30 bg-violet-500/10'
+                ? 'border-violet-500/30 bg-violet-500/10 shadow-black/20'
                 : 'border-violet-200 bg-white shadow-violet-100/50'
             }`}>
               <span className="relative flex h-2 w-2">
@@ -136,7 +137,7 @@ function Service() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 mb-8">
               <a href="#contact"
-                className="group relative w-full sm:w-auto px-8 py-3.5 text-base font-semibold text-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 active:scale-[0.98]"
+                className="group relative w-full sm:w-auto px-8 py-3.5 text-base font-semibold text-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-violet-500/25 hover:-translate-y-0.5 active:scale-[0.98]"
                 style={{ background: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)' }}
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
@@ -188,10 +189,10 @@ function Service() {
               }`} />
 
               {/* Glassmorphism Card */}
-              <div className={`relative rounded-3xl border backdrop-blur-xl overflow-hidden shadow-2xl transition-all duration-500 hover:scale-[1.01] ${
+              <div className={`relative rounded-3xl border backdrop-blur-xl overflow-hidden transition-all duration-500 hover:scale-[1.01] ${
                 isDark
-                  ? 'bg-white/[0.04] border-white/10 shadow-black/30'
-                  : 'bg-white/80 border-violet-100 shadow-violet-200/40'
+                  ? 'bg-white/[0.04] border-white/10 shadow-2xl shadow-black/50'
+                  : 'bg-white/80 border-violet-100 shadow-2xl shadow-violet-200/50'
               }`}>
 
                 {/* Top gradient bar */}
@@ -274,7 +275,7 @@ function Service() {
 
                   {/* Card CTA */}
                   <a href="#contact"
-                    className="group relative w-full py-3 text-sm font-bold text-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg block text-center"
+                    className="group relative w-full py-3 text-sm font-bold text-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/25 block text-center"
                     style={{ background: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)' }}
                   >
                     <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
@@ -292,10 +293,10 @@ function Service() {
               </div>
 
               {/* Floating Mini Stat — top right */}
-              <div className={`absolute -top-3 -right-3 px-3 py-2 rounded-xl shadow-xl backdrop-blur-md transition-colors ${
+              <div className={`absolute -top-3 -right-3 px-3 py-2 rounded-xl backdrop-blur-md transition-colors ${
                 isDark
-                  ? 'bg-[#0a0a1a]/90 border border-violet-500/30'
-                  : 'bg-white/90 border border-violet-200 shadow-violet-100/50'
+                  ? 'bg-[#0a0a1a]/90 border border-violet-500/30 shadow-xl shadow-black/50'
+                  : 'bg-white/90 border border-violet-200 shadow-xl shadow-violet-100/50'
               }`}>
                 <div className="flex items-center gap-1.5">
                   <FaUsers className="w-3 h-3 text-violet-500" />
@@ -307,10 +308,10 @@ function Service() {
               </div>
 
               {/* Floating Mini Stat — bottom left */}
-              <div className={`absolute -bottom-3 -left-3 px-3 py-2 rounded-xl shadow-xl backdrop-blur-md transition-colors ${
+              <div className={`absolute -bottom-3 -left-3 px-3 py-2 rounded-xl backdrop-blur-md transition-colors ${
                 isDark
-                  ? 'bg-[#0a0a1a]/90 border border-fuchsia-500/30'
-                  : 'bg-white/90 border border-fuchsia-200 shadow-fuchsia-100/50'
+                  ? 'bg-[#0a0a1a]/90 border border-fuchsia-500/30 shadow-xl shadow-black/50'
+                  : 'bg-white/90 border border-fuchsia-200 shadow-xl shadow-fuchsia-100/50'
               }`}>
                 <div className="flex items-center gap-1.5">
                   <FaChartLine className="w-3 h-3 text-fuchsia-500" />
