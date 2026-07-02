@@ -34,15 +34,14 @@ function Hook() {
       }`}
     >
       
-      {/* ══════════ BACKGROUND EFFECTS (2D Only) ══════════ */}
+      {/* ══════════ BACKGROUND EFFECTS ══════════ */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         
-        {/* Gradient Orbs - Beautiful ambient lighting */}
         <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 blur-3xl animate-blob" />
         <div className="absolute -bottom-40 -right-40 w-[700px] h-[700px] rounded-full bg-gradient-to-tl from-blue-500/10 to-purple-500/10 blur-3xl animate-blob-delayed" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-r from-orange-500/5 to-pink-500/5 blur-3xl" />
 
-        {/* Subtle Grid Pattern */}
+        {/* Subtle Grid */}
         <div className={`absolute inset-0 ${
           isDark 
             ? 'opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,0.1)_1px_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px_1px,transparent_1px)] bg-[size:50px_50px]' 
@@ -65,9 +64,8 @@ function Hook() {
       {/* ══════════ MAIN CONTENT ══════════ */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         
-<<<<<<< HEAD
         {/* ── Top Badge Bar ── */}
-        <div className={`flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 transition-all duration-700 ${
+        <div className={`flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-14 transition-all duration-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}>
           
@@ -80,53 +78,6 @@ function Hook() {
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-full w-full bg-emerald-500" />
-=======
-
-        
-        {/* ── Main Headline ── */}
-        <h1 className={`text-8xl sm:text-9xl md:text-7xl font-bold leading-[1.1] tracking-tight mb-6 transition-all duration-700 delay-200 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-        } ${isDark ? 'text-white' : 'text-slate-900'}`}
-          style={{ transitionDelay: '200ms' }}
-        >
-          Grow Your Business
-          <br />
-          <span className="relative inline-block">
-            <span className="bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 bg-clip-text text-transparent">
-              On Facebook
-            </span>
-            <span className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 rounded-full opacity-50 blur-[2px]" />
-          </span>
-        </h1>
-
-        {/* ── Subheadline ── */}
-        <p className={`text-lg sm:text-xl md:text-2xl max-w-xl mx-auto leading-relaxed mb-10 transition-all duration-700 delay-300 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        } ${isDark ? 'text-slate-400' : 'text-slate-600'}`}
-          style={{ transitionDelay: '300ms' }}
-        >
-          Professional Facebook management with{' '}
-          <span className={`font-semibold ${isDark ? 'text-violet-300' : 'text-violet-600'}`}>first month FREE</span>.
-          We handle content, ads & community so you can focus on running your business.
-        </p>
-
-        {/* ── CTA Buttons ── */}
-        <div className={`flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12 transition-all duration-700 delay-400 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`}
-          style={{ transitionDelay: '400ms' }}
-        >
-          {/* Primary CTA — Purple gradient */}
-          <a href="#contact"
-            className="group relative w-full sm:w-auto px-8 py-4 text-lg font-semibold text-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 active:scale-[0.98]"
-            style={{ background: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)' }}
-          >
-            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
-            <span className="relative z-10 flex items-center justify-center gap-2">
-              <FaRocket className="w-5 h-5 group-hover:animate-bounce" />
-              Claim Free Month
-              <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
->>>>>>> 6631b221c41ad4ad2be2186c0ff7499647355ebd
             </span>
             <FaFacebook className="w-4 h-4 text-blue-500" />
             <span className={`text-xs font-semibold tracking-wide ${
@@ -136,7 +87,6 @@ function Hook() {
             </span>
           </div>
 
-<<<<<<< HEAD
           {/* Limited Spots Badge */}
           <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm animate-pulse-slow ${
             isDark 
@@ -164,11 +114,105 @@ function Hook() {
           </div>
         </div>
 
-        {/* ── Two Column Layout ── */}
+        {/* ── Two Column: Image LEFT / Info RIGHT ── */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
-          {/* ═══ LEFT COLUMN: Content ═══ */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+          {/* ═══ LEFT COLUMN: Image ═══ */}
+          <div className={`order-2 lg:order-1 transition-all duration-1000 delay-300 ${
+            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+          }`}
+            style={{ transitionDelay: '300ms' }}
+          >
+            <div className="relative">
+              
+              {/* Background Glow behind image */}
+              <div className={`absolute -inset-6 rounded-[2rem] blur-3xl transition-colors duration-500 ${
+                isDark 
+                  ? 'bg-gradient-to-br from-emerald-500/15 via-cyan-500/15 to-blue-500/15' 
+                  : 'bg-gradient-to-br from-emerald-300/30 via-cyan-300/30 to-blue-300/30'
+              }`} />
+
+              {/* Main Image Container */}
+              <div className={`relative rounded-3xl overflow-hidden border-2 shadow-2xl transition-all duration-500 ${
+                isDark 
+                  ? 'border-white/10 shadow-black/40' 
+                  : 'border-gray-100 shadow-gray-300/50'
+              }`}>
+                
+                {/* Image */}
+                <img 
+                  src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80"
+                  alt="Facebook social media marketing dashboard"
+                  className="w-full h-auto object-cover aspect-[4/3] sm:aspect-[3/2]"
+                  loading="eager"
+                />
+
+                {/* Gradient Overlay on bottom of image */}
+                <div className={`absolute inset-0 bg-gradient-to-t ${
+                  isDark 
+                    ? 'from-[#030712] via-transparent to-transparent' 
+                    : 'from-white/80 via-transparent to-transparent'
+                }`} />
+
+                {/* Floating Engagement Card - inside image */}
+                <div className={`absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto px-5 py-4 rounded-2xl shadow-xl backdrop-blur-md transition-all animate-bounce-slow ${
+                  isDark 
+                    ? 'bg-[#0f172a]/85 border border-emerald-500/30' 
+                    : 'bg-white/85 border border-emerald-200 shadow-emerald-100/30'
+                }`}>
+                  <div className="flex items-center gap-4">
+                    <div className="flex -space-x-2">
+                      {[
+                        'from-blue-400 to-blue-600',
+                        'from-emerald-400 to-emerald-600',
+                        'from-purple-400 to-purple-600',
+                        'from-orange-400 to-orange-600',
+                      ].map((gradient, i) => (
+                        <div key={i} className={`w-9 h-9 rounded-full bg-gradient-to-br ${gradient} border-2 ${
+                          isDark ? 'border-[#0f172a]' : 'border-white'
+                        } flex items-center justify-center`}>
+                          <FaUsers className="w-3.5 h-3.5 text-white/90" />
+                        </div>
+                      ))}
+                    </div>
+                    <div>
+                      <div className={`text-lg font-black ${
+                        isDark ? 'text-white' : 'text-gray-900'
+                      }`}>+2,847</div>
+                      <div className={`text-xs font-semibold ${
+                        isDark ? 'text-emerald-300' : 'text-emerald-600'
+                      }`}>New Followers</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating Stats - top right of image */}
+                <div className={`absolute top-4 right-4 sm:top-6 sm:-right-4 px-4 py-3 rounded-xl shadow-xl backdrop-blur-md animate-bounce-slow-delayed transition-all ${
+                  isDark 
+                    ? 'bg-[#0f172a]/90 border border-blue-500/30' 
+                    : 'bg-white/90 border border-blue-200 shadow-blue-100/30'
+                }`}>
+                  <div className="flex items-center gap-2">
+                    <FaChartLine className="w-5 h-5 text-emerald-500" />
+                    <div>
+                      <div className="text-xl font-black text-emerald-500">5x</div>
+                      <div className={`text-[10px] font-bold uppercase tracking-wider ${
+                        isDark ? 'text-blue-300' : 'text-blue-700'
+                      }`}>Growth</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Decorative elements */}
+              <div className={`absolute -z-10 -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-8 rounded-full blur-xl ${
+                isDark ? 'bg-emerald-500/10' : 'bg-emerald-300/20'
+              }`} />
+            </div>
+          </div>
+
+          {/* ═══ RIGHT COLUMN: Info Content ═══ */}
+          <div className="order-1 lg:order-2 flex flex-col items-center lg:items-start text-center lg:text-left">
             
             {/* Eyebrow Text */}
             <p className={`text-sm font-bold uppercase tracking-[0.25em] mb-4 transition-all duration-700 delay-100 ${
@@ -191,40 +235,7 @@ function Hook() {
                 <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
                   On Facebook
                 </span>
-                {/* Animated Underline */}
                 <span className="absolute -bottom-1 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 rounded-full opacity-40 blur-sm" />
-=======
-          {/* Secondary CTA — Outline */}
-          <a href="#services"
-            className={`group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 text-lg font-semibold rounded-xl border transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98] ${
-              isDark
-                ? 'text-white border-white/15 hover:border-violet-400/50 hover:bg-violet-500/10'
-                : 'text-slate-700 border-slate-200 hover:border-violet-300 hover:bg-violet-50 shadow-sm'
-            }`}
-          >
-            View Pricing
-            <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
-        </div>
-
-        {/* ── Minimal Trust Indicators ── */}
-        <div className={`flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-8 gap-y-2 transition-all duration-700 delay-500 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`}
-          style={{ transitionDelay: '500ms' }}
-        >
-          {[
-            { icon: FaShieldAlt, label: 'No Contract' },
-            { icon: FaGift, label: 'Month 1 Free' },
-            { icon: FaHeadset, label: '24/7 Support' },
-          ].map((item, i) => (
-            <div key={i} className="flex items-center gap-2">
-              <item.icon className={`w-4 h-4 ${
-                isDark ? 'text-violet-400' : 'text-violet-500'
-              }`} />
-              <span className={`text-sm sm:text-base font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
-                {item.label}
->>>>>>> 6631b221c41ad4ad2be2186c0ff7499647355ebd
               </span>
             </h1>
 
@@ -239,6 +250,29 @@ function Hook() {
               We handle content, ads & community so you can focus on running your business.
             </p>
 
+            {/* Quick Feature Pills */}
+            <div className={`flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-8 transition-all duration-700 delay-350 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+              style={{ transitionDelay: '350ms' }}
+            >
+              {[
+                '16 Posts/Month',
+                'Ad Optimization',
+                '24hr Responses',
+                'Weekly Reports'
+              ].map((tag, i) => (
+                <span key={i} className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all hover:scale-105 ${
+                  isDark 
+                    ? 'border-white/10 bg-white/[0.04] text-neutral-300 hover:border-emerald-500/30 hover:bg-emerald-500/[0.06]' 
+                    : 'border-gray-200 bg-gray-50 text-gray-600 hover:border-emerald-300 hover:bg-emerald-50'
+                }`}>
+                  <FaCheckCircle className={`w-3 h-3 ${isDark ? 'text-emerald-500' : 'text-emerald-500'}`} />
+                  {tag}
+                </span>
+              ))}
+            </div>
+
             {/* CTA Buttons */}
             <div className={`flex flex-col sm:flex-row items-center gap-4 mb-10 transition-all duration-700 delay-400 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -251,7 +285,6 @@ function Hook() {
                 style={{ background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)' }}
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
-                
                 <span className="relative z-10 flex items-center justify-center gap-2.5">
                   <FaRocket className="w-5 h-5 group-hover:animate-bounce" />
                   Claim Free Month
@@ -303,152 +336,32 @@ function Hook() {
                 <span className={`text-sm font-medium ${isDark ? 'text-neutral-300' : 'text-gray-600'}`}>24/7 Support</span>
               </div>
             </div>
-          </div>
 
-          {/* ═══ RIGHT COLUMN: Visual Card ═══ */}
-          <div className={`transition-all duration-1000 delay-400 ${
-            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-          }`}
-            style={{ transitionDelay: '400ms' }}
-          >
-            <div className="relative max-w-lg mx-auto">
-              
-              {/* Background Glow - More prominent in light mode */}
-              <div className={`absolute -inset-4 rounded-3xl blur-2xl transition-colors duration-500 ${
-                isDark 
-                  ? 'bg-gradient-to-r from-emerald-500/20 via-cyan-500/20 to-blue-500/20 opacity-60' 
-                  : 'bg-gradient-to-r from-emerald-300/40 via-cyan-300/40 to-blue-300/40 opacity-80'
-              }`} />
-
-              {/* Main Card */}
-              <div className={`relative rounded-3xl overflow-hidden border-2 shadow-2xl transition-all duration-500 hover:shadow-3xl hover:scale-[1.02] ${
-                isDark 
-                  ? 'bg-gradient-to-b from-[#0f172a] to-[#020617] border-white/10 shadow-black/30' 
-                  : 'bg-white border-gray-100 shadow-gray-200/50'
-              }`}>
-                
-                {/* Card Header - Gradient Bar */}
-                <div className="h-2 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400" />
-
-                <div className="p-6 sm:p-8">
-                  
-                  {/* Offer Badge Row */}
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-orange-500 to-red-500 shadow-lg shadow-orange-500/25">
-                      <FaFire className="w-3.5 h-3.5 text-white animate-pulse" />
-                      <span className="text-xs font-bold text-white tracking-wide">LIMITED OFFER</span>
-                    </div>
-                    
-                    <div className="flex items-center gap-0.5">
-                      {[...Array(5)].map((_, i) => (
-                        <FaStar key={i} className="w-4 h-4 text-yellow-400 drop-shadow-sm" />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Big Value Prop */}
-                  <div className="text-center mb-6 pb-6 border-b-2 border-dashed"
-                    style={{
-                      borderColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)'
-                    }}
-                  >
-                    <div className="text-7xl sm:text-8xl font-black mb-2 bg-gradient-to-br from-emerald-300 via-green-400 to-teal-400 bg-clip-text text-transparent">
-                      FREE
-                    </div>
-                    <p className={`text-lg font-bold mb-1 ${
-                      isDark ? 'text-white' : 'text-gray-900'
-                    }`}>
-                      First Month Management
-                    </p>
-                    <p className={`text-sm ${
-                      isDark ? 'text-neutral-500' : 'text-gray-500'
-                    }`}>
-                      You only pay ad spend (9K or 18K Birr)
-                    </p>
-                  </div>
-
-                  {/* Features List */}
-                  <ul className="space-y-3 mb-6">
-                    {[
-                      { icon: FaCheckCircle, text: "16 professional posts per month", color: "emerald" },
-                      { icon: FaCheckCircle, text: "Custom graphics & brand assets", color: "blue" },
-                      { icon: FaCheckCircle, text: "Ad optimization (9K or 18K budget)", color: "purple" },
-                      { icon: FaCheckCircle, text: "24-hour community response", color: "pink" },
-                      { icon: FaCheckCircle, text: "Weekly performance reports", color: "orange" },
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-center gap-3 group">
-                        <div className={`flex-shrink-0 w-6 h-6 rounded-lg flex items-center justify-center transition-all group-hover:scale-110 ${
-                          isDark ? `bg-${item.color}-500/10 border border-${item.color}-500/20` : `bg-${item.color}-50 border border-${item.color}-200`
-                        }`}>
-                          <item.icon className={`w-3.5 h-3.5 text-${item.color}-500`} />
-                        </div>
-                        <span className={`text-sm font-medium transition-colors ${
-                          isDark ? 'text-neutral-300 group-hover:text-white' : 'text-gray-700 group-hover:text-gray-900'
-                        }`}>
-                          {item.text}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTA in Card */}
-                  <a href="#contact"
-                    className="group relative w-full py-4 text-base font-bold text-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg block text-center"
-                    style={{ background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)' }}
-                  >
-                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
-                    
-                    <span className="relative z-10 flex items-center justify-center gap-2">
-                      <FaEnvelope className="w-5 h-5" />
-                      Reserve Your Spot Now
-                      <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                  </a>
-
-                  {/* Urgency Note */}
-                  <p className={`text-center text-xs mt-4 font-medium ${
-                    isDark ? 'text-neutral-500' : 'text-gray-400'
-                  }`}>
-                    ⚡ After May 31: Regular price ETB 25,000/month
-                  </p>
-                </div>
+            {/* Star Rating & Social Proof */}
+            <div className={`mt-6 flex items-center justify-center lg:justify-start gap-3 transition-all duration-700 delay-600 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+              style={{ transitionDelay: '600ms' }}
+            >
+              <div className="flex items-center gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <FaStar key={i} className="w-4 h-4 text-yellow-400 drop-shadow-sm" />
+                ))}
               </div>
-
-              {/* Floating Stats Cards - Positioned absolutely */}
-              <div className={`absolute -top-3 -right-3 sm:top-2 sm:-right-6 px-4 py-3 rounded-xl shadow-xl backdrop-blur-sm animate-bounce-slow transition-colors ${
-                isDark 
-                  ? 'bg-[#0f172a]/90 border border-emerald-500/30' 
-                  : 'bg-white/90 border border-emerald-200 shadow-emerald-100/50'
-              }`}>
-                <div className="text-2xl font-black text-emerald-500">5x</div>
-                <div className={`text-[10px] font-bold uppercase tracking-wider ${
-                  isDark ? 'text-emerald-300' : 'text-emerald-700'
-                }`}>Engagement</div>
-              </div>
-
-              <div className={`absolute -bottom-3 -left-3 sm:bottom-2 sm:-left-6 px-4 py-3 rounded-xl shadow-xl backdrop-blur-sm animate-bounce-slow-delayed transition-colors ${
-                isDark 
-                  ? 'bg-[#0f172a]/90 border border-blue-500/30' 
-                  : 'bg-white/90 border border-blue-200 shadow-blue-100/50'
-              }`}
-                style={{ animationDelay: '1s' }}
-              >
-                <div className="text-2xl font-black text-blue-500">15+</div>
-                <div className={`text-[10px] font-bold uppercase tracking-wider ${
-                  isDark ? 'text-blue-300' : 'text-blue-700'
-                }`}>Businesses</div>
-              </div>
+              <span className={`text-sm font-medium ${isDark ? 'text-neutral-400' : 'text-gray-500'}`}>
+                Trusted by 15+ Ethiopian businesses
+              </span>
             </div>
           </div>
         </div>
 
         {/* ══════════ BOTTOM STATS BAR ══════════ */}
-        <div className={`mt-16 sm:mt-24 pt-8 border-t-2 transition-all duration-700 delay-500 ${
+        <div className={`mt-16 sm:mt-24 pt-8 border-t-2 transition-all duration-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}
           style={{ 
             borderColor: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)',
-            transitionDelay: '600ms'
+            transitionDelay: '700ms'
           }}
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
@@ -480,9 +393,7 @@ function Hook() {
         </div>
       </div>
 
-     
-
-      {/* Custom Animations - No JSX Error */}
+      {/* Custom Animations */}
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes blob {
           0%, 100% { transform: translate(0, 0) scale(1); }
@@ -495,8 +406,8 @@ function Hook() {
           66% { transform: translate(20px, -30px) scale(0.95); }
         }
         @keyframes float-slow {
-          0%, 100% { transform: translateY(0) opacity: 0.2; }
-          50% { transform: translateY(-20px) opacity: 0.5; }
+          0%, 100% { transform: translateY(0); opacity: 0.2; }
+          50% { transform: translateY(-20px); opacity: 0.5; }
         }
         @keyframes pulse-slow {
           0%, 100% { opacity: 1; transform: scale(1); }
@@ -510,22 +421,12 @@ function Hook() {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-10px); }
         }
-        @keyframes scroll-down {
-          0%, 100% { transform: translateY(0); opacity: 1; }
-          50% { transform: translateY(8px); opacity: 0.4; }
-        }
-        @keyframes fade-in-up {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
         .animate-blob { animation: blob 8s ease-in-out infinite; }
         .animate-blob-delayed { animation: blob-delayed 10s ease-in-out infinite; }
         .animate-float-slow { animation: float-slow 4s ease-in-out infinite; }
         .animate-pulse-slow { animation: pulse-slow 3s ease-in-out infinite; }
         .animate-bounce-slow { animation: bounce-slow 3s ease-in-out infinite; }
         .animate-bounce-slow-delayed { animation: bounce-slow-delayed 3.5s ease-in-out infinite; }
-        .animate-scroll-down { animation: scroll-down 2s ease-in-out infinite; }
-        .animate-fade-in-up { animation: fade-in-up 1s ease-out forwards; }
       `}} />
     </section>
   );
