@@ -15,7 +15,8 @@ import {
   FaUsers,
   FaChartLine,
   FaStar,
-  FaThumbsUp
+  FaThumbsUp,
+  FaEye
 } from 'react-icons/fa';
 
 function Hook() {
@@ -54,7 +55,6 @@ function Hook() {
             : 'bg-[radial-gradient(ellipse_at_center,rgba(139,92,246,0.08),transparent_60%)]'
         }`} />
 
-        {/* Floating Particles */}
         {[...Array(5)].map((_, i) => (
           <div
             key={i}
@@ -127,8 +127,6 @@ function Hook() {
 
           {/* ═══ LEFT COLUMN: Content ═══ */}
           <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
-
-            {/* Eyebrow */}
             <p
               className={`text-xs sm:text-sm font-bold uppercase tracking-[0.2em] sm:tracking-[0.25em] mb-4 sm:mb-5 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -138,7 +136,6 @@ function Hook() {
               For Ethiopian Businesses
             </p>
 
-            {/* Headline */}
             <h1
               className={`font-bold leading-[1.05] sm:leading-[1.08] tracking-tight mb-5 sm:mb-6 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
@@ -159,7 +156,6 @@ function Hook() {
               </span>
             </h1>
 
-            {/* Subheadline */}
             <p
               className={`max-w-lg mx-auto lg:mx-0 leading-relaxed mb-7 sm:mb-8 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -175,19 +171,13 @@ function Hook() {
               We handle content, ads & community so you can focus on running your business.
             </p>
 
-            {/* Quick Feature Pills */}
             <div
               className={`flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-7 sm:mb-8 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
               style={{ transitionDelay: '350ms' }}
             >
-              {[
-                '16 Posts/Month',
-                'Ad Optimization',
-                '24hr Responses',
-                'Weekly Reports'
-              ].map((tag, i) => (
+              {['16 Posts/Month', 'Ad Optimization', '24hr Responses', 'Weekly Reports'].map((tag, i) => (
                 <span
                   key={i}
                   className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all hover:scale-105 ${
@@ -202,7 +192,6 @@ function Hook() {
               ))}
             </div>
 
-            {/* CTA Buttons */}
             <div
               className={`flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mb-8 sm:mb-10 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -212,10 +201,7 @@ function Hook() {
               <a
                 href="#contact"
                 className="group relative w-full sm:w-auto px-7 sm:px-8 py-3.5 text-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 active:scale-[0.98]"
-                style={{
-                  background: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
-                  fontSize: 'clamp(0.875rem, 1.2vw + 0.25rem, 1rem)'
-                }}
+                style={{ background: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)', fontSize: 'clamp(0.875rem, 1.2vw + 0.25rem, 1rem)' }}
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
                 <span className="relative z-10 flex items-center justify-center gap-2.5">
@@ -239,7 +225,6 @@ function Hook() {
               </a>
             </div>
 
-            {/* Trust Indicators */}
             <div
               className={`flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -247,32 +232,21 @@ function Hook() {
               style={{ transitionDelay: '500ms' }}
             >
               <div className="flex items-center gap-2">
-                <div className={`p-1.5 rounded-lg ${isDark ? 'bg-violet-500/10' : 'bg-violet-50'}`}>
-                  <FaShieldAlt className={`w-3.5 h-3.5 ${isDark ? 'text-violet-400' : 'text-violet-600'}`} />
-                </div>
+                <div className={`p-1.5 rounded-lg ${isDark ? 'bg-violet-500/10' : 'bg-violet-50'}`}><FaShieldAlt className={`w-3.5 h-3.5 ${isDark ? 'text-violet-400' : 'text-violet-600'}`} /></div>
                 <span className={`text-sm font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>No Contract</span>
               </div>
-
               <div className={`w-px h-4 rounded-full ${isDark ? 'bg-neutral-700' : 'bg-gray-300'}`} />
-
               <div className="flex items-center gap-2">
-                <div className={`p-1.5 rounded-lg ${isDark ? 'bg-yellow-500/10' : 'bg-yellow-50'}`}>
-                  <FaGift className={`w-3.5 h-3.5 ${isDark ? 'text-yellow-400' : 'text-yellow-600'}`} />
-                </div>
+                <div className={`p-1.5 rounded-lg ${isDark ? 'bg-yellow-500/10' : 'bg-yellow-50'}`}><FaGift className={`w-3.5 h-3.5 ${isDark ? 'text-yellow-400' : 'text-yellow-600'}`} /></div>
                 <span className={`text-sm font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>Month 1 Free</span>
               </div>
-
               <div className={`w-px h-4 rounded-full ${isDark ? 'bg-neutral-700' : 'bg-gray-300'}`} />
-
               <div className="flex items-center gap-2">
-                <div className={`p-1.5 rounded-lg ${isDark ? 'bg-blue-500/10' : 'bg-blue-50'}`}>
-                  <FaHeadset className={`w-3.5 h-3.5 ${isDark ? 'text-blue-400' : 'text-blue-600'}`} />
-                </div>
+                <div className={`p-1.5 rounded-lg ${isDark ? 'bg-blue-500/10' : 'bg-blue-50'}`}><FaHeadset className={`w-3.5 h-3.5 ${isDark ? 'text-blue-400' : 'text-blue-600'}`} /></div>
                 <span className={`text-sm font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>24/7 Support</span>
               </div>
             </div>
 
-            {/* Star Rating */}
             <div
               className={`mt-5 flex items-center justify-center lg:justify-start gap-3 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -280,120 +254,137 @@ function Hook() {
               style={{ transitionDelay: '600ms' }}
             >
               <div className="flex items-center gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <FaStar key={i} className="w-3.5 h-3.5 text-yellow-400 drop-shadow-sm" />
-                ))}
+                {[...Array(5)].map((_, i) => (<FaStar key={i} className="w-3.5 h-3.5 text-yellow-400 drop-shadow-sm" />))}
               </div>
-              <span className={`text-xs sm:text-sm font-medium ${isDark ? 'text-neutral-500' : 'text-gray-500'}`}>
-                Trusted by 15+ Ethiopian businesses
-              </span>
+              <span className={`text-xs sm:text-sm font-medium ${isDark ? 'text-neutral-500' : 'text-gray-500'}`}>Trusted by 15+ Ethiopian businesses</span>
             </div>
           </div>
 
-          {/* ═══ RIGHT COLUMN: Image Composition ═══ */}
+          {/* ═══ RIGHT COLUMN: 3D App/Window Image Structure ═══ */}
           <div
             className={`order-1 lg:order-2 transition-all duration-1000 ${
               isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
             }`}
             style={{ transitionDelay: '300ms' }}
           >
-            <div className="relative max-w-lg mx-auto lg:ml-auto lg:mr-0">
-
-              {/* Background Glow */}
-              <div className={`absolute -inset-6 rounded-[2rem] blur-3xl transition-colors duration-500 ${
+            <div className="relative max-w-lg mx-auto lg:ml-auto lg:mr-0" style={{ perspective: '1200px' }}>
+              
+              {/* Ambient Glow */}
+              <div className={`absolute -inset-8 rounded-[3rem] blur-3xl transition-all duration-500 group-hover:blur-2xl ${
                 isDark
-                  ? 'bg-gradient-to-br from-violet-500/20 via-purple-500/20 to-fuchsia-500/20 opacity-60'
-                  : 'bg-gradient-to-br from-violet-300/40 via-purple-300/40 to-fuchsia-300/40 opacity-70'
+                  ? 'bg-gradient-to-br from-violet-600/30 via-fuchsia-500/20 to-blue-500/30 opacity-70'
+                  : 'bg-gradient-to-br from-violet-300/50 via-fuchsia-200/40 to-blue-300/50 opacity-80'
               }`} />
 
-              {/* Main Image Container */}
-              <div className={`relative rounded-3xl overflow-hidden border-2 shadow-2xl transition-all duration-500 hover:shadow-3xl hover:scale-[1.015] ${
-                isDark
-                  ? 'border-white/10 shadow-black/40'
-                  : 'border-gray-100 shadow-gray-300/60'
-              }`}>
-                <img
-                  src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80"
-                  alt="Facebook social media marketing analytics dashboard"
-                  className="w-full h-auto object-cover aspect-[4/3] sm:aspect-[3/2]"
-                  loading="eager"
-                />
-
-                {/* Bottom Gradient Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-t ${
+              {/* 3D Floating Container */}
+              <div 
+                className="relative transition-transform duration-700 ease-out hover:[transform:rotateY(-1deg)_rotateX(1deg)_scale(1.02)]"
+                style={{ transform: 'rotateY(-5deg) rotateX(3deg)', transformStyle: 'preserve-3d' }}
+              >
+                <div className={`relative rounded-2xl sm:rounded-3xl overflow-hidden border-2 shadow-2xl ${
                   isDark
-                    ? 'from-[#0a0a1a] via-transparent to-transparent'
-                    : 'from-white/80 via-transparent to-transparent'
-                }`} />
-
-                {/* Floating Engagement Card — bottom left inside image */}
-                <div className={`absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto px-5 py-4 rounded-2xl shadow-xl backdrop-blur-lg animate-bounce-slow transition-colors ${
-                  isDark
-                    ? 'bg-[#0a0a1a]/85 border border-violet-500/25'
-                    : 'bg-white/85 border border-violet-200 shadow-violet-100/30'
+                    ? 'border-white/[0.08] shadow-black/50 shadow-violet-500/10'
+                    : 'border-white/80 shadow-gray-400/30 shadow-violet-200/20'
                 }`}>
-                  <div className="flex items-center gap-4">
-                    <div className="flex -space-x-2.5">
-                      {[
-                        'from-violet-400 to-purple-600',
-                        'from-blue-400 to-indigo-600',
-                        'from-fuchsia-400 to-pink-600',
-                        'from-emerald-400 to-teal-600',
-                      ].map((gradient, i) => (
-                        <div key={i} className={`w-10 h-10 rounded-full bg-gradient-to-br ${gradient} border-2 ${
-                          isDark ? 'border-[#0a0a1a]' : 'border-white'
-                        } flex items-center justify-center shadow-md`}>
-                          <FaUsers className="w-3.5 h-3.5 text-white/90" />
-                        </div>
-                      ))}
+                  
+                  {/* App / Browser Top Bar */}
+                  <div className={`flex items-center gap-3 px-4 sm:px-5 py-3 border-b ${
+                    isDark ? 'bg-[#121220]/90 border-white/[0.06]' : 'bg-gray-50/90 border-gray-200/80'
+                  }`}>
+                    <div className="flex gap-1.5">
+                      <div className="w-3 h-3 rounded-full bg-red-500 shadow-sm shadow-red-500/50" />
+                      <div className="w-3 h-3 rounded-full bg-yellow-500 shadow-sm shadow-yellow-500/50" />
+                      <div className="w-3 h-3 rounded-full bg-green-500 shadow-sm shadow-green-500/50" />
+                    </div>
+                    <div className="flex-1 mx-2 sm:mx-4">
+                      <div className={`max-w-xs mx-auto h-7 rounded-lg flex items-center justify-center text-[10px] sm:text-xs font-medium ${
+                        isDark ? 'bg-white/[0.05] text-neutral-500' : 'bg-white text-gray-400 border border-gray-100 shadow-inner'
+                      }`}>
+                        <FaFacebook className="w-3 h-3 text-blue-500 mr-2" />
+                        ethioglobal.digital/business
+                      </div>
+                    </div>
+                    <div className={`w-6 h-6 rounded-md flex items-center justify-center ${
+                      isDark ? 'bg-white/[0.05] text-neutral-600' : 'bg-gray-100 text-gray-400'
+                    }`}>
+                      <FaArrowRight className="w-2.5 h-2.5" />
+                    </div>
+                  </div>
+
+                  {/* Main Image Area */}
+                  <div className="relative">
+                    <img
+                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                      alt="Data analytics dashboard showing business growth metrics"
+                      className="w-full aspect-[4/3] sm:aspect-[16/10] object-cover"
+                      loading="eager"
+                    />
+                    
+                    {/* Inner Gradient Overlay for depth */}
+                    <div className={`absolute inset-0 bg-gradient-to-t ${
+                      isDark ? 'from-[#121220] via-transparent to-transparent' : 'from-white/60 via-transparent to-transparent'
+                    }`} />
+                  </div>
+                </div>
+
+                {/* ── Floating UI Elements ── */ */}
+                
+                {/* Top Left: Live Viewers Pill */}
+                <div className={`absolute -top-3 -left-3 sm:-top-4 sm:-left-6 px-3 py-2 rounded-xl shadow-xl backdrop-blur-xl border animate-bounce-slow-delayed z-20 ${
+                  isDark ? 'bg-[#121220]/95 border-red-500/30' : 'bg-white/95 border-red-200 shadow-red-100/40'
+                }`}>
+                  <div className="flex items-center gap-2">
+                    <div className="relative">
+                      <FaEye className="w-4 h-4 text-red-500" />
+                      <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full animate-ping" />
                     </div>
                     <div>
-                      <div className={`text-xl font-black ${isDark ? 'text-white' : 'text-gray-900'}`}>+2,847</div>
-                      <div className={`text-[10px] sm:text-xs font-semibold ${isDark ? 'text-violet-300' : 'text-violet-600'}`}>New Followers This Month</div>
+                      <div className="text-sm font-black text-red-500">1.2K</div>
+                      <div className={`text-[9px] font-bold uppercase tracking-wider ${isDark ? 'text-red-300' : 'text-red-600'}`}>Live Now</div>
                     </div>
                   </div>
                 </div>
 
-                {/* Floating Growth Badge — top right inside image */}
-                <div className={`absolute top-4 right-4 sm:top-6 sm:-right-4 px-4 py-3 rounded-xl shadow-xl backdrop-blur-lg animate-bounce-slow-delayed transition-colors ${
-                  isDark
-                    ? 'bg-[#0a0a1a]/90 border border-blue-500/25'
-                    : 'bg-white/90 border border-blue-200 shadow-blue-100/30'
+                {/* Bottom Right: ROI Card */}
+                <div className={`absolute -bottom-4 -right-3 sm:-bottom-6 sm:-right-6 p-4 rounded-2xl shadow-2xl backdrop-blur-xl border animate-bounce-slow z-20 ${
+                  isDark ? 'bg-[#121220]/95 border-emerald-500/30' : 'bg-white/95 border-emerald-200 shadow-emerald-100/40'
                 }`}>
-                  <div className="flex items-center gap-2.5">
-                    <div className={`p-1.5 rounded-lg ${isDark ? 'bg-emerald-500/15' : 'bg-emerald-50'}`}>
-                      <FaChartLine className="w-4 h-4 text-emerald-500" />
+                  <div className="flex items-center gap-3">
+                    <div className={`p-2.5 rounded-xl ${isDark ? 'bg-emerald-500/15' : 'bg-emerald-50'}`}>
+                      <FaChartLine className="w-5 h-5 text-emerald-500" />
                     </div>
                     <div>
-                      <div className="text-xl font-black text-emerald-500">5x</div>
-                      <div className={`text-[9px] sm:text-[10px] font-bold uppercase tracking-wider ${
-                        isDark ? 'text-emerald-300' : 'text-emerald-700'
-                      }`}>Growth Rate</div>
+                      <div className="text-xs text-emerald-500 font-bold mb-0.5">Return on Ad Spend</div>
+                      <div className="text-2xl font-black text-emerald-500 leading-none">5.4x</div>
+                    </div>
+                  </div>
+                  {/* Mini Chart SVG */}
+                  <div className="mt-3 flex items-end gap-1 h-6">
+                    {[40, 65, 45, 80, 55, 90, 75, 95].map((h, i) => (
+                      <div key={i} className="flex-1 rounded-sm bg-emerald-500/30 relative overflow-hidden">
+                        <div className="absolute bottom-0 left-0 right-0 bg-emerald-500 rounded-sm transition-all duration-500" style={{ height: `${h}%`, animationDelay: `${i * 100}ms` }} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Middle Right: Engagement Badge */}
+                <div className={`absolute top-1/2 -translate-y-1/2 -right-2 sm:-right-5 px-3 py-2.5 rounded-xl shadow-xl backdrop-blur-xl border z-20 ${
+                  isDark ? 'bg-[#121220]/90 border-violet-500/30' : 'bg-white/90 border-violet-200 shadow-violet-100/40'
+                }`}>
+                  <div className="flex items-center gap-2">
+                    <FaThumbsUp className="w-4 h-4 text-violet-500" />
+                    <div>
+                      <div className="text-lg font-black text-violet-500 leading-none">847%</div>
+                      <div className={`text-[9px] font-bold uppercase tracking-wider ${isDark ? 'text-violet-300' : 'text-violet-600'}`}>Engagement</div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Floating Mini Card — bottom right outside image */}
-              <div className={`absolute -bottom-4 -right-2 sm:-bottom-5 sm:-right-6 px-4 py-3 rounded-xl shadow-xl backdrop-blur-lg transition-colors ${
-                isDark
-                  ? 'bg-[#0a0a1a]/90 border border-fuchsia-500/25'
-                  : 'bg-white/90 border border-fuchsia-200 shadow-fuchsia-100/30'
-              }`}>
-                <div className="flex items-center gap-2">
-                  <FaThumbsUp className="w-5 h-5 text-fuchsia-500" />
-                  <div>
-                    <div className="text-lg font-black text-fuchsia-500">98%</div>
-                    <div className={`text-[9px] font-bold uppercase tracking-wider ${
-                      isDark ? 'text-fuchsia-300' : 'text-fuchsia-700'
-                    }`}>Satisfaction</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Decorative glow beneath image */}
-              <div className={`absolute -z-10 -bottom-5 left-1/2 -translate-x-1/2 w-3/4 h-10 rounded-full blur-2xl ${
-                isDark ? 'bg-violet-500/15' : 'bg-violet-300/25'
+              {/* Floor Shadow / Reflection */}
+              <div className={`absolute -bottom-10 left-1/2 -translate-x-1/2 w-3/4 h-16 rounded-full blur-2xl -z-10 ${
+                isDark ? 'bg-violet-500/20' : 'bg-violet-400/25'
               }`} />
             </div>
           </div>
