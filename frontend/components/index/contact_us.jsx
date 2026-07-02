@@ -18,10 +18,10 @@ import {
 } from 'react-icons/fa';
 
 const contactInfo = [
-  { id: 'phone', label: 'Phone', value: '+251 912 345 678', href: 'tel:+251912345678', icon: <FaPhone className="w-4 h-4 sm:w-5 sm:h-5" />, bg: 'bg-violet-500/10', text: 'text-violet-400' },
-  { id: 'email', label: 'Email', value: 'info@agency.com', href: 'mailto:info@agency.com', icon: <FaEnvelope className="w-4 h-4 sm:w-5 sm:h-5" />, bg: 'bg-purple-500/10', text: 'text-purple-400' },
-  { id: 'telegram', label: 'Telegram', value: '@agency_support', href: 'https://t.me/agency_support', icon: <FaTelegram className="w-4 h-4 sm:w-5 sm:h-5" />, bg: 'bg-fuchsia-500/10', text: 'text-fuchsia-400' },
-  { id: 'instagram', label: 'Instagram', value: '@agency.eth', href: 'https://instagram.com/agency.eth', icon: <FaInstagram className="w-4 h-4 sm:w-5 sm:h-5" />, bg: 'bg-pink-500/10', text: 'text-pink-400' },
+  { id: 'phone', label: 'Phone', value: '+251 916758451', href: 'tel:+251 916758451', icon: <FaPhone className="w-4 h-4 sm:w-5 sm:h-5" />, bg: 'bg-violet-500/10', text: 'text-violet-400' },
+  { id: 'email', label: 'Email', value: 'ethioglobaldigital@gmail.com', href: 'mailto:ethioglobaldigital@gmail.com', icon: <FaEnvelope className="w-4 h-4 sm:w-5 sm:h-5" />, bg: 'bg-purple-500/10', text: 'text-purple-400' },
+  { id: 'telegram', label: 'Telegram', value: '@ethioglobaldigital_support', href: 'https://t.me/ethioglobaldigital_support', icon: <FaTelegram className="w-4 h-4 sm:w-5 sm:h-5" />, bg: 'bg-fuchsia-500/10', text: 'text-fuchsia-400' },
+  { id: 'instagram', label: 'Instagram', value: '@ethioglobaldigital.eth', href: 'https://instagram.com/ethioglobaldigital.eth', icon: <FaInstagram className="w-4 h-4 sm:w-5 sm:h-5" />, bg: 'bg-pink-500/10', text: 'text-pink-400' },
 ];
 
 function Contact() {
